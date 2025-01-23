@@ -62,10 +62,7 @@
                                         $i++;
                                     @endphp
                                     <tr>
-                                        <td>
-                                            <input class="form-check-input m-1 row-checkbox" value="{{ $category->id }}"
-                                                type="checkbox" id="flexCheckChecked">
-                                        </td>
+                                        <td><input type="checkbox" class="row-checkbox" value="{{ $category->id }}"></td>
                                         <td>{{ $i }}</td>
                                         <td>{{ $category->getTranslation('name', 'en') }}</td>
                                         <td>{{ $category->getTranslation('name', 'ar') }}</td>
