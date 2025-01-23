@@ -22,41 +22,16 @@
 @section('content')
     <div>
         <div class="btn-group mb-3">
-            <button type="button" class="btn btn-danger mx-1">{{ __('action.delete_all') }} <i
-                    class="fas fa-trash-restore-alt mx-1"></i></button>
-            <button type="button" class="btn btn-success mx-1">{{ __('action.export_excel') }} <i
-                    class="fas fa-file-excel mx-1"></i></button>
-            <button type="button" class="btn btn-success mx-1">{{ __('action.import_excel') }} <i
-                    class="fas fa-file-excel mx-1"></i></button>
+            <x-delete-select-all model="Category"></x-delete-select-all>
+            <x-export-excel model="Category"></x-export-excel>
+            <x-import-excel model="Category"></x-import-excel>
         </div>
     </div>
 
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
-                    <div>
-                        <x-adminlte-input name="name_search" fgroup-class="col-md-3" value="{{ request('name_search') }}"
-                            type="text" label="{{ __('category.category_name') }}" placeholder="ex:Category Name...." />
-
-                        <div class="form-check mx-2">
-                            <input class="form-check-input" name="discount_search" type="checkbox" value=""
-                                id="flexCheckChecked">
-                            <label class="form-check-label" for="flexCheckChecked">
-                                {{ __('category.has_discount') }}
-                            </label>
-
-                        </div>
-                    </div>
-                    <div class="row mb-2">
-                        <div class="col-7 text-center">
-                            <button type="button" class="btn btn-primary mx-1">{{ __('action.filter') }} <i
-                                    class="fas fa-filter mx-1"></i></button>
-                            <button type="button" class="btn btn-secondary mx-1">{{ __('action.reset') }}</button>
-                        </div>
-                    </div>
-
-                </div>
+                @include('dashboard.categories.partials.filter')
                 <!-- /.card-header -->
                 <div class="card-body p-0">
                     <table class="table table-head-fixed text-nowrap">

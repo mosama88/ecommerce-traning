@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class DeleteSelectExcel extends Component
+class DeleteSelectAll extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class DeleteSelectExcel extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.delete-select-excel');
+        return view('components.delete-select-all');
     }
 }

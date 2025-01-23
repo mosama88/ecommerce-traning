@@ -1,3 +1,2 @@
-<div>
-    <!-- Simplicity is the consequence of refined emotions. - Jean D'Alembert -->
-</div>
+  <button type="button" class="btn btn-success mx-1">{{ __('action.export_excel') }} <i
+          class="fas fa-file-excel mx-1"></i></button>
