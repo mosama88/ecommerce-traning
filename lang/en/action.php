@@ -6,6 +6,7 @@ return [
     'create' => 'Create',
     'delete' => 'Delete',
     'show' => 'Show',
+    'cancel' => 'Cancel',
     'update' => 'Update',
     'actions' => 'Actions',
     'check_data_get' => 'There are Not Data!!',
@@ -22,7 +23,13 @@ return [
     'warning' => 'Warning',
     'delete_them' => 'Yes, delete them!',
     'no_cancel' => 'No, Cancel!',
-    'please_select_at_least_one'=> 'Please select at least one item to delete',
+    'please_select_at_least_one' => 'Please select at least one item to delete',
+    'done_file_upload' => 'File upload Uploaded',
+    'file_name' => 'File name',
+    'done' => 'Done',
+    'upload' => 'Attach',
+    'upload_excel_file' => 'Attach Excel file',
+    'choose_file_excel' => 'Choose Excel file',
 
 
 

@@ -6,6 +6,7 @@ return [
     'create' => 'أنشاء',
     'delete' => 'حذف',
     'show' => 'عرض',
+    'cancel' => 'إلغاء',
     'update' => 'تحديث',
     'actions' => 'الأجراءات',
     'check_data_get' => 'عفوآ لا توجد بيانات!!',
@@ -23,5 +24,11 @@ return [
     'delete_them' => 'نعم، احذفها!',
     'no_cancel' => 'لا، إلغاء!',
     'please_select_at_least_one' => 'يرجى اختيار عنصر واحد على الأقل للحذف',
-
+    'done_file_upload' => 'تم تحميل الملف',
+    'file_name'=>'أسم الملف',
+    'done'=>'تم',
+    'upload'=>'إرفاق',
+    'upload_excel_file'=>'إرفاق ملف أكسيل',
+    'choose_file_excel'=>'أختر ملف أكسيل',
+    
 ];
