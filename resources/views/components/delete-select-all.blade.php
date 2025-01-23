@@ -28,18 +28,19 @@
                         .map(checkbox => checkbox.value);
 
                     if (selectedIds.length === 0) {
-                        Swal.fire("{{ __('actions.no_items_selected') }}", 'Please select at least one item to delete.',
-                            'warning');
+                        Swal.fire("{{ __('actions.no_items_selected') }}", {{ __('action.please_select_at_least_one') }}
+                            .,
+                            {{ __('action.no_cancel') }});
                         return;
                     }
 
                     Swal.fire({
-                        title: "Are you sure?",
-                        text: "You are about to delete selected items!",
-                        icon: "warning",
+                        title: "{{ __('action.are_you_sure') }}",
+                        text: "{{ __('action.you_are_about_to_delete_selected_items') }}",
+                        icon: "{{ __('action.warning') }}",
                         showCancelButton: true,
-                        confirmButtonText: "Yes, delete them!",
-                        cancelButtonText: "No, cancel!",
+                        confirmButtonText: "{{ __('action.delete_them') }}",
+                        cancelButtonText: "{{ __('action.no_cancel') }}",
                         reverseButtons: true
                     }).then((result) => {
                         if (result.isConfirmed) {

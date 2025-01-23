@@ -17,5 +17,13 @@ return [
     'filter' => 'Filter',
     'reset' => 'Reset',
     'no_items_selected' => 'No items selected',
+    'are_you_sure' => 'Are You Sure?',
+    'you_are_about_to_delete_selected_items' => 'you are about to delete selected items!',
+    'warning' => 'Warning',
+    'delete_them' => 'Yes, delete them!',
+    'no_cancel' => 'No, Cancel!',
+    'please_select_at_least_one'=> 'Please select at least one item to delete',
+
+
 
 ];
