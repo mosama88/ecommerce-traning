@@ -22,9 +22,9 @@
 @section('content')
     <div>
         <div class="btn-group mb-3">
-            <x-delete-select-all model="Category"></x-delete-select-all>
-            <x-export-excel model="Category"></x-export-excel>
-            <x-import-excel model="Category"></x-import-excel>
+            <x-delete-select-all model="Category"/>
+            <x-export-excel model="Category"/>
+            <x-import-excel model="Category"/>
         </div>
     </div>
 

@@ -13,7 +13,8 @@ Route::middleware(['dashboard', 'auth:admin', 'verified'])->group(function () {
 
     Route::resource('categories', CategoryController::class);
     Route::get('change-language/{lang}', [LanguageController::class, 'changeLanguage'])->name('change.language');
-    Route::post('/delete-items', [BulkDeleteController::class, 'bulkDelete'])->name('bulkDelete');
+    Route::post('/delete-items', [BulkDeleteController::class, 'bulkDelete'])->name('items.bulk-delete');
+
 });
 
 Route::middleware('guest:admin')->group(function () {
