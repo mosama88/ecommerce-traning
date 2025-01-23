@@ -30,5 +30,6 @@ return [
     'upload'=>'إرفاق',
     'upload_excel_file'=>'إرفاق ملف أكسيل',
     'choose_file_excel'=>'أختر ملف أكسيل',
-    
+    'error' => 'خطأ',
+    'upload_failed' => 'فشل فى رفع الملف',
 ];

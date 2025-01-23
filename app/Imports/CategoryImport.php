@@ -14,8 +14,11 @@ class CategoryImport implements ToModel
      */
     public function model(array $row)
     {
-        return new Category([
-            //
+        return Category::updateOrCreate(['name->en' => $row[0]],[
+            'name' => [
+                'en' => $row[0],
+                'ar' => $row[1],
+            ]
         ]);
     }
 }

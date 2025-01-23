@@ -30,7 +30,8 @@ return [
     'upload' => 'Attach',
     'upload_excel_file' => 'Attach Excel file',
     'choose_file_excel' => 'Choose Excel file',
+    'error' => 'Error',
 
-
+    'upload_failed' => 'Faild Upload',
 
 ];

@@ -1,7 +1,42 @@
-<button type="button" class="btn btn-success mx-1" id="import_excel_file">
+<button type="button" class="btn btn-success mx-1" data-toggle="modal" data-target="#import_excel_file">
     {{ __('action.import_excel') }} <i class="fas fa-file-excel mx-1"></i>
 </button>
-@push('js')
+
+
+<div class="modal fade" id="import_excel_file">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{ __('action.upload_excel_file') }}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('dashboard.import.excel') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="model" value="{{ $model }}">
+                <div class="modal-body">
+                    <p>{{ __('action.choose_file_excel') }}&hellip;</p>
+
+                    <div class="mb-3">
+                        <label for="formFile" name="file" class="form-label"></label>
+                        <input class="form-control" type="file" id="formFile">
+                    </div>
+
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+{{-- @push('js')
     <script>
         document.getElementById('import_excel_file').addEventListener('click', async () => {
             const {
@@ -32,41 +67,4 @@
             }
         });
     </script>
-@endpush
-
-{{-- <div class="modal fade" id="import-excel">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Default Modal</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>One fine body&hellip;</p>
-
-                <x-adminlte-input-file name="ifPholder" fgroup-class="col-md-12" igroup-size="md"
-                    placeholder="Choose a file...">
-                    <x-slot name="prependSlot">
-                        <div class="input-group-text bg-lightblue">
-                            <i class="fas fa-upload"></i>
-                        </div>
-                    </x-slot>
-                </x-adminlte-input-file>
-
-                <div class="mb-3">
-                    <label for="formFile" class="form-label">Default file input example</label>
-                    <input class="form-control" type="file" id="formFile">
-                </div>
-
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div> --}}
+@endpush --}}
