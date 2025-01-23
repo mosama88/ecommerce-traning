@@ -47,7 +47,8 @@
                                     </div>
                                 </th>
                                 <th>#</th>
-                                <th>{{ __('category.category_name') }}</th>
+                                <th>{{ __('category.category_name_en') }}</th>
+                                <th>{{ __('category.category_name_ar') }}</th>
                                 <th>{{ __('category.discount') }}</th>
                                 <th>{{ __('action.actions') }}</th>
                             </tr>
@@ -67,7 +68,8 @@
                                                 id="flexCheckChecked">
                                         </td>
                                         <td>{{ $i }}</td>
-                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->getTranslation('name', 'en') }}</td>
+                                        <td>{{ $category->getTranslation('name', 'ar') }}</td>
                                         <td>{{ $category->discount?->name }}</td>
                                         <td>
                                             @include('dashboard.partials.actions', [

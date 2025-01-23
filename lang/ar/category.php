@@ -5,5 +5,6 @@ return [
     'discount' => 'الخصم',
     'categories_table' => 'جدول الفئات',
     'has_discount' => 'لدية خصم',
-
+    'category_name_ar'=>'أسم عربى',
+    'category_name_en' => 'أسم إنجليزى',
 ];
