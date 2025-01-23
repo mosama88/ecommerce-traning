@@ -43,14 +43,14 @@
                         <div class="tab-content" id="custom-tabs-one-tabContent">
                             <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-home-tab">
-                                <x-adminlte-input name="name[en]" fgroup-class="col-md-6" value="{{ old('name') }}"
+                                <x-adminlte-input name="name[en]" fgroup-class="col-md-6" value="{{ old('name[en]') }}"
                                     type="text" label="{{ __('category.category_name') }}"
                                     placeholder="ex:Category Name...." />
 
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-profile-tab">
-                                <x-adminlte-input name="name[ar]" fgroup-class="col-md-6" value="{{ old('name') }}"
+                                <x-adminlte-input name="name[ar]" fgroup-class="col-md-6" value="{{ old('name[ar]') }}"
                                     type="text" label="{{ __('category.category_name') }} (عربى)"
                                     placeholder="أسم الفئة" />
                             </div>
