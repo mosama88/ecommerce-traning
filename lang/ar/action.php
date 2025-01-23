@@ -16,5 +16,5 @@ return [
     'export_excel' => 'تصدير أكسيل',
     'filter' => 'فلتر',
     'reset' => 'مسح',
-
+    'no_items_selected' => 'لا يوجد',
 ];

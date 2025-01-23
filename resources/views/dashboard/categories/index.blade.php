@@ -39,8 +39,7 @@
                             <tr>
                                 <th class="col-1">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="flexCheckChecked">
+                                        <input class="form-check-input" type="checkbox" id="select-all">
                                         <label class="form-check-label" for="flexCheckChecked">
                                             {{ __('action.select_all') }}
                                         </label>

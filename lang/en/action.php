@@ -16,5 +16,6 @@ return [
     'export_excel' => 'Export Excel',
     'filter' => 'Filter',
     'reset' => 'Reset',
+    'no_items_selected' => 'No items selected',
 
 ];

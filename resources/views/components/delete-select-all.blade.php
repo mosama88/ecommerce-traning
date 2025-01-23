@@ -1,5 +1,5 @@
     <button id="delete-selected" class="btn btn-danger" data-model="{{ $model }}"
-        disabled>{{ __('actions.delete_selected') }}</button>
+        disabled>{{ __('action.delete_all') }}</button>
     @push('js')
         <script>
             const selectAll = document.getElementById('select-all');
