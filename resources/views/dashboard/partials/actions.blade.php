@@ -11,8 +11,13 @@
                 class="fas fa-eye mx-1"></i>
             {{ __('action.show') }}</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item text-danger" href="{{ route('dashboard.' . $name . '.destroy', $name_id) }}">
-            <i class="fas fa-trash-alt mx-1"></i>
-            {{ __('action.delete') }}</a>
+
+        <form action="{{ route('dashboard.' . $name . '.destroy', $name_id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="dropdown-item text-danger">
+                <i class="fas fa-trash-alt mx-1"></i>
+                {{ __('action.delete') }}</button>
+        </form>
     </div>
 </div>

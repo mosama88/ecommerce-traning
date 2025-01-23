@@ -14,8 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = Category::orderByDesc('id')->paginate();
-        return view('dashboard.categories.index',compact('data'));
+        $data = Category::orderByDesc('id')->paginate(10);
+        return view('dashboard.categories.index', compact('data'));
     }
 
     /**
@@ -32,7 +32,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         Category::create($request->validated());
-        return redirect()->route('dashboard.categories.index')->with('success','Category has been created');
+        return redirect()->route('dashboard.categories.index')->with('success', 'Category has been created');
     }
 
     /**
@@ -62,8 +62,9 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('dashboard.categories.index')->with('success', 'Category has been deleted');
     }
 }

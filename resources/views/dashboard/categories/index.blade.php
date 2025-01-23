@@ -53,8 +53,8 @@
                                 <th>{{ __('action.actions') }}</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @if (!empty($data) && isset($data))
+                        @if (!empty($data) && isset($data))
+                            <tbody>
                                 @php
                                     $i = 0;
                                 @endphp
@@ -79,21 +79,22 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                            @else
-                                <div class="alert alert-warning alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                    <h5><i class="icon fas fa-exclamation-triangle"></i> {{ __('action.alert') }}!</h5>
-                                    {{ __('action.check_data_get') }}
-                                </div>
-                            @endif
-
-                        </tbody>
+                            </tbody>
+                        @else
+                            <div class="alert alert-warning alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h5><i class="icon fas fa-exclamation-triangle"></i> {{ __('action.alert') }}!</h5>
+                                {{ __('action.check_data_get') }}
+                            </div>
+                        @endif
                     </table>
+                    <div class="mx-2">
+                        {{ $data->links() }}
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
         </div>
     </div>
-
 @stop
