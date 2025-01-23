@@ -11,7 +11,7 @@ class DeleteSelectAll extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public string $model)
+    public function __construct(public $model)
     {
         //
     }
