@@ -52,6 +52,7 @@
                         <div class="col-7 text-center">
                             <button type="button" class="btn btn-primary mx-1">{{ __('action.filter') }} <i
                                     class="fas fa-filter mx-1"></i></button>
+                            <button type="button" class="btn btn-secondary mx-1">{{ __('action.reset') }}</button>
                         </div>
                     </div>
 
@@ -94,29 +95,10 @@
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->discount?->name }}</td>
                                         <td>
-                                            <div class="btn-group">
-                                                <button type="button"
-                                                    class="btn btn-info">{{ __('action.actions') }}</button>
-                                                <button type="button" class="btn btn-info dropdown-toggle dropdown-icon"
-                                                    data-toggle="dropdown" aria-expanded="false">
-                                                    <span class="sr-only">Toggle Dropdown</span>
-                                                </button>
-                                                <div class="dropdown-menu" role="menu" style="">
-                                                    <a class="dropdown-item text-info"
-                                                        href="{{ route('dashboard.categories.edit', $category->id) }}"><i
-                                                            class="fas fa-edit mx-1"></i>
-                                                        {{ __('action.edit') }}</a>
-                                                    <a class="dropdown-item text-primary"
-                                                        href="{{ route('dashboard.categories.show', $category->id) }}"><i
-                                                            class="fas fa-eye mx-1"></i>
-                                                        {{ __('action.show') }}</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item text-danger"
-                                                        href="{{ route('dashboard.categories.destroy', $category->id) }}">
-                                                        <i class="fas fa-trash-alt mx-1"></i>
-                                                        {{ __('action.delete') }}</a>
-                                                </div>
-                                            </div>
+                                            @include('dashboard.partials.actions', [
+                                                'name' => 'categories',
+                                                'name_id' => $category->id,
+                                            ])
                                         </td>
                                     </tr>
                                 @endforeach

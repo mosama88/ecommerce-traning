@@ -15,5 +15,6 @@ return [
     'import_excel' => 'إستيراد أكسيل',
     'export_excel' => 'تصدير أكسيل',
     'filter' => 'فلتر',
+    'reset' => 'مسح',
 
 ];

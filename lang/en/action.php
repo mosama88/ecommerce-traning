@@ -15,5 +15,6 @@ return [
     'import_excel' => 'Import Excel',
     'export_excel' => 'Export Excel',
     'filter' => 'Filter',
+    'reset' => 'Reset',
 
 ];
