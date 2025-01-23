@@ -30,36 +30,3 @@
         </div>
     </div>
 </div>
-
-{{-- @push('js')
-    <script>
-        document.getElementById('import_excel_file').addEventListener('click', async () => {
-            const {
-                value: file
-            } = await Swal.fire({
-                title: "{{ __('action.choose_file_excel') }}",
-                input: "file",
-                inputAttributes: {
-                    accept: ".xls,.xlsx", // تحديد الملفات المسموح بها
-                    "aria-label": "{{ __('action.upload_excel_file') }}"
-                },
-                confirmButtonText: "{{ __('action.upload') }}", // تغيير النص إلى Upload
-                showCancelButton: true, // لإظهار زر إلغاء
-                cancelButtonText: "{{ __('action.cancel') }}" // نص زر الإلغاء
-            });
-
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    Swal.fire({
-                        title: "{{ __('action.done_file_upload') }}",
-                        text: "{{ __('action.file_name') }}: " + file.name,
-                        icon: "success",
-                        confirmButtonText: "{{ __('action.done') }}" // نص زر التأكيد في الرسالة الثانية
-                    });
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    </script>
-@endpush --}}
