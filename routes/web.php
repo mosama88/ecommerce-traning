@@ -11,6 +11,9 @@ Route::view('/books','website.books')->name('books');
 Route::view('/about','website.about')->name('about');
 Route::view('/wish-list','website.wishlist')->name('wishlist');
 Route::view('/cart','website.cart')->name('cart');
+Route::view('/single-book','website.singleBook')->name('singleBook');
+Route::view('/user/profile','website.profile')->name('profile');
+
 });
 
 Route::middleware('auth')->group(function () {

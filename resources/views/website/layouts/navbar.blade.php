@@ -29,10 +29,10 @@
     </a>
   </div> -->
             <div class="profile d-flex gap-4 align-items-center">
-                <a href="{{route('front.wishlist')}}" class="wishlist-link">
+                <a href="{{ route('front.wishlist') }}" class="wishlist-link">
                     <span>1</span>
                     <i class="fa-regular fa-heart fs-3"></i></a>
-                <a href="{{route('front.cart')}}" class="cart-link">
+                <a href="{{ route('front.cart') }}" class="cart-link">
                     <span>1</span>
 
                     <i class="fa-solid fa-cart-shopping fs-3"></i></a>
@@ -52,7 +52,7 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li>
-                            <a class="dropdown-item" href="profile.html">Profile</a>
+                            <a class="dropdown-item" href="{{ route('front.profile') }}">Profile</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="orders.html">Order History</a>

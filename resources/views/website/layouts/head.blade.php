@@ -5,6 +5,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
     integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="icon" href="{{ asset('front') }}/book-store.png" type="image/x-icon" />
+
+
+
 <!-- Link to the file hosted on your server, -->
 <!-- <link rel="stylesheet" href="path-to-the-file/splide.min.css"> -->
 <!-- or link to the CDN -->
