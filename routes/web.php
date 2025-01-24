@@ -5,13 +5,13 @@ use App\Http\Controllers\Auth\AdminLogin;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\CategoryController;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::name('front.')->group(function () {
+Route::view('/','website.index')->name('index');
+Route::view('/books','website.books')->name('books');
+Route::view('/about','website.about')->name('about');
+Route::view('/wish-list','website.wishlist')->name('wishlist');
+Route::view('/cart','website.cart')->name('cart');
 });
-
-
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
