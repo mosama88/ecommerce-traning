@@ -43,7 +43,10 @@
                         <x-adminlte-select2 name="discount_id" class="discount-select2" id="discount-select2">
                             <option value="" selected>-- Choose One --</option>
                             @foreach ($discounts as $discount)
-                                <option value="{{ $discount->id }}">{{ $discount->code }} &rarr;
+                                <option @if (old('discount_id', $category['discount_id']) == $discount->id) selected @endif value="{{ $discount->id }}">
+
+
+                                    {{ $discount->code }} &rarr;
                                     {{ $discount->percentage }}
                                 </option>
                             @endforeach
@@ -71,6 +74,32 @@
             $('.discount-select2').select2({
                 placeholder: '-- {{ __('category.selectd_discount') }} --',
 
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('.discount-select2').select2({
+                placeholder: '-- {{ __('category.selectd_discount') }} --',
+                ajax: {
+                    url: "{{ route('discount.search') }}",
+                    dataType: 'json',
+                    delay: 250, // Delay for better UX
+                    data: function(params) {
+                        return {
+                            q: params.term // Search query
+                        };
+                    },
+                    processResults: function(data) {
+                        return {
+                            results: data.data.map(discount => ({
+                                id: discount.id,
+                                text: `${discount.code} ➜ (${discount.percentage}%)`
+                            }))
+                        };
+                    }
+                }
             });
         });
     </script>
