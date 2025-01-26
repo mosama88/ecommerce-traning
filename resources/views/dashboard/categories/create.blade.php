@@ -13,8 +13,7 @@
             @else
                 <div class="col-6 text-right">
         @endif
-        <a href="{{ route('dashboard.categories.create') }}" type="button"
-            class="btn btn-success btn-md mx-4">{{ __('action.create') }} <i class="fas fa-plus-square"></i></a>
+
     </div>
     </div>
 @stop

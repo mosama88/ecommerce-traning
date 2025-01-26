@@ -326,10 +326,10 @@ return [
                 'period' => 30,                       // The update period for get new data (in seconds, optional).
             ],
         ],
-       
 
-     
-        
+
+
+
 
         [
             'text' => 'Language',
@@ -352,7 +352,7 @@ return [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-        
+
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
@@ -367,6 +367,8 @@ return [
             'text' => 'Category',
             'url' => 'dashboard/categories',
             'icon' => 'mx-1 fas fa-layer-group',
+            'active' => ['dashboard/categories*']
+
         ],
         ['header' => 'account_settings'],
         [
@@ -434,7 +436,7 @@ return [
             'url' => '#',
         ],
 
-        
+
     ],
 
     /*
