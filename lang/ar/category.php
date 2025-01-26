@@ -7,4 +7,7 @@ return [
     'has_discount' => 'لدية خصم',
     'category_name_ar'=>'أسم عربى',
     'category_name_en' => 'أسم إنجليزى',
+    'selectd_discount' => 'أختر الخصم',
+    'add_discount_for' => 'أضافة خصم لـ',
+
 ];

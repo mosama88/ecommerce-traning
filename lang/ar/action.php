@@ -33,4 +33,6 @@ return [
     'choose_file_excel' => 'أختر ملف أكسيل',
     'error' => 'خطأ',
     'upload_failed' => 'فشل فى رفع الملف',
+    'add' => 'أضافة',
+
 ];

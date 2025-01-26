@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\CategoryRequest;
+use App\Models\Discount;
 
 class CategoryController extends Controller
 {
@@ -38,9 +39,11 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Category $category)
     {
-        //
+        $discounts = Discount::orderByDesc('id')->get();
+        return view('dashboard.categories.show', compact('category','discounts'));
+
     }
 
     /**
@@ -73,5 +76,11 @@ class CategoryController extends Controller
             'success' => true,
             'message' => 'Category has been deleted successfully.'
         ]);
+    }
+
+    public function addDiscount(Request $request, Category $category){
+        $request->validate(['discount_id'=>'required|exists:discounts,id']);
+          $category->update(['discount_id'=> $request->discount_id]);
+          return redirect()->route('dashboard.categories.index')->with('success', 'Discount Has Been Added To Category Successfully');
     }
 }
