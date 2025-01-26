@@ -28,6 +28,7 @@
         </div>
     </div>
 
+
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -39,7 +40,7 @@
                             <tr>
                                 <th class="col-1">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="select-all">
+                                        <input class="form-check-input xl-1" type="checkbox" id="select-all">
                                         <label class="form-check-label" for="flexCheckChecked">
                                             {{ __('action.select_all') }}
                                         </label>
@@ -93,7 +94,28 @@
             <!-- /.card -->
         </div>
     </div>
-@stop
-@section('js')
+
 
 @stop
+@push('js')
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: "{{ session('success') }}",
+                timer: 3000,
+                showConfirmButton: false
+            });
+        @endif
+        @if (session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "{{ session('error') }}",
+                timer: 3000,
+                showConfirmButton: false
+            });
+        @endif
+    </script>
+@endpush
