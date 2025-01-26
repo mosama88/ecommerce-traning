@@ -33,7 +33,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         Category::create($request->validated());
-        return redirect()->route('dashboard.categories.index')->with('success', 'Category has been created');
+        return redirect()->route('dashboard.categories.index')->with('success', __("category.createCategory"));
     }
 
     /**
@@ -42,8 +42,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         $discounts = Discount::orderByDesc('id')->get();
-        return view('dashboard.categories.show', compact('category','discounts'));
-
+        return view('dashboard.categories.show', compact('category', 'discounts'));
     }
 
     /**
@@ -61,7 +60,7 @@ class CategoryController extends Controller
     {
         $category->update($request->validated());
         session()->flash('success', 'Category has been Updated');
-        return redirect()->route('dashboard.categories.index');
+        return redirect()->route('dashboard.categories.index')->with('success', __("category.updateCategory"));
     }
 
     /**
@@ -78,9 +77,11 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function addDiscount(Request $request, Category $category){
-        $request->validate(['discount_id'=>'required|exists:discounts,id']);
-          $category->update(['discount_id'=> $request->discount_id]);
-          return redirect()->route('dashboard.categories.index')->with('success', 'Discount Has Been Added To Category Successfully');
+    public function addDiscount(Request $request, Category $category)
+    {
+        $request->validate(['discount_id' => 'required|exists:discounts,id']);
+        $category->update(['discount_id' => $request->discount_id]);
+        return redirect()->route('dashboard.categories.index')->with('success', __("category.addDiscount"));
     }
-}
+}    
+// 
