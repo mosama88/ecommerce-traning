@@ -27,13 +27,16 @@
 @push('js')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // إضافة مستمع للنقر على أزرار الحذف
+            // Attach event listener to delete buttons
             document.querySelectorAll('.delete-btn').forEach(function(button) {
                 button.addEventListener('click', function(event) {
-                    event.preventDefault(); // منع تقديم النموذج بشكل افتراضي
+                    event.preventDefault(); // Prevent default behavior
+
+                    // Retrieve the form ID from the button's data attribute
                     const nameId = this.getAttribute('data-id');
                     const form = document.getElementById(`delete-form-${nameId}`);
 
+                    // Display SweetAlert confirmation dialog
                     Swal.fire({
                         title: "{{ __('action.are_you_sure') }}",
                         text: "{{ __('action.you_are_about_to_delete_selected_items') }}",
@@ -44,7 +47,44 @@
                         reverseButtons: true
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            form.submit(); // تقديم النموذج بعد تأكيد الحذف
+                            // Perform AJAX request
+                            fetch(form.action, {
+                                    method: 'POST',
+                                    body: new FormData(form),
+                                    headers: {
+                                        'X-CSRF-TOKEN': "{{ csrf_token() }}" // Add CSRF token
+                                    }
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        Swal.fire({
+                                            title: "{{ __('action.deleted') }}",
+                                            text: data
+                                            .message, // هذه الرسالة تأتي من الـ Controller
+                                            icon: 'success',
+                                            timer: 1500,
+                                            showConfirmButton: false
+                                        }).then(() => {
+                                            location
+                                                .reload(); // Reload the page
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            title: "{{ __('action.error') }}",
+                                            text: data.message ||
+                                                "{{ __('action.unexpected_error_occurred') }}",
+                                            icon: 'error'
+                                        });
+                                    }
+                                })
+                                .catch(error => {
+                                    Swal.fire({
+                                        title: "{{ __('action.error') }}",
+                                        text: "{{ __('action.unexpected_error_occurred') }}",
+                                        icon: 'error'
+                                    });
+                                });
                         }
                     });
                 });

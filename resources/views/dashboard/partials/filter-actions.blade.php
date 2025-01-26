@@ -2,7 +2,7 @@
       <div class="col-7 text-center">
           <button type="submit" class="btn btn-primary mx-1">{{ __('action.filter') }} <i
                   class="fas fa-filter mx-1"></i></button>
-          <button type="button" onclick="resetFilters()" class="btn btn-secondary mx-1">{{ __('action.reset') }}</button>
+          <button type="button" onclick="resetFilters()" class="btn btn-secondary mx-1">{{ __('action.reset') }} <i class="far fa-window-restore mx-1"></i></button>
       </div>
   </div>
 

@@ -13,6 +13,7 @@ return [
     'alert' => 'Alert',
     'select_all' => 'Select All',
     'delete_all' => 'Delete All',
+    'deleted' => 'Deleted',
     'import_excel' => 'Import Excel',
     'export_excel' => 'Export Excel',
     'filter' => 'Filter',
