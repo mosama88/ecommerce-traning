@@ -13,6 +13,9 @@
 
     @yield('add-css')
     @if (app()->getLocale() == 'ar')
+        {{-- font-family: DroidKufi-Regular; --}}
+        <link rel="stylesheet" href="{{ asset('dashboard') }}/fonts_ar/stylesheet.css">
+        {{-- RTL --}}
         <link rel="stylesheet" href="{{ asset('dashboard') }}/css/rtl.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
     @endif

@@ -20,9 +20,10 @@ return [
     'reset_password' => 'إعادة تعيين كلمة السر',
     'send_password_reset_link' => 'إرسال رابط إعادة تعيين كلمة السر',
     'Dashboard' => 'لوحة التحكم',
+    'category' => 'الفئات',
     'categories' => 'الفئات',
     'Categories' => 'الفئات',
     'creates' => 'أنشاء',
     'edits' => 'تعديل',
-    
+
 ];

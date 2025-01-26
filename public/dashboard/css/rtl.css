@@ -2,6 +2,16 @@
 body {
     direction: rtl;
     text-align: right;
+    font-family: 'DroidKufi-Regular' !important;
+
+}
+
+body,
+.content-wrapper,
+.main-header,
+.main-sidebar,
+.footer {
+    font-family: 'DroidKufi-Regular' !important;
 }
 
 /* Reverse float alignment */

@@ -50,6 +50,7 @@ return [
 
     'google_fonts' => [
         'allowed' => true,
+        'font_family' => 'DroidKufi-Regular',
     ],
 
     /*
