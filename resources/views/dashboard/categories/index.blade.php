@@ -66,7 +66,7 @@
                                         <td>{{ $i }}</td>
                                         <td>{{ $category->getTranslation('name', 'en') }}</td>
                                         <td>{{ $category->getTranslation('name', 'ar') }}</td>
-                                        <td>{{ $category->discount?->name }}</td>
+                                        <td>{{ $category->discount?->code }}</td>
                                         <td>
                                             @include('dashboard.partials.actions', [
                                                 'name' => 'categories',

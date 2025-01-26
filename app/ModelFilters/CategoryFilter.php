@@ -23,4 +23,17 @@ class CategoryFilter extends ModelFilter
             return $q->where('name->ar', 'LIKE', "%$name%")->orWhere('name->en', 'LIKE', "%$name%");
         });
     }
+
+
+    public function discount($value){
+        if($value){
+            return $this->whereNotNull('discount_id');
+        }else{
+            return $this->whereNull('discount_id');
+
+        }
+    }
+
+
+
 }
