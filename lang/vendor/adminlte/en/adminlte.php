@@ -31,5 +31,6 @@ return [
     'Categories' => 'Categories',
     'categories' => 'Categories',
     'creates' => 'Create',
+    'edits' => 'Edit',
 
 ];

@@ -23,4 +23,6 @@ return [
     'categories' => 'الفئات',
     'Categories' => 'الفئات',
     'creates' => 'أنشاء',
+    'edits' => 'تعديل',
+    
 ];
