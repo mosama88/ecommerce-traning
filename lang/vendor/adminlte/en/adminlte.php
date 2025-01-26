@@ -30,6 +30,7 @@ return [
     'Dashboard' => 'Dashboard',
     'Categories' => 'Categories',
     'categories' => 'Categories',
+    'discounts' => 'Discount',
     'creates' => 'Create',
     'edits' => 'Edit',
 

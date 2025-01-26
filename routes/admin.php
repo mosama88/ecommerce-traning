@@ -17,6 +17,9 @@ Route::middleware(['dashboard', 'auth:admin', 'verified'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::post('add/discount/{category}', [CategoryController::class, 'addDiscount'])->name('add.discount');
 
+    // Discount
+    Route::resource('discounts', DiscountController::class);
+
     //Language
     Route::get('change-language/{lang}', [LanguageController::class, 'changeLanguage'])->name('change.language');
 

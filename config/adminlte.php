@@ -369,7 +369,12 @@ return [
             'url' => 'dashboard/categories',
             'icon' => 'mx-1 fas fa-layer-group',
             'active' => ['dashboard/categories*']
-
+        ],
+        [
+            'text' => 'Discount',
+            'url' => 'dashboard/discounts',
+            'icon' => 'mx-1 fas fa-layer-group',
+            'active' => ['dashboard/discounts*']
         ],
         ['header' => 'account_settings'],
         [

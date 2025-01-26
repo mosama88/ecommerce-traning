@@ -13,7 +13,7 @@ class DiscountController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.discounts.index');
     }
 
     /**
@@ -21,7 +21,7 @@ class DiscountController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.discounts.create');
     }
 
     /**
@@ -37,7 +37,7 @@ class DiscountController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('dashboard.discounts.show');
     }
 
     /**
@@ -45,7 +45,7 @@ class DiscountController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('dashboard.discounts.edit');
     }
 
     /**

@@ -25,5 +25,6 @@ return [
     'Categories' => 'الفئات',
     'creates' => 'أنشاء',
     'edits' => 'تعديل',
+    'discounts' => 'الخصومات',
 
 ];
