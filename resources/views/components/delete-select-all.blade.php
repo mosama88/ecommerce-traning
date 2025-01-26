@@ -30,7 +30,7 @@
                 .map(checkbox => checkbox.value);
 
             if (selectedIds.length === 0) {
-                Swal.fire("{{ __('actions.no_items_selected') }}", "{{ __('action.please_select_at_least_one') }}", 'warning');
+                Swal.fire("{{ __('action.no_items_selected') }}", "{{ __('action.please_select_at_least_one') }}", 'warning');
                 return;
             }
 
