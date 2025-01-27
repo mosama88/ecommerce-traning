@@ -53,16 +53,18 @@
                                     type="text" label="{{ __('category.category_name') }} (عربى)"
                                     placeholder="أسم الفئة" />
                             </div>
-
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                    <x-adminlte-button type="submit" label="{{ __('action.save') }}" theme="primary"
-                                        icon="fas fa-save mx-1" />
-                                </div>
-
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <x-adminlte-button type="submit" label="{{ __('action.save') }}" theme="primary"
+                                    icon="fas fa-save mx-1" />
                             </div>
                         </div>
                     </div>
+
+
                     <!-- /.card -->
                 </div>
             </div>

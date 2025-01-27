@@ -33,5 +33,6 @@ return [
     'discounts' => 'Discount',
     'creates' => 'Create',
     'edits' => 'Edit',
+    'Discounts' => 'Discounts',
 
 ];

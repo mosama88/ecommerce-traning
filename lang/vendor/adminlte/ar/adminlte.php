@@ -26,5 +26,6 @@ return [
     'creates' => 'أنشاء',
     'edits' => 'تعديل',
     'discounts' => 'الخصومات',
+    'Discounts' => 'الخصومات',
 
 ];

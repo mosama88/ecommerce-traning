@@ -44,29 +44,32 @@
                             <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-home-tab">
                                 <x-adminlte-input name="name[en]" fgroup-class="col-md-6"
-                                    value="{{ old('name[en]', $category->getTranslation('name','en')) }}" type="text"
+                                    value="{{ old('name[en]', $category->getTranslation('name', 'en')) }}" type="text"
                                     label="{{ __('category.category_name') }}" placeholder="ex:Category Name...." />
 
                             </div>
                             <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
                                 aria-labelledby="custom-tabs-one-profile-tab">
                                 <x-adminlte-input name="name[ar]" fgroup-class="col-md-6"
-                                    value="{{ old('name[ar]', $category->getTranslation('name','ar')) }}" type="text"
+                                    value="{{ old('name[ar]', $category->getTranslation('name', 'ar')) }}" type="text"
                                     label="{{ __('category.category_name') }} (عربى)" placeholder="أسم الفئة" />
                             </div>
 
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                    <x-adminlte-button type="submit" label="{{ __('action.save') }}" theme="primary"
-                                        icon="fas fa-save mx-1" />
-                                </div>
 
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <x-adminlte-button type="submit" label="{{ __('action.update') }}" theme="primary"
+                                    icon="fas fa-save mx-1" />
                             </div>
                         </div>
                     </div>
-                    <!-- /.card -->
                 </div>
+                <!-- /.card -->
             </div>
+        </div>
 
         </div>
     </form>
