@@ -373,7 +373,7 @@ return [
         [
             'text' => 'Discount',
             'url' => 'dashboard/discounts',
-            'icon' => 'mx-1 fas fa-layer-group',
+            'icon' => 'mx-1 fas fa-percentage',
             'active' => ['dashboard/discounts*']
         ],
         ['header' => 'account_settings'],
@@ -565,6 +565,29 @@ return [
                     'location' => 'vendor/flag-icon-css/css/flag-icons.min.css',
                 ],
             ],
+        ],
+
+
+        'TempusDominusBs4' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/moment/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
+                ],
+            ],
+
         ],
     ],
 

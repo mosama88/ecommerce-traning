@@ -9,8 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class Discount extends Model
 {
     /** @use HasFactory<\Database\Factories\DiscountFactory> */
-    use HasFactory;
+    use HasFactory, Filterable;
 
 
-
+    protected $table = 'discounts';
+    protected $fillable = ['code', 'quantity', 'percentage', 'expiry_date'];
 }

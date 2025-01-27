@@ -9,6 +9,8 @@ return [
     'cancel' => 'إلغاء',
     'update' => 'تحديث',
     'actions' => 'الأجراءات',
+    'created_at' => 'تاريخ الإنشاء',
+    'updated_at' => 'تاريخ التحديث',
     'check_data_get' => 'عفوآ لا توجد بيانات!!',
     'alert' => 'تحذير',
     'select_all' => 'تحديد الكل',

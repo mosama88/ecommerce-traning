@@ -13,7 +13,8 @@ class DiscountController extends Controller
      */
     public function index()
     {
-        return view('dashboard.discounts.index');
+        $data = Discount::filter(request()->all())->orderByDesc('id')->paginate(10);
+        return view('dashboard.discounts.index', ['data' => $data]);
     }
 
     /**

@@ -11,6 +11,8 @@ return [
     'actions' => 'Actions',
     'check_data_get' => 'There are Not Data!!',
     'alert' => 'Alert',
+    'created_at' => 'Created At',
+    'updated_at' => 'Updated At',
     'select_all' => 'Select All',
     'delete_all' => 'Delete All',
     'deleted' => 'Deleted',

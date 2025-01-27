@@ -35,7 +35,7 @@
                 @include('dashboard.categories.partials.filter')
                 <!-- /.card-header -->
                 <div class="card-body p-0">
-                    <table class="table table-head-fixed text-nowrap">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th class="col-1">
@@ -50,6 +50,8 @@
                                 <th>{{ __('category.category_name_en') }}</th>
                                 <th>{{ __('category.category_name_ar') }}</th>
                                 <th>{{ __('category.discount') }}</th>
+                                <th>{{ __('action.created_at') }}</th>
+                                <th>{{ __('action.updated_at') }}</th>
                                 <th>{{ __('action.actions') }}</th>
                             </tr>
                         </thead>
@@ -68,6 +70,8 @@
                                         <td>{{ $category->getTranslation('name', 'en') }}</td>
                                         <td>{{ $category->getTranslation('name', 'ar') }}</td>
                                         <td>{{ $category->discount?->code }}</td>
+                                        <td>{{ $category->created_at }}</td>
+                                        <td>{{ $category->updated_at }}</td>
                                         <td>
                                             @include('dashboard.partials.actions', [
                                                 'name' => 'categories',
@@ -86,7 +90,7 @@
                         @endif
                     </table>
                     <div class="mx-2">
-                        {{ $data->links() }}
+                        {{ $data->appends(request()->query())->links()}}
                     </div>
                 </div>
                 <!-- /.card-body -->

@@ -34,8 +34,8 @@
             <div class="card">
                 @include('dashboard.discounts.partials.filter')
                 <!-- /.card-header -->
-                {{-- <div class="card-body p-0">
-                    <table class="table table-head-fixed text-nowrap">
+                <div class="card-body p-0">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th class="col-1">
@@ -47,9 +47,12 @@
                                     </div>
                                 </th>
                                 <th>#</th>
-                                <th>{{ __('category.category_name_en') }}</th>
-                                <th>{{ __('category.category_name_ar') }}</th>
-                                <th>{{ __('category.discount') }}</th>
+                                <th>{{ __('discount.discount_code') }}</th>
+                                <th>{{ __('discount.discount_quantity') }}</th>
+                                <th>{{ __('discount.discount_percentage') }}</th>
+                                <th>{{ __('discount.discount_expiry_date') }}</th>
+                                <th>{{ __('action.created_at') }}</th>
+                                <th>{{ __('action.updated_at') }}</th>
                                 <th>{{ __('action.actions') }}</th>
                             </tr>
                         </thead>
@@ -58,20 +61,24 @@
                                 @php
                                     $i = 0;
                                 @endphp
-                                @foreach ($data as $category)
+                                @foreach ($data as $discount)
                                     @php
                                         $i++;
                                     @endphp
                                     <tr>
-                                        <td><input type="checkbox" class="row-checkbox" value="{{ $category->id }}"></td>
+                                        <td><input type="checkbox" class="row-checkbox" value="{{ $discount->id }}"></td>
                                         <td>{{ $i }}</td>
-                                        <td>{{ $category->getTranslation('name', 'en') }}</td>
-                                        <td>{{ $category->getTranslation('name', 'ar') }}</td>
-                                        <td>{{ $category->discount?->code }}</td>
+
+                                        <td>{{ $discount->code }}</td>
+                                        <td>{{ $discount->quantity }}</td>
+                                        <td>{{ $discount->percentage * 1 }} % </td>
+                                        <td>{{ $discount->expiry_date }}</td>
+                                        <td>{{ $discount->created_at }}</td>
+                                        <td>{{ $discount->updated_at }}</td>
                                         <td>
                                             @include('dashboard.partials.actions', [
-                                                'name' => 'categories',
-                                                'name_id' => $category->id,
+                                                'name' => 'discounts',
+                                                'name_id' => $discount->id,
                                             ])
                                         </td>
                                     </tr>
@@ -86,9 +93,9 @@
                         @endif
                     </table>
                     <div class="mx-2">
-                        {{ $data->links() }}
+                        {{ $data->appends(request()->query())->links()}}
                     </div>
-                </div> --}}
+                </div>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->

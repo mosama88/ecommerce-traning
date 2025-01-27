@@ -1,23 +1,45 @@
-  <form action="{{ route('dashboard.categories.index') }}" method="GET">
+  <form action="{{ route('dashboard.discounts.index') }}" method="GET">
       <div class="card-header">
-          <div>
-              <x-adminlte-input name="category_name" fgroup-class="col-md-3" value="{{ request('category_name') }}"
-                  type="text" label="{{ __('category.category_name') }}" placeholder="ex:Category Name...." />
+          <div class="row">
+              <x-adminlte-input name="discount_code" fgroup-class="col-md-4" value="{{ request('discount_code') }}"
+                  type="text" label="{{ __('discount.discount_code') }}"
+                  placeholder="ex:{{ __('discount.discount_code_placeholder') }}...." />
 
-                  
-                  <div class="form-check mx-2">
-                      
-                      <input class="form-check-input" type="checkbox" name="discount" value="1"
-                      @if (request('discount')) checked @endif id="discount">
+              <x-adminlte-input name="discount_quantity" fgroup-class="col-md-4"
+                  value="{{ request('discount_quantity') }}" type="text"
+                  label="{{ __('discount.discount_quantity') }}"
+                  placeholder="ex:{{ __('discount.quantity_placeholder') }}...." />
 
-                      <label class="form-check-label" for="flexCheckChecked">
-                          {{ __('category.has_discount') }}
-                        </label>
-                        
-                    </div>
-                </div>
-                @include('dashboard.partials.filter-actions')
-        
+              {{-- Placeholder, date only and append icon --}}
+              @php
+                  $config = ['format' => 'L'];
+              @endphp
+              <x-adminlte-input-date label="{{ __('discount.discount_expiry_date') }}" name="discount_expiry_date"
+                  :config="$config" placeholder="ex:{{ __('discount.expiry_date_placeholder') }}...."
+                  fgroup-class="col-md-4">
+                  <x-slot name="appendSlot" value="{{ request('discount_expiry_date') }}">
+                      <div class="input-group-text bg-gradient-dark">
+                          <i class="fas fa-calendar-alt"></i>
+                      </div>
+                  </x-slot>
+              </x-adminlte-input-date>
+
+          </div>
+          @include('dashboard.partials.filter-actions')
+
       </div>
   </form>
 
+
+  @push('js')
+        <script>
+            $(function() {
+                $('input[name="discount_expiry_date"]').daterangepicker({
+                    opens: 'left'
+                }, function(start, end, label) {
+                    console.log("A new date selection was made: " + start.format('MM-DD-YYYY') + ' to ' + end
+                        .format('MM-DD-YYYY'));
+                });
+            });
+        </script>
+  @endpush
