@@ -29,13 +29,14 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form>
+                    <form action="{{ route('dashboard.discounts.store') }}" method="POST">
+                        @csrf
                         <div class="card-body">
-
                             <div class="row">
                                 {{-- Discount Code --}}
 
-                                <x-adminlte-input name="iLabel" label="{{ __('discount.discount_code') }}"
+                                <x-adminlte-input name="code" value="{{ old('code') }}"
+                                    label="{{ __('discount.discount_code') }}"
                                     placeholder="ex:{{ __('discount.discount_code_placeholder') }}...."
                                     fgroup-class="col-md-4" disable-feedback />
 
@@ -44,12 +45,14 @@
                                         class="fas fa-bolt fa-fw"></i> </button>
 
                                 {{-- Discount Quantity --}}
-                                <x-adminlte-input name="iLabel" label="{{ __('discount.discount_quantity') }}"
+                                <x-adminlte-input name="quantity" value="{{ old('quantity') }}"
+                                    label="{{ __('discount.discount_quantity') }}"
                                     placeholder="ex:{{ __('discount.quantity_placeholder') }}...." fgroup-class="col-md-6"
                                     disable-feedback />
 
                                 {{-- Discount Percentage --}}
-                                <x-adminlte-input name="iLabel" label="{{ __('discount.discount_percentage') }}"
+                                <x-adminlte-input name="percentage" value="{{ old('percentage') }}"
+                                    label="{{ __('discount.discount_percentage') }}"
                                     placeholder="ex:{{ __('discount.discount_percentage_placeholder') }}...."
                                     fgroup-class="col-md-6" disable-feedback />
 
@@ -57,11 +60,11 @@
                                 @php
                                     $config = ['format' => 'L'];
                                 @endphp
-                                <x-adminlte-input-date label="{{ __('discount.discount_expiry_date') }}"
-                                    name="discount_expiry_date" :config="$config"
+                                <x-adminlte-input-date label="{{ __('discount.discount_expiry_date') }}" name="expiry_date"
+                                    value="{{ old('expiry_date') }}" :config="$config"
                                     placeholder="ex:{{ __('discount.expiry_date_placeholder') }}...."
                                     fgroup-class="col-md-6">
-                                    <x-slot name="appendSlot" value="{{ request('discount_expiry_date') }}">
+                                    <x-slot name="appendSlot">
                                         <div class="input-group-text bg-gradient-dark">
                                             <i class="fas fa-calendar-alt"></i>
                                         </div>

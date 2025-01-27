@@ -15,9 +15,9 @@
                   $config = ['format' => 'L'];
               @endphp
               <x-adminlte-input-date label="{{ __('discount.discount_expiry_date') }}" name="discount_expiry_date"
-                  :config="$config" placeholder="ex:{{ __('discount.expiry_date_placeholder') }}...."
-                  fgroup-class="col-md-4">
-                  <x-slot name="appendSlot" value="{{ request('discount_expiry_date') }}">
+                  value="{{ request('discount_expiry_date') }}" :config="$config"
+                  placeholder="ex:{{ __('discount.expiry_date_placeholder') }}...." fgroup-class="col-md-4">
+                  <x-slot name="appendSlot">
                       <div class="input-group-text bg-gradient-dark">
                           <i class="fas fa-calendar-alt"></i>
                       </div>
@@ -32,14 +32,14 @@
 
 
   @push('js')
-        <script>
-            $(function() {
-                $('input[name="discount_expiry_date"]').daterangepicker({
-                    opens: 'left'
-                }, function(start, end, label) {
-                    console.log("A new date selection was made: " + start.format('MM-DD-YYYY') + ' to ' + end
-                        .format('MM-DD-YYYY'));
-                });
-            });
-        </script>
+      <script>
+          $(function() {
+              $('input[name="discount_expiry_date"]').daterangepicker({
+                  opens: 'left'
+              }, function(start, end, label) {
+                  console.log("A new date selection was made: " + start.format('MM-DD-YYYY') + ' to ' + end
+                      .format('MM-DD-YYYY'));
+              });
+          });
+      </script>
   @endpush
