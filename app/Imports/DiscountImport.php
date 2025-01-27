@@ -8,14 +8,18 @@ use Maatwebsite\Excel\Concerns\ToModel;
 class DiscountImport implements ToModel
 {
     /**
-    * @param array $row
-    *
-    * @return \Illuminate\Database\Eloquent\Model|null
-    */
+     * @param array $row
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
     public function model(array $row)
     {
-        return new Discount([
-            //
+
+        return Discount::updateOrCreate([
+            'code' => $row[0],
+            'quantity' => $row[1],
+            'percentage' => $row[2],
+            // 'expiry_date' => $row[3]
         ]);
     }
 }
