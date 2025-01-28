@@ -379,9 +379,17 @@ return [
         [
             'text' => 'Authors',
             'url' => 'dashboard/authors',
-            'icon' => 'mx-1 fas fa-percentage',
+            'icon' => 'mx-1 fas fa-feather-alt',
             'active' => ['dashboard/authors*']
         ],
+
+        [
+            'text' => 'Flash Sale',
+            'url' => 'dashboard/flash_sale',
+            'icon' => 'mx-1 fas fa-tags',
+            'active' => ['dashboard/flash_sale*']
+        ],
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

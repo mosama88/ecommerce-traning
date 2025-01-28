@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.layouts')
-@section('title', 'Authors')
+@section('title', 'Flash Sale')
 @section('content_header')
     <div class="row d-flex flex-row mb-3">
         <div class="col-sm-6">
@@ -12,7 +12,7 @@
             @else
                 <div class="col-6 text-right">
         @endif
-        <a href="{{ route('dashboard.authors.create') }}" type="button"
+        <a href="{{ route('dashboard.flash_sale.create') }}" type="button"
             class="btn btn-success btn-md mx-4">{{ __('action.create') }} <i class="fas fa-plus-square"></i></a>
     </div>
     </div>
@@ -22,9 +22,9 @@
 @section('content')
     <div>
         <div class="btn-group mb-3">
-            <x-delete-select-all model="authors" />
-            <x-export-excel model="authors" />
-            <x-import-excel model="authors" />
+            <x-delete-select-all model="flash_sale" />
+            <x-export-excel model="flash_sale" />
+            <x-import-excel model="flash_sale" />
         </div>
     </div>
     {{-- {{ dd(session('success')) }} --}}
@@ -32,7 +32,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                @include('dashboard.authors.partials.filter')
+                @include('dashboard.flash_sale.partials.filter')
                 <!-- /.card-header -->
                 <div class="card-body p-0">
                     <table class="table">
@@ -47,7 +47,7 @@
                                     </div>
                                 </th>
                                 <th>#</th>
-                                <th>{{ __('authors.authors_name') }}</th>
+                                <th>{{ __('flash_sale.flash_sale_name') }}</th>
                                 <th>{{ __('action.created_at') }}</th>
                                 <th>{{ __('action.updated_at') }}</th>
                                 <th>{{ __('action.actions') }}</th>
@@ -58,21 +58,21 @@
                                 @php
                                     $i = 0;
                                 @endphp
-                                @foreach ($data as $authors)
+                                @foreach ($data as $flash_sale)
                                     @php
                                         $i++;
                                     @endphp
                                     <tr>
-                                        <td><input type="checkbox" class="row-checkbox" value="{{ $authors->id }}"></td>
+                                        <td><input type="checkbox" class="row-checkbox" value="{{ $flash_sale->id }}"></td>
                                         <td>{{ $i }}</td>
 
-                                        <td>{{ $authors->name }}</td>
-                                        <td>{{ $authors->created_at }}</td>
-                                        <td>{{ $authors->updated_at }}</td>
+                                        <td>{{ $flash_sale->name }}</td>
+                                        <td>{{ $flash_sale->created_at }}</td>
+                                        <td>{{ $flash_sale->updated_at }}</td>
                                         <td>
                                             @include('dashboard.partials.actions', [
-                                                'name' => 'authors',
-                                                'name_id' => $authors->id,
+                                                'name' => 'flash_sale',
+                                                'name_id' => $flash_sale->id,
                                             ])
                                         </td>
 

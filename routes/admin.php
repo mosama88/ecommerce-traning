@@ -27,7 +27,7 @@ Route::middleware(['dashboard', 'auth:admin', 'verified'])->group(function () {
     Route::resource('authors', AuthorController::class);
 
     // Flash Sale
-    Route::resource('authors', FlashSaleController::class);
+    Route::resource('flash_sale', FlashSaleController::class);
 
     //Language
     Route::get('change-language/{lang}', [LanguageController::class, 'changeLanguage'])->name('change.language');
