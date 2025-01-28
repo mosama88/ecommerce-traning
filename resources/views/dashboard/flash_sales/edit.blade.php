@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.layouts')
-@section('title', 'Flash Sale Create')
+@section('title', 'Flash Sale Edit')
 @section('content_header')
     <div class="row d-flex flex-row mb-3">
         <div class="col-sm-6">
@@ -26,13 +26,6 @@
                 <div class="card-header">
                     <h3 class="card-title"> {{ __('flash_sales.flash_sales_create') }}</h3>
                 </div>
-                @if ($errors->any())
-                    @foreach ($errors->all() as $error)
-                        <div class="alert alert-danger text-center">
-                            {{ $error }}
-                        </div>
-                    @endforeach
-                @endif
 
                 <form action="{{ route('dashboard.flash_sales.update', $flash_sale->id) }}" method="POST">
                     @csrf
@@ -118,6 +111,18 @@
                                                     value="{{ old('percentage', $flash_sale->percentage) }}" type="text"
                                                     label="{{ __('flash_sales.percentage') }}"
                                                     placeholder="ex:{{ __('flash_sales.percentage_place_holder') }}...." />
+
+                                                {{-- Is Active --}}
+                                                <x-adminlte-select name="is_active" fgroup-class="col-md-6"
+                                                    label="{{ __('flash_sales.is_active') }}">
+                                                    <option selected disabled>-- {{ __('flash_sales.is_active_choose') }}
+                                                        --
+                                                    </option>
+                                                    <option @if (old('is_active', $flash_sale->is_active) == 1) selected @endif
+                                                        value="1">{{ __('flash_sales.is_active_yes') }}</option>
+                                                    <option @if (old('is_active', $flash_sale->is_active) == 0) selected @endif
+                                                        value="0">{{ __('flash_sales.is_active_no') }}</option>
+                                                </x-adminlte-select>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"

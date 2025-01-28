@@ -22,5 +22,8 @@ return [
     'update_message' => 'تم تحديث الخصم بنجاح',
     'delete_message' => 'تم حذف الخصم بنجاح',
     'flash_sales_edit' => 'تعديل بيانات الخصم',
-    'flash_sales_show' => 'عرض بيانات الخصم'
+    'flash_sales_show' => 'عرض بيانات الخصم',
+    'is_active_choose' => 'أختر حالة تفعيل الخصم',
+    'is_active_yes' => 'مفعل',
+    'is_active_no' => 'غير مفعل',
 ];

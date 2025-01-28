@@ -21,5 +21,8 @@ return [
     'update_message' => 'flash_sales Has Been Updated',
     'delete_message' => 'flash_sales Has Been Deleted',
     'flash_sales_edit' => 'flash_sales Data Edit',
-    'flash_sales_show' => 'flash_sales Data Show'
+    'flash_sales_show' => 'flash_sales Data Show',
+    'is_active_choose' => 'Choose Is Active',
+    'is_active_yes' => 'Active',
+    'is_active_no' => 'In Active',
 ];

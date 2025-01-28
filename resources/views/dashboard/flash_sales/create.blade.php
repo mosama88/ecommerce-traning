@@ -26,13 +26,7 @@
                 <div class="card-header">
                     <h3 class="card-title"> {{ __('flash_sales.flash_sales_create') }}</h3>
                 </div>
-                @if ($errors->any())
-                    @foreach ($errors->all() as $error)
-                        <div class="alert alert-danger text-center">
-                            {{ $error }}
-                        </div>
-                    @endforeach
-                @endif
+
 
                 <form action="{{ route('dashboard.flash_sales.store') }}" method="POST">
                     @csrf
