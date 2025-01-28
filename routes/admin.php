@@ -1,12 +1,14 @@
 <?php
 
 use App\Models\Author;
+use App\Models\FlashSale;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AdminLogin;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\Dashboard\AuthorController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DiscountController;
+use App\Http\Controllers\Dashboard\FlashSaleController;
 use App\Http\Controllers\Dashboard\BulkDeleteController;
 use App\Http\Controllers\Dashboard\ExportExcelController;
 use App\Http\Controllers\Dashboard\ImportExcelController;
@@ -23,6 +25,9 @@ Route::middleware(['dashboard', 'auth:admin', 'verified'])->group(function () {
 
     // Author
     Route::resource('authors', AuthorController::class);
+
+    // Flash Sale
+    Route::resource('authors', FlashSaleController::class);
 
     //Language
     Route::get('change-language/{lang}', [LanguageController::class, 'changeLanguage'])->name('change.language');

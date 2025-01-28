@@ -17,9 +17,17 @@ class FlashSaleFactory extends Factory
     public function definition(): array
     {
         return [
-            'date' => $this->faker->date(), // Generates a random date
-            'time' => $this->faker->numberBetween(10, 100), // Generates a random time
-            'is_active' => $this->faker->boolean(), // Randomly true (1) or false (0)
+            "name" => [
+                'en' => fake()->sentence(7),
+                'ar' => fake()->sentence(7),
+            ],
+            "description" => [
+                'en' => fake()->sentence(),
+                'ar' => fake()->sentence(),
+            ],
+            "date" => fake()->dateTimeBetween('now', '+1 year')->format('Y-m-d'),
+            "time" => fake()->randomDigit(),
+            "is_active" => true,
         ];
     }
 }

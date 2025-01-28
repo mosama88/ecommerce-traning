@@ -9,5 +9,10 @@ use Spatie\Translatable\HasTranslations;
 
 class FlashSale extends Model
 {
-    use HasFactory;
+    use HasFactory, Filterable;
+    protected $table = 'flash_sales';
+    public $translatable = ['name', 'description'];
+
+    protected $casts = ['name' => 'array', 'description' => 'array'];
+    protected $fillable = ['name', 'description', 'date', 'time', 'is_active'];
 }
