@@ -19,8 +19,7 @@
 @stop
 
 @section('content')
-    <form action="{{ route('dashboard.discounts.store') }}" method="POST">
-        @csrf
+
         <div class="row">
             <div class="col-12 col-sm-12">
                 <div class="card card-primary">
@@ -87,7 +86,6 @@
             </div>
 
         </div>
-    </form>
 
 @stop
 @push('js')

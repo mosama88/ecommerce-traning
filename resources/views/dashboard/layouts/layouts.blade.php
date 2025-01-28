@@ -37,7 +37,7 @@
     </style>
 @stop
 
-@section('js')
+@push('js')
     <script>
         @if (session('success'))
             Swal.fire({
@@ -58,4 +58,4 @@
             });
         @endif
     </script>
-@stop
+@endpush

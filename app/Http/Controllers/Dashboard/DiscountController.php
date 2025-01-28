@@ -47,26 +47,34 @@ class DiscountController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Discount $discount)
     {
-        return view('dashboard.discounts.edit');
+        return view('dashboard.discounts.edit', compact('discount'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(DiscountRequest $request, Discount $discount)
     {
-        //
+        $discount->update($request->validated());
+        return redirect()->route('dashboard.discounts.index')->with('success', __('discount.update_message'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Discount $discount)
     {
-        //
+        $discount->delete();
+
+        // Return JSON response
+        return response()->json([
+            'success' => true,
+            'message' => 'Category has been deleted successfully.'
+        ]);
     }
+
 
 
     public function checkCode(Request $request)
