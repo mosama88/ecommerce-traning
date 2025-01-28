@@ -27,7 +27,7 @@
             <x-import-excel model="FlashSale" />
         </div>
     </div>
-    {{-- {{ dd(session('success')) }} --}}
+
 
     <div class="row">
         <div class="col-12">
@@ -47,7 +47,7 @@
                                     </div>
                                 </th>
                                 <th>#</th>
-                                <th>{{ __('flash_sales.flash_sales_name') }}</th>
+
                                 <th>{{ __('action.created_at') }}</th>
                                 <th>{{ __('action.updated_at') }}</th>
                                 <th>{{ __('action.actions') }}</th>
@@ -58,25 +58,22 @@
                                 @php
                                     $i = 0;
                                 @endphp
-                                @foreach ($data as $flash_sales)
+                                @foreach ($data as $flash_sale)
                                     @php
                                         $i++;
                                     @endphp
                                     <tr>
-                                        <td><input type="checkbox" class="row-checkbox" value="{{ $flash_sales->id }}"></td>
+                                        <td><input type="checkbox" class="row-checkbox" value="{{ $flash_sale->id }}"></td>
                                         <td>{{ $i }}</td>
 
-                                        <td>{{ $flash_sales->name }}</td>
-                                        <td>{{ $flash_sales->created_at }}</td>
-                                        <td>{{ $flash_sales->updated_at }}</td>
+                                        <td>{{ $flash_sale->created_at }}</td>
+                                        <td>{{ $flash_sale->updated_at }}</td>
                                         <td>
                                             @include('dashboard.partials.actions', [
                                                 'name' => 'flash_sales',
-                                                'name_id' => $flash_sales->id,
+                                                'name_id' => $flash_sale->id,
                                             ])
                                         </td>
-
-
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -100,3 +97,25 @@
 
 
 @stop
+@push('js')
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: "{{ session('success') }}",
+                timer: 3000,
+                showConfirmButton: false
+            });
+        @endif
+        @if (session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "{{ session('error') }}",
+                timer: 3000,
+                showConfirmButton: false
+            });
+        @endif
+    </script>
+@endpush

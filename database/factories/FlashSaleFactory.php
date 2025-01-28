@@ -27,7 +27,9 @@ class FlashSaleFactory extends Factory
             ],
             "date" => fake()->dateTimeBetween('now', '+1 year')->format('Y-m-d'),
             "time" => fake()->randomDigit(),
-            "is_active" => true,
+            "is_active" => (int) fake()->boolean(),
+            'start_time' => fake()->time('H:i'), // e.g., "14:30"
+            'percentage' => fake()->randomFloat(1, 5, 50),
         ];
     }
 }
