@@ -18,7 +18,7 @@ class FlashSaleController extends Controller
     public function index()
     {
         $data = FlashSale::filter(request()->all())->orderByDesc('id')->paginate(10);
-        return view('dashboard.flash_sale.index', ['data' => $data]);
+        return view('dashboard.flash_sales.index', ['data' => $data]);
     }
 
     /**
@@ -26,7 +26,7 @@ class FlashSaleController extends Controller
      */
     public function create()
     {
-        return view('dashboard.flash_sale.create');
+        return view('dashboard.flash_sales.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class FlashSaleController extends Controller
     {
         FlashSale::create($request->validated());
 
-        return redirect()->route('dashboard.flash_sale.index')->with('success', __('flashSale.store_message'));
+        return redirect()->route('dashboard.flash_sales.index')->with('success', __('flashSale.store_message'));
     }
 
     /**
@@ -44,7 +44,7 @@ class FlashSaleController extends Controller
      */
     public function show(FlashSale $flashSale)
     {
-        return view('dashboard.flash_sale.show', compact('flashSale'));
+        return view('dashboard.flash_sales.show', compact('flashSale'));
     }
 
     /**
@@ -52,7 +52,7 @@ class FlashSaleController extends Controller
      */
     public function edit(FlashSale $flashSale)
     {
-        return view('dashboard.flash_sale.edit', compact('flashSale'));
+        return view('dashboard.flash_sales.edit', compact('flashSale'));
     }
 
     /**
@@ -61,7 +61,7 @@ class FlashSaleController extends Controller
     public function update(FlashSaleRequest $request, FlashSale $flashSale)
     {
         $flashSale->update($request->validated());
-        return redirect()->route('dashboard.flash_sale.index')->with('success', __('flashSale.update_message'));
+        return redirect()->route('dashboard.flash_sales.index')->with('success', __('flashSale.update_message'));
     }
 
     /**
@@ -74,7 +74,7 @@ class FlashSaleController extends Controller
         // Return JSON response
         return response()->json([
             'success' => true,
-            'message' => 'Category has been deleted successfully.'
+            'message' => 'Flash Sale has been deleted successfully.'
         ]);
     }
 }

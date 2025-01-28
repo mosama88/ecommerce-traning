@@ -385,9 +385,9 @@ return [
 
         [
             'text' => 'Flash Sale',
-            'url' => 'dashboard/flash_sale',
+            'url' => 'dashboard/flash_sales',
             'icon' => 'mx-1 fas fa-tags',
-            'active' => ['dashboard/flash_sale*']
+            'active' => ['dashboard/flash_sales*']
         ],
 
         ['header' => 'account_settings'],
