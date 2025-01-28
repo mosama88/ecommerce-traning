@@ -14,6 +14,6 @@ return [
     'expiry_date_placeholder' => 'Choose Expiry Date',
     'generate' => 'Generate',
     'discount_create' => 'Discount Create',
-
+    'store_message' => 'Discount Has Been Created',
 
 ];

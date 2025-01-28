@@ -27,38 +27,35 @@
                     <div class="card-header">
                         <h3 class="card-title"> {{ __('discount.discount_create') }}</h3>
                     </div>
-                    <!-- /.card-header -->
-                    <!-- form start -->
+
                     <form action="{{ route('dashboard.discounts.store') }}" method="POST">
                         @csrf
                         <div class="card-body">
                             <div class="row">
                                 {{-- Discount Code --}}
-
                                 <x-adminlte-input name="code" value="{{ old('code') }}"
                                     label="{{ __('discount.discount_code') }}"
                                     placeholder="ex:{{ __('discount.discount_code_placeholder') }}...."
-                                    fgroup-class="col-md-4" disable-feedback />
+                                    fgroup-class="col-md-4" />
 
-                                <button type="submit" style="height:40%;margin-top:3%"
-                                    class="col-md-2 btn btn-outline-primary btn-md">{{ __('discount.generate') }} <i
-                                        class="fas fa-bolt fa-fw"></i> </button>
 
+                                <button type="button" style="height:40%;margin-top:3%" class="btn btn-outline-primary"
+                                    id="generate-code">Generate Code <i class="fas fa-random"></i></button>
                                 {{-- Discount Quantity --}}
                                 <x-adminlte-input name="quantity" value="{{ old('quantity') }}"
                                     label="{{ __('discount.discount_quantity') }}"
-                                    placeholder="ex:{{ __('discount.quantity_placeholder') }}...." fgroup-class="col-md-6"
-                                    disable-feedback />
+                                    placeholder="ex:{{ __('discount.quantity_placeholder') }}...."
+                                    fgroup-class="col-md-6" />
 
                                 {{-- Discount Percentage --}}
                                 <x-adminlte-input name="percentage" value="{{ old('percentage') }}"
                                     label="{{ __('discount.discount_percentage') }}"
                                     placeholder="ex:{{ __('discount.discount_percentage_placeholder') }}...."
-                                    fgroup-class="col-md-6" disable-feedback />
+                                    fgroup-class="col-md-6" />
 
                                 {{-- Discount Expiry Date --}}
                                 @php
-                                    $config = ['format' => 'L'];
+                                    $config = ['format' => 'YYYY-MM-DD'];
                                 @endphp
                                 <x-adminlte-input-date label="{{ __('discount.discount_expiry_date') }}" name="expiry_date"
                                     value="{{ old('expiry_date') }}" :config="$config"
@@ -93,3 +90,42 @@
     </form>
 
 @stop
+@push('js')
+    <script>
+        const codeElement = document.querySelector('input[name=code]');
+        const generateCodeElement = document.querySelector('#generate-code');
+
+        generateCodeElement.addEventListener('click', insertCode);
+
+
+
+        async function insertCode() {
+            const code = generateDiscountCode();
+            const is_exist = await checkCodeAvailable(checkCodeUrl, code);
+
+            if (!is_exist) {
+                codeElement.value = code;
+            }
+        }
+
+        const checkCodeUrl = "{{ route('discount.check.code') }}";
+        async function checkCodeAvailable(url, code) {
+            const response = await fetch(url);
+            const data = await response.json();
+            return data.data.is_exist;
+        }
+
+        function generateDiscountCode() {
+            const prefix = "DISCOUNT";
+            const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            let code = prefix;
+
+
+            for (let i = 0; i < 4; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                code += characters.charAt(randomIndex);
+            }
+            return code;
+        }
+    </script>
+@endpush

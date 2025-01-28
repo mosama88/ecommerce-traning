@@ -12,7 +12,7 @@
 
               {{-- Placeholder, date only and append icon --}}
               @php
-                  $config = ['format' => 'L'];
+                  $config = ['format' => 'YYYY-MM-DD'];
               @endphp
               <x-adminlte-input-date label="{{ __('discount.discount_expiry_date') }}" name="discount_expiry_date"
                   value="{{ request('discount_expiry_date') }}" :config="$config"

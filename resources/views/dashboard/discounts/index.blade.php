@@ -27,7 +27,7 @@
             <x-import-excel model="Discount" />
         </div>
     </div>
-
+    {{-- {{ dd(session('success')) }} --}}
 
     <div class="row">
         <div class="col-12">
@@ -93,7 +93,7 @@
                         @endif
                     </table>
                     <div class="mx-2">
-                        {{ $data->appends(request()->query())->links()}}
+                        {{ $data->appends(request()->query())->links() }}
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -105,4 +105,24 @@
 
 @stop
 @push('js')
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: "{{ session('success') }}",
+                timer: 3000,
+                showConfirmButton: false
+            });
+        @endif
+        @if (session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "{{ session('error') }}",
+                timer: 3000,
+                showConfirmButton: false
+            });
+        @endif
+    </script>
 @endpush

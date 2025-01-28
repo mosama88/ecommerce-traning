@@ -14,8 +14,6 @@ return [
     'expiry_date_placeholder' => 'أختر تاريخ الانتهاء',
     'generate' => 'توليد الكود',
     'discount_create' => 'أنشاء خصم جديد',
-
-
-
+    'store_message' => 'تم حفظ الخصم بنجاح',
 
 ];

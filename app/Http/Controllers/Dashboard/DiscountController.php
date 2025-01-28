@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
 use App\Models\Discount;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\DiscountRequest;
 
 class DiscountController extends Controller
 {
@@ -28,9 +29,11 @@ class DiscountController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(DiscountRequest $request)
     {
-        //
+        Discount::create($request->validated());
+
+        return redirect()->route('dashboard.discounts.index')->with('success', __('discount.store_message'));
     }
 
     /**
@@ -64,6 +67,14 @@ class DiscountController extends Controller
     {
         //
     }
+
+
+    public function checkCode(Request $request)
+    {
+        $discount = Discount::where('code', $request->code)->count();
+        return response()->json(['data' => ['is_exist', $discount]]);
+    }
+
 
     public function search(Request $request)
     {
