@@ -16,5 +16,7 @@ return [
     'discount_create' => 'Discount Create',
     'update_message' => 'Discount Has Been Updated',
     'delete_message' => 'Discount Has Been Deleted',
+    'discount_edit' => 'Discount Data Edit',
+    'discount_show' => 'Discount Data Show'
 
 ];

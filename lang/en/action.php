@@ -36,5 +36,6 @@ return [
     'error' => 'Error',
     'upload_failed' => 'Faild Upload',
     'add' => 'Add',
-    
+    'back' => 'Back'
+
 ];

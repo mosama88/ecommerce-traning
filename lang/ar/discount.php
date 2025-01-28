@@ -17,5 +17,6 @@ return [
     'store_message' => 'تم حفظ الخصم بنجاح',
     'update_message' => 'تم تحديث الخصم بنجاح',
     'delete_message' => 'تم حذف الخصم بنجاح',
-
+    'discount_edit' => 'تعديل بيانات الخصم',
+    'discount_show' => 'عرض بيانات الخصم'
 ];
