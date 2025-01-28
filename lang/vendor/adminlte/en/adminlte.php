@@ -34,5 +34,6 @@ return [
     'creates' => 'Create',
     'edits' => 'Edit',
     'Discounts' => 'Discounts',
-
+    'authors'=>'Authors',
+    'Authors'=>'Authors',
 ];

@@ -376,6 +376,12 @@ return [
             'icon' => 'mx-1 fas fa-percentage',
             'active' => ['dashboard/discounts*']
         ],
+        [
+            'text' => 'Authors',
+            'url' => 'dashboard/authors',
+            'icon' => 'mx-1 fas fa-percentage',
+            'active' => ['dashboard/authors*']
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

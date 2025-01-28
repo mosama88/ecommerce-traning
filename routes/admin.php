@@ -1,14 +1,15 @@
 <?php
 
+use App\Models\Author;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AdminLogin;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\Dashboard\AuthorController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DiscountController;
 use App\Http\Controllers\Dashboard\BulkDeleteController;
 use App\Http\Controllers\Dashboard\ExportExcelController;
 use App\Http\Controllers\Dashboard\ImportExcelController;
-
 
 Route::middleware(['dashboard', 'auth:admin', 'verified'])->group(function () {
 
@@ -19,6 +20,9 @@ Route::middleware(['dashboard', 'auth:admin', 'verified'])->group(function () {
 
     // Discount
     Route::resource('discounts', DiscountController::class);
+
+    // Author
+    Route::resource('authors', AuthorController::class);
 
     //Language
     Route::get('change-language/{lang}', [LanguageController::class, 'changeLanguage'])->name('change.language');

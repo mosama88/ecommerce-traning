@@ -27,5 +27,6 @@ return [
     'edits' => 'تعديل',
     'discounts' => 'الخصومات',
     'Discounts' => 'الخصومات',
-
+    'authors'=>'المؤلفين',
+    'Authors'=>'المؤلفين',
 ];
