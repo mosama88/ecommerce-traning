@@ -27,7 +27,7 @@
                     <h3 class="card-title"> {{ __('flash_sales.flash_sales_create') }}</h3>
                 </div>
 
-                <form action="{{ route('dashboard.categories.store') }}" method="POST">
+                <form action="{{ route('dashboard.flash_sales.store') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-12 col-sm-12">
@@ -64,6 +64,7 @@
                                                 value="{{ old('description[en]') }}"
                                                 placeholder="{{ __('flash_sales.description_place_holder') }}...." />
                                             <div class="row">
+                                                {{-- Date --}}
                                                 @php
                                                     $config = ['format' => 'YYYY-MM-DD'];
                                                 @endphp
@@ -78,7 +79,7 @@
                                                     </x-slot>
                                                 </x-adminlte-input-date>
 
-                                                {{-- Placeholder, time only and prepend icon --}}
+                                                {{-- start_time --}}
                                                 @php
                                                     $config = ['format' => 'LT'];
                                                 @endphp
@@ -93,7 +94,7 @@
                                                     </x-slot>
                                                 </x-adminlte-input-date>
 
-                                                {{-- Placeholder, time only and prepend icon --}}
+                                                {{-- Time --}}
                                                 @php
                                                     $config = ['format' => 'LT'];
                                                 @endphp
@@ -107,23 +108,13 @@
                                                         </div>
                                                     </x-slot>
                                                 </x-adminlte-input-date>
-                                                {{-- Name English --}}
+                                                {{-- percentage --}}
                                                 <x-adminlte-input name="percentage" fgroup-class="col-md-6"
-                                                   oninput="this.value=this.value.replace(/[^0-9.]/g,'');" value="{{ old('percentage') }}" type="text"
+                                                    oninput="this.value=this.value.replace(/[^0-9.]/g,'');"
+                                                    value="{{ old('percentage') }}" type="text"
                                                     label="{{ __('flash_sales.percentage') }}"
                                                     placeholder="ex:{{ __('flash_sales.percentage_place_holder') }}...." />
                                             </div>
-
-
-
-
-
-
-
-
-
-
-
                                         </div>
                                         <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
                                             aria-labelledby="custom-tabs-one-profile-tab">
@@ -150,8 +141,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <!-- /.card -->
                             </div>
                         </div>
