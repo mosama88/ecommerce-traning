@@ -34,8 +34,10 @@ return [
     'creates' => 'Create',
     'edits' => 'Edit',
     'Discounts' => 'Discounts',
-    'authors'=>'Authors',
-    'Authors'=>'Authors',
-    'Flash_sales'=>'Flash Sale',
-'flash_sales'=>'Flash Sale',
+    'authors' => 'Authors',
+    'Authors' => 'Authors',
+    'Flash_sales' => 'Flash Sale',
+    'flash_sales' => 'Flash Sale',
+    'orders' => 'Orders',
+
 ];

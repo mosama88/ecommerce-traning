@@ -390,6 +390,13 @@ return [
             'active' => ['dashboard/flash_sales*']
         ],
 
+        [
+            'text' => 'Order',
+            'url' => 'dashboard/orders',
+            'icon' => 'mx-1 fas fa-shopping-cart',
+            'active' => ['dashboard/orders*']
+        ],
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
