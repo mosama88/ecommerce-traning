@@ -9,7 +9,7 @@ use Spatie\Translatable\HasTranslations;
 
 class FlashSale extends Model
 {
-    use HasFactory, Filterable;
+    use HasFactory, Filterable,HasTranslations;
     protected $table = 'flash_sales';
     public $translatable = ['name', 'description'];
 

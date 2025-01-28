@@ -35,56 +35,72 @@
                 @include('dashboard.flash_sales.partials.filter')
                 <!-- /.card-header -->
                 <div class="card-body p-0">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th class="col-1">
-                                    <div class="form-check">
-                                        <input class="form-check-input xl-1" type="checkbox" id="select-all">
-                                        <label class="form-check-label" for="flexCheckChecked">
-                                            {{ __('action.select_all') }}
-                                        </label>
-                                    </div>
-                                </th>
-                                <th>#</th>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="col-1">
+                                        <div class="form-check">
+                                            <input class="form-check-input xl-1" type="checkbox" id="select-all">
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                {{ __('action.select_all') }}
+                                            </label>
+                                        </div>
+                                    </th>
+                                    <th>#</th>
 
-                                <th>{{ __('action.created_at') }}</th>
-                                <th>{{ __('action.updated_at') }}</th>
-                                <th>{{ __('action.actions') }}</th>
-                            </tr>
-                        </thead>
-                        @if (!empty($data) && isset($data))
-                            <tbody>
-                                @php
-                                    $i = 0;
-                                @endphp
-                                @foreach ($data as $flash_sale)
+                                    <th>{{ __('flash_sales.name') }}</th>
+                                    <th>{{ __('flash_sales.description') }}</th>
+                                    <th>{{ __('flash_sales.date') }}</th>
+                                    <th>{{ __('flash_sales.start_time') }}</th>
+                                    <th>{{ __('flash_sales.percentage') }}</th>
+                                    <th>{{ __('flash_sales.time') }}</th>
+                                    <th>{{ __('flash_sales.is_active') }}</th>
+                                    <th>{{ __('flash_sales.created_at') }}</th>
+                                    <th>{{ __('action.updated_at') }}</th>
+                                    <th>{{ __('action.actions') }}</th>
+                                </tr>
+                            </thead>
+                            @if (!empty($data) && isset($data))
+                                <tbody>
                                     @php
-                                        $i++;
+                                        $i = 0;
                                     @endphp
-                                    <tr>
-                                        <td><input type="checkbox" class="row-checkbox" value="{{ $flash_sale->id }}"></td>
-                                        <td>{{ $i }}</td>
-
-                                        <td>{{ $flash_sale->created_at }}</td>
-                                        <td>{{ $flash_sale->updated_at }}</td>
-                                        <td>
-                                            @include('dashboard.partials.actions', [
-                                                'name' => 'flash_sales',
-                                                'name_id' => $flash_sale->id,
-                                            ])
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        @else
-                            <div class="alert alert-warning alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                <h5><i class="icon fas fa-exclamation-triangle"></i> {{ __('action.alert') }}!</h5>
-                                {{ __('action.check_data_get') }}
-                            </div>
-                        @endif
-                    </table>
+                                    @foreach ($data as $flash_sale)
+                                        @php
+                                            $i++;
+                                        @endphp
+                                        <tr>
+                                            <td><input type="checkbox" class="row-checkbox" value="{{ $flash_sale->id }}">
+                                            </td>
+                                            <td>{{ $i }}</td>
+                                            <td>{{ Str::limit($flash_sale->name, 20) }}</td>
+                                            <td>{{ Str::limit($flash_sale->description, 20) }}</td>
+                                            <td>{{ $flash_sale->date }}</td>
+                                            <td>{{ $flash_sale->start_time }}</td>
+                                            <td>{{ $flash_sale->percentage }}</td>
+                                            <td>{{ $flash_sale->time }}</td>
+                                            <td>{{ $flash_sale->is_active == 1 ? 'active' : 'in Active' }}</td>
+                                            <td>{{ $flash_sale->created_at }}</td>
+                                            <td>{{ $flash_sale->updated_at }}</td>
+                                            <td>
+                                                @include('dashboard.partials.actions', [
+                                                    'name' => 'flash_sales',
+                                                    'name_id' => $flash_sale->id,
+                                                ])
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            @else
+                                <div class="alert alert-warning alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <h5><i class="icon fas fa-exclamation-triangle"></i> {{ __('action.alert') }}!</h5>
+                                    {{ __('action.check_data_get') }}
+                                </div>
+                            @endif
+                        </table>
+                    </div>
                     <div class="mx-2">
                         {{ $data->appends(request()->query())->links() }}
                     </div>

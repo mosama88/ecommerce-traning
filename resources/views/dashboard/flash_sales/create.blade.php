@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.layouts')
-@section('title', 'Author Create')
+@section('title', 'Flash Sale Create')
 @section('content_header')
     <div class="row d-flex flex-row mb-3">
         <div class="col-sm-6">
@@ -24,28 +24,138 @@
         <div class="col-12 col-sm-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title"> {{ __('authors.authors_create') }}</h3>
+                    <h3 class="card-title"> {{ __('flash_sales.flash_sales_create') }}</h3>
                 </div>
 
-                <form action="{{ route('dashboard.authors.store') }}" method="POST">
+                <form action="{{ route('dashboard.categories.store') }}" method="POST">
                     @csrf
-                    <div class="card-body">
-                        <div class="row">
-                            {{-- authors name --}}
-                            <x-adminlte-input name="name" value="{{ old('name') }}"
-                                label="{{ __('authors.authors_name') }}"
-                                placeholder="ex:{{ __('authors.authors_name_placeholder') }}...." fgroup-class="col-md-4" />
-                        </div>
-                    </div>
-                    <!-- /.card-body -->
+                    <div class="row">
+                        <div class="col-12 col-sm-12">
+                            <div class="card card-tabs">
+                                <div class="card-header p-0 pt-1">
+                                    <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill"
+                                                href="#custom-tabs-one-home" role="tab"
+                                                aria-controls="custom-tabs-one-home"
+                                                aria-selected="true">{{ __('manu.english') }}</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
+                                                href="#custom-tabs-one-profile" role="tab"
+                                                aria-controls="custom-tabs-one-profile"
+                                                aria-selected="false">{{ __('manu.arabic') }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-body">
+                                    <div class="tab-content" id="custom-tabs-one-tabContent">
+                                        <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
+                                            aria-labelledby="custom-tabs-one-home-tab">
+                                            {{-- Name English --}}
+                                            <x-adminlte-input name="name[en]" fgroup-class="col-md-12"
+                                                value="{{ old('name[en]') }}" type="text"
+                                                label="{{ __('flash_sales.name') }} (English)"
+                                                placeholder="ex:{{ __('flash_sales.name_place_holder') }}...." />
 
-                    <div class="card-footer">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <x-adminlte-button type="submit" label="{{ __('action.save') }}" theme="primary"
-                                    icon="fas fa-save mx-1" />
+                                            {{-- Description English --}}
+                                            <x-adminlte-textarea label="{{ __('flash_sales.description') }} (English)"
+                                                name="description[en]" fgroup-class="col-md-12"
+                                                value="{{ old('description[en]') }}"
+                                                placeholder="{{ __('flash_sales.description_place_holder') }}...." />
+                                            <div class="row">
+                                                @php
+                                                    $config = ['format' => 'YYYY-MM-DD'];
+                                                @endphp
+                                                <x-adminlte-input-date label="{{ __('flash_sales.date') }}" name="date"
+                                                    value="{{ old('date') }}" :config="$config"
+                                                    placeholder="ex:{{ __('flash_sales.date_place_holder') }}...."
+                                                    fgroup-class="col-md-6">
+                                                    <x-slot name="appendSlot">
+                                                        <div class="input-group-text bg-gradient-dark">
+                                                            <i class="fas fa-calendar-alt"></i>
+                                                        </div>
+                                                    </x-slot>
+                                                </x-adminlte-input-date>
+
+                                                {{-- Placeholder, time only and prepend icon --}}
+                                                @php
+                                                    $config = ['format' => 'LT'];
+                                                @endphp
+                                                <x-adminlte-input-date name="start_time" :config="$config"
+                                                    label="{{ __('flash_sales.start_time') }}"
+                                                    placeholder="ex:{{ __('flash_sales.start_time_place_holder') }}...."
+                                                    fgroup-class="col-md-6">
+                                                    <x-slot name="prependSlot">
+                                                        <div class="input-group-text bg-gradient-info">
+                                                            <i class="fas fa-clock"></i>
+                                                        </div>
+                                                    </x-slot>
+                                                </x-adminlte-input-date>
+
+                                                {{-- Placeholder, time only and prepend icon --}}
+                                                @php
+                                                    $config = ['format' => 'LT'];
+                                                @endphp
+                                                <x-adminlte-input-date name="time" :config="$config"
+                                                    label="{{ __('flash_sales.time') }}"
+                                                    placeholder="ex:{{ __('flash_sales.time_place_holder') }}...."
+                                                    fgroup-class="col-md-6">
+                                                    <x-slot name="prependSlot">
+                                                        <div class="input-group-text bg-gradient-info">
+                                                            <i class="fas fa-clock"></i>
+                                                        </div>
+                                                    </x-slot>
+                                                </x-adminlte-input-date>
+                                                {{-- Name English --}}
+                                                <x-adminlte-input name="percentage" fgroup-class="col-md-6"
+                                                   oninput="this.value=this.value.replace(/[^0-9.]/g,'');" value="{{ old('percentage') }}" type="text"
+                                                    label="{{ __('flash_sales.percentage') }}"
+                                                    placeholder="ex:{{ __('flash_sales.percentage_place_holder') }}...." />
+                                            </div>
+
+
+
+
+
+
+
+
+
+
+
+                                        </div>
+                                        <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
+                                            aria-labelledby="custom-tabs-one-profile-tab">
+                                            {{-- Name Arabic --}}
+                                            <x-adminlte-input name="name[ar]" fgroup-class="col-md-12"
+                                                value="{{ old('name[ar]') }}" type="text"
+                                                label="{{ __('flash_sales.name') }} (عربى)"
+                                                placeholder="{{ __('flash_sales.name_place_holder') }}...." />
+
+                                            {{-- Description Arabic --}}
+                                            <x-adminlte-textarea name="description[ar]" fgroup-class="col-md-12"
+                                                value="{{ old('description[ar]') }}"
+                                                label="{{ __('flash_sales.description') }} (عربى)"
+                                                placeholder="{{ __('flash_sales.description_place_holder') }}...." />
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <x-adminlte-button type="submit" label="{{ __('action.save') }}"
+                                                theme="primary" icon="fas fa-save mx-1" />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- /.card -->
                             </div>
                         </div>
+
                     </div>
                 </form>
             </div>

@@ -36,4 +36,6 @@ return [
     'Discounts' => 'Discounts',
     'authors'=>'Authors',
     'Authors'=>'Authors',
+    'Flash_sales'=>'Flash Sale',
+'flash_sales'=>'Flash Sale',
 ];

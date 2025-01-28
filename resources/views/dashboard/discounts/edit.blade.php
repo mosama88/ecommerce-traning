@@ -45,12 +45,12 @@
                                 id="generate-code">Generate Code <i class="fas fa-random"></i></button>
                             {{-- Discount Quantity --}}
                             <x-adminlte-input name="quantity" value="{{ old('quantity', $discount->quantity) }}"
-                                label="{{ __('discount.discount_quantity') }}"
+                              oninput="this.value=this.value.replace(/[^0-9.]/g,'');"  label="{{ __('discount.discount_quantity') }}"
                                 placeholder="ex:{{ __('discount.quantity_placeholder') }}...." fgroup-class="col-md-6" />
 
                             {{-- Discount Percentage --}}
                             <x-adminlte-input name="percentage" value="{{ old('percentage', $discount->percentage) * 1 }}"
-                                label="{{ __('discount.discount_percentage') }}"
+                               oninput="this.value=this.value.replace(/[^0-9.]/g,'');" label="{{ __('discount.discount_percentage') }}"
                                 placeholder="ex:{{ __('discount.discount_percentage_placeholder') }}...."
                                 fgroup-class="col-md-6" />
 
