@@ -14,5 +14,5 @@ class FlashSale extends Model
     public $translatable = ['name', 'description'];
 
     protected $casts = ['name' => 'array', 'description' => 'array'];
-    protected $fillable = ['name', 'description', 'date', 'time', 'is_active'];
+    protected $fillable = ['name', 'description', 'date', 'time','start_time', 'percentage', 'is_active'];
 }

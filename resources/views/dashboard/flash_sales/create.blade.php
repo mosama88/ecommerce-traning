@@ -26,6 +26,13 @@
                 <div class="card-header">
                     <h3 class="card-title"> {{ __('flash_sales.flash_sales_create') }}</h3>
                 </div>
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger text-center">
+                            {{ $error }}
+                        </div>
+                    @endforeach
+                @endif
 
                 <form action="{{ route('dashboard.flash_sales.store') }}" method="POST">
                     @csrf
@@ -61,8 +68,9 @@
                                             {{-- Description English --}}
                                             <x-adminlte-textarea label="{{ __('flash_sales.description') }} (English)"
                                                 name="description[en]" fgroup-class="col-md-12"
-                                                value="{{ old('description[en]') }}"
-                                                placeholder="{{ __('flash_sales.description_place_holder') }}...." />
+                                                placeholder="{{ __('flash_sales.description_place_holder') }}....">
+                                                {{ old('description[en]', $flash_sale->getTranslation('description', 'en')) }}
+                                            </x-adminlte-textarea>
                                             <div class="row">
                                                 {{-- Date --}}
                                                 @php
@@ -81,10 +89,11 @@
 
                                                 {{-- start_time --}}
                                                 @php
-                                                    $config = ['format' => 'LT'];
+                                                    $configStart_time = ['format' => 'HH:mm:ss']; // Ensures the format is HH:mm
                                                 @endphp
-                                                <x-adminlte-input-date name="start_time" :config="$config"
+                                                <x-adminlte-input-date name="start_time" :config="$configStart_time"
                                                     label="{{ __('flash_sales.start_time') }}"
+                                                    value="{{ old('start_time', '00:00:00') }}"
                                                     placeholder="ex:{{ __('flash_sales.start_time_place_holder') }}...."
                                                     fgroup-class="col-md-6">
                                                     <x-slot name="prependSlot">
@@ -95,19 +104,11 @@
                                                 </x-adminlte-input-date>
 
                                                 {{-- Time --}}
-                                                @php
-                                                    $config = ['format' => 'LT'];
-                                                @endphp
-                                                <x-adminlte-input-date name="time" :config="$config"
+                                                <x-adminlte-input name="time" fgroup-class="col-md-6"
+                                                    oninput="this.value=this.value.replace(/[^0-9.]/g,'');"
+                                                    value="{{ old('time') }}" type="text"
                                                     label="{{ __('flash_sales.time') }}"
-                                                    placeholder="ex:{{ __('flash_sales.time_place_holder') }}...."
-                                                    fgroup-class="col-md-6">
-                                                    <x-slot name="prependSlot">
-                                                        <div class="input-group-text bg-gradient-info">
-                                                            <i class="fas fa-clock"></i>
-                                                        </div>
-                                                    </x-slot>
-                                                </x-adminlte-input-date>
+                                                    placeholder="ex:{{ __('flash_sales.time_place_holder') }}...." />
                                                 {{-- percentage --}}
                                                 <x-adminlte-input name="percentage" fgroup-class="col-md-6"
                                                     oninput="this.value=this.value.replace(/[^0-9.]/g,'');"
@@ -125,10 +126,11 @@
                                                 placeholder="{{ __('flash_sales.name_place_holder') }}...." />
 
                                             {{-- Description Arabic --}}
-                                            <x-adminlte-textarea name="description[ar]" fgroup-class="col-md-12"
-                                                value="{{ old('description[ar]') }}"
-                                                label="{{ __('flash_sales.description') }} (عربى)"
-                                                placeholder="{{ __('flash_sales.description_place_holder') }}...." />
+                                            <x-adminlte-textarea label="{{ __('flash_sales.description') }} (عربى)"
+                                                name="description[ar]" fgroup-class="col-md-12"
+                                                placeholder="{{ __('flash_sales.description_place_holder') }}....">
+                                                {{ old('description[ar]', $flash_sale->getTranslation('description', 'ar')) }}
+                                            </x-adminlte-textarea>
 
                                         </div>
                                     </div>
@@ -151,7 +153,6 @@
         </div>
 
     </div>
-
 @stop
 @push('js')
 @endpush

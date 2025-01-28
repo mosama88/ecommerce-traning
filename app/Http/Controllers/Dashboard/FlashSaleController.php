@@ -34,34 +34,35 @@ class FlashSaleController extends Controller
      */
     public function store(FlashSaleRequest $request)
     {
-        FlashSale::create($request->validated());
 
-        return redirect()->route('dashboard.flash_sales.index')->with('success', __('flashSale.store_message'));
+        FlashSale::create(attributes: $request->validated());
+
+        return redirect()->route('dashboard.flash_sales.index')->with('success', __('flash_sales.store_message'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(FlashSale $flashSale)
+    public function show(FlashSale $flash_sale)
     {
-        return view('dashboard.flash_sales.show', compact('flashSale'));
+        return view('dashboard.flash_sales.show', compact('flash_sale'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(FlashSale $flashSale)
+    public function edit(FlashSale $flash_sale)
     {
-        return view('dashboard.flash_sales.edit', compact('flashSale'));
+        return view('dashboard.flash_sales.edit', compact('flash_sale'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(FlashSaleRequest $request, FlashSale $flashSale)
+    public function update(FlashSaleRequest $request, FlashSale $flash_sale)
     {
-        $flashSale->update($request->validated());
-        return redirect()->route('dashboard.flash_sales.index')->with('success', __('flashSale.update_message'));
+        $flash_sale->update($request->validated());
+        return redirect()->route('dashboard.flash_sales.index')->with('success', __('flash_sales.update_message'));
     }
 
     /**

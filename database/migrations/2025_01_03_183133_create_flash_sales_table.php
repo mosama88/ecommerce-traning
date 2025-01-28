@@ -17,7 +17,7 @@ return new class extends Migration
             $table->json('description')->nullable();
             $table->date('date');
             $table->unsignedSmallInteger('time');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
     }
