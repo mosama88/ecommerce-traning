@@ -22,7 +22,7 @@ class DiscountRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            
         ];
     }
 }

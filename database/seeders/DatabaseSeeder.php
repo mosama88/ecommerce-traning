@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Admin;
 use Illuminate\Database\Seeder;
-use Database\Seeders\CategorySeeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,9 +22,18 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        $this->call(DiscountSeeder::class);
-        $this->call(CategorySeeder::class);
+      
 
-        
+
+        $this->call([
+            DiscountSeeder::class,
+            AuthorSeeder::class,
+            CategorySeeder::class,
+            FlashSaleSeeder::class,
+            PublisherSeeder::class,
+            ContactUsSeeder::class,
+            ShippingAreaSeeder::class,
+            PageSeeder::class,
+        ]);
     }
 }
