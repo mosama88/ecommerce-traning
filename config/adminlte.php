@@ -15,8 +15,8 @@ return [
     */
 
     'title' => 'Book Store',
-    'title_prefix' => 'bookStore',
-    'title_postfix' => 'bookStore',
+    'title_prefix' => 'Book Store | ',
+    // 'title_postfix' => 'bookStore',
 
 
     /*

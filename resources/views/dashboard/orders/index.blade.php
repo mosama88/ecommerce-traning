@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.layouts')
-@section('title', 'Flash Sale')
+@section('title', 'Order')
 @section('content_header')
     <div class="row d-flex flex-row mb-3">
         <div class="col-sm-6">
@@ -22,9 +22,9 @@
 @section('content')
     <div>
         <div class="btn-group mb-3">
-            <x-delete-select-all model="FlashSale" />
-            <x-export-excel model="FlashSale" />
-            <x-import-excel model="FlashSale" />
+            <x-delete-select-all model="Order" />
+            <x-export-excel model="Order" />
+            <x-import-excel model="Order" />
         </div>
     </div>
 
@@ -49,16 +49,14 @@
                                     </th>
                                     <th>#</th>
 
-                                    <th><input type="checkbox" id="select-all"></th>
-                                    <th>{{ __('order.id') }}</th>
                                     <th>{{ __('order.number') }}</th>
                                     <th>{{ __('order.books_total') }}</th>
                                     <th>{{ __('order.status') }}</th>
                                     <th>{{ __('order.address') }}</th>
                                     <th>{{ __('order.user_id') }}</th>
-                                    <th>{{ __('actions.created_at') }}</th>
-                                    <th>{{ __('actions.updated_at') }}</th>
-                                    <th>{{ __('actions.actions') }}</th>
+                                    <th>{{ __('action.created_at') }}</th>
+                                    <th>{{ __('action.updated_at') }}</th>
+                                    <th>{{ __('action.actions') }}</th>
                                 </tr>
                             </thead>
                             @if (!empty($data) && isset($data))
@@ -66,12 +64,12 @@
                                     @php
                                         $i = 0;
                                     @endphp
-                                    @foreach ($data as $flash_sale)
+                                    @foreach ($data as $order)
                                         @php
                                             $i++;
                                         @endphp
                                         <tr>
-                                            <td><input type="checkbox" class="row-checkbox" value="{{ $flash_sale->id }}">
+                                            <td><input type="checkbox" class="row-checkbox" value="{{ $order->id }}">
                                             </td>
                                             <td>{{ $i }}</td>
                                             <td> {{ $order->number }}</td>
