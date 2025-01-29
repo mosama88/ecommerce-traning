@@ -10,5 +10,10 @@ return [
     'books_edit' => 'Book Data Edit',
     'books_show' => 'Book Data Show',
     'store_message' => 'Book Data Inserted',
-
+    'books_description' => "Description",
+    'books_quantity' => "Quantity",
+    'books_publish_year' => 'Publish Year',
+    'books_price' => "Price",
+    'books_is_available' => "is Available",
+    'books_image' => "Image",
 ];

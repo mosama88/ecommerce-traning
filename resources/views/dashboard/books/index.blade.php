@@ -47,7 +47,13 @@
                                     </div>
                                 </th>
                                 <th>#</th>
+                                <th>{{ __('books.books_image') }}</th>
                                 <th>{{ __('books.books_name') }}</th>
+                                <th>{{ __('books.books_description') }}</th>
+                                <th>{{ __('books.books_quantity') }}</th>
+                                <th>{{ __('books.books_publish_year') }}</th>
+                                <th>{{ __('books.books_price') }}</th>
+                                <th>{{ __('books.books_is_available') }}</th>
                                 <th>{{ __('action.created_at') }}</th>
                                 <th>{{ __('action.updated_at') }}</th>
                                 <th>{{ __('action.actions') }}</th>
@@ -65,8 +71,13 @@
                                     <tr>
                                         <td><input type="checkbox" class="row-checkbox" value="{{ $book->id }}"></td>
                                         <td>{{ $i }}</td>
-
-                                        <td>{{ $book->name }}</td>
+                                        <td>Image</td>
+                                        <td>{{ str::limit($book->name, 20) }}</td>
+                                        <td>{{ str::limit($book->description, 20) }}</td>
+                                        <td>{{ $book->quantity }}</td>
+                                        <td>{{ $book->publish_year }}</td>
+                                        <td>{{ $book->price }}</td>
+                                        <td>{{ $book->is_available }}</td>
                                         <td>{{ $book->created_at }}</td>
                                         <td>{{ $book->updated_at }}</td>
                                         <td>
