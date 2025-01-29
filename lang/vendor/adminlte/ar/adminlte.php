@@ -33,5 +33,6 @@ return [
 'flash_sales'=>'خصومات لفترة محدوده',
 'orders' => 'الطلبات',
 'Orders' => 'الطلبات',
-
+'shippingareas'=>'شركات الشحن',
+'ShippingAreas'=>'شركات الشحن',
 ];

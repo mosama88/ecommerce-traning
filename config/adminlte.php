@@ -404,6 +404,14 @@ return [
             'active' => ['dashboard/orders*']
         ],
 
+        [
+            'text' => 'Shipping Area',
+            'url' => 'dashboard/shippingAreas',
+            'icon' => 'mx-1 fas fa-shipping-fast',
+            'label_color' => 'success',
+            'active' => ['dashboard/shippingAreas*'],
+        ],
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

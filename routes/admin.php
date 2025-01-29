@@ -14,6 +14,7 @@ use App\Http\Controllers\Dashboard\PublisherController;
 use App\Http\Controllers\Dashboard\BulkDeleteController;
 use App\Http\Controllers\Dashboard\ExportExcelController;
 use App\Http\Controllers\Dashboard\ImportExcelController;
+use App\Http\Controllers\Dashboard\ShippingAreaController;
 
 Route::middleware(['dashboard', 'auth:admin', 'verified'])->group(function () {
 
@@ -37,6 +38,8 @@ Route::middleware(['dashboard', 'auth:admin', 'verified'])->group(function () {
     // Orders
     Route::resource('orders', OrderController::class);
 
+    //shippingArea
+    Route::resource('shippingAreas', ShippingAreaController::class);
 
     //Language
     Route::get('change-language/{lang}', [LanguageController::class, 'changeLanguage'])->name('change.language');

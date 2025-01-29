@@ -40,5 +40,6 @@ return [
     'flash_sales' => 'Flash Sale',
     'orders' => 'Orders',
     'Orders' => 'Orders',
-
+    'shippingareas' => 'Shipping Area',
+    'ShippingAreas' => 'Shipping Area',
 ];
