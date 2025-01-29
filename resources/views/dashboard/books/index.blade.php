@@ -70,9 +70,19 @@
                                             $i++;
                                         @endphp
                                         <tr>
-                                            <td><input type="checkbox" class="row-checkbox" value="{{ $book->id }}"></td>
+                                            <td><input type="checkbox" class="row-checkbox" value="{{ $book->id }}">
+                                            </td>
                                             <td>{{ $i }}</td>
-                                            <td>Image</td>
+                                            <td>
+                                                @if ($book->getFirstMediaUrl('image', 'preview'))
+                                                    <img src="{{ $book->getFirstMediaUrl('image', 'preview') }}"
+                                                        alt="Thumbnail"
+                                                        style="width: 200px; height: 100px; object-fit: contain;">
+                                                @else
+                                                    <img src="{{ asset('dashboard') }}/default_book.png" alt="Thumbnail"
+                                                        style="width: 200px; height: 100px; object-fit: contain;">
+                                                @endif
+                                            </td>
                                             <td>{{ Str::limit($book->name, 20) }}</td>
                                             <td>{{ Str::limit($book->description, 20) }}</td>
                                             <td>{{ $book->quantity }}</td>
@@ -87,8 +97,8 @@
                                                     'name_id' => $book->id,
                                                 ])
                                             </td>
-    
-    
+
+
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -101,7 +111,7 @@
                             @endif
                         </table>
                     </div>
-                 
+
                     <div class="mx-2">
                         {{ $data->appends(request()->query())->links() }}
                     </div>
