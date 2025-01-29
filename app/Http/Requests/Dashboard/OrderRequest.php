@@ -1,22 +1,26 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Dashboard;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\App;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class OrderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        // Define your authorization logic, for example:
         return true;
     }
 
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
     public function rules()
     {
         return [
@@ -37,7 +41,7 @@ class OrderRequest extends FormRequest
 
     public function messages()
     {
-        if( App::getLocale() === 'en'){
+        if (App::getLocale() === 'en') {
             return [
                 'transaction_reference.required' => __('The transaction reference is required.'),
                 'transaction_reference.unique' => __('The transaction reference has already been taken.'),
@@ -58,7 +62,7 @@ class OrderRequest extends FormRequest
                 'user_id.required' => __('The user is required.'),
                 'user_id.exists' => __('The selected user is invalid.'),
             ];
-        }else{
+        } else {
             return [
                 'transaction_reference.required' => __('مرجع المعاملة مطلوب'),
                 'transaction_reference.unique' => __('مرجع المعاملة موجود مسبقاً'),
@@ -80,6 +84,5 @@ class OrderRequest extends FormRequest
                 'user_id.exists' => __('المستخدم المحدد غير صالح'),
             ];
         }
-   
     }
 }

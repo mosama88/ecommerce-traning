@@ -21,5 +21,8 @@ return [
     "cash" => 'Cash',
     "visa" => 'Visa',
     "generate" => 'Generate',
+    "order_create" => "Order Create",
+    "order_edit" => 'order Edit',
+    "order_show" => 'order Show',
 
 ];

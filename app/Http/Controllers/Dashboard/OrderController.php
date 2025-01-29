@@ -6,8 +6,8 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\ShippingArea;
 use Illuminate\Http\Request;
-use App\Http\Requests\OrderRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\OrderRequest;
 
 class OrderController extends Controller
 {
@@ -85,7 +85,10 @@ class OrderController extends Controller
     function destroy(Order $order)
     {
         $order->delete();
-        return redirect()->route('dashboard.orders.index')->with('success', 'Order Has Been Deleted');
+        return response([
+            'success' => true,
+            'message' => 'Order Has been Deleted'
+        ]);
     }
 
     function checkCode(Request $request)

@@ -39,5 +39,6 @@ return [
     'Flash_sales' => 'Flash Sale',
     'flash_sales' => 'Flash Sale',
     'orders' => 'Orders',
+    'Orders' => 'Orders',
 
 ];
