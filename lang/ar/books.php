@@ -16,5 +16,6 @@ return [
     'books_price' => "السعر",
     'books_is_available' => "هل متاح",
     'books_image' => "صورة",
+    'le' => "جنية",
 
 ];

@@ -35,70 +35,73 @@
                 @include('dashboard.books.partials.filter')
                 <!-- /.card-header -->
                 <div class="card-body p-0">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th class="col-1">
-                                    <div class="form-check">
-                                        <input class="form-check-input xl-1" type="checkbox" id="select-all">
-                                        <label class="form-check-label" for="flexCheckChecked">
-                                            {{ __('action.select_all') }}
-                                        </label>
-                                    </div>
-                                </th>
-                                <th>#</th>
-                                <th>{{ __('books.books_image') }}</th>
-                                <th>{{ __('books.books_name') }}</th>
-                                <th>{{ __('books.books_description') }}</th>
-                                <th>{{ __('books.books_quantity') }}</th>
-                                <th>{{ __('books.books_publish_year') }}</th>
-                                <th>{{ __('books.books_price') }}</th>
-                                <th>{{ __('books.books_is_available') }}</th>
-                                <th>{{ __('action.created_at') }}</th>
-                                <th>{{ __('action.updated_at') }}</th>
-                                <th>{{ __('action.actions') }}</th>
-                            </tr>
-                        </thead>
-                        @if (!empty($data) && isset($data))
-                            <tbody>
-                                @php
-                                    $i = 0;
-                                @endphp
-                                @foreach ($data as $book)
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="col-1">
+                                        <div class="form-check">
+                                            <input class="form-check-input xl-1" type="checkbox" id="select-all">
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                {{ __('action.select_all') }}
+                                            </label>
+                                        </div>
+                                    </th>
+                                    <th>#</th>
+                                    <th>{{ __('books.books_image') }}</th>
+                                    <th>{{ __('books.books_name') }}</th>
+                                    <th>{{ __('books.books_description') }}</th>
+                                    <th>{{ __('books.books_quantity') }}</th>
+                                    <th>{{ __('books.books_publish_year') }}</th>
+                                    <th>{{ __('books.books_price') }}</th>
+                                    <th>{{ __('books.books_is_available') }}</th>
+                                    <th>{{ __('action.created_at') }}</th>
+                                    <th>{{ __('action.updated_at') }}</th>
+                                    <th>{{ __('action.actions') }}</th>
+                                </tr>
+                            </thead>
+                            @if (!empty($data) && isset($data))
+                                <tbody>
                                     @php
-                                        $i++;
+                                        $i = 0;
                                     @endphp
-                                    <tr>
-                                        <td><input type="checkbox" class="row-checkbox" value="{{ $book->id }}"></td>
-                                        <td>{{ $i }}</td>
-                                        <td>Image</td>
-                                        <td>{{ str::limit($book->name, 20) }}</td>
-                                        <td>{{ str::limit($book->description, 20) }}</td>
-                                        <td>{{ $book->quantity }}</td>
-                                        <td>{{ $book->publish_year }}</td>
-                                        <td>{{ $book->price }}</td>
-                                        <td>{{ $book->is_available }}</td>
-                                        <td>{{ $book->created_at }}</td>
-                                        <td>{{ $book->updated_at }}</td>
-                                        <td>
-                                            @include('dashboard.partials.actions', [
-                                                'name' => 'books',
-                                                'name_id' => $book->id,
-                                            ])
-                                        </td>
-
-
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        @else
-                            <div class="alert alert-warning alert-dismissible">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                <h5><i class="icon fas fa-exclamation-triangle"></i> {{ __('action.alert') }}!</h5>
-                                {{ __('action.check_data_get') }}
-                            </div>
-                        @endif
-                    </table>
+                                    @foreach ($data as $book)
+                                        @php
+                                            $i++;
+                                        @endphp
+                                        <tr>
+                                            <td><input type="checkbox" class="row-checkbox" value="{{ $book->id }}"></td>
+                                            <td>{{ $i }}</td>
+                                            <td>Image</td>
+                                            <td>{{ Str::limit($book->name, 20) }}</td>
+                                            <td>{{ Str::limit($book->description, 20) }}</td>
+                                            <td>{{ $book->quantity }}</td>
+                                            <td>{{ $book->publish_year }}</td>
+                                            <td>{{ $book->price }} {{ __('books.le') }}</td>
+                                            <td>{{ $book->is_available }}</td>
+                                            <td>{{ $book->created_at }}</td>
+                                            <td>{{ $book->updated_at }}</td>
+                                            <td>
+                                                @include('dashboard.partials.actions', [
+                                                    'name' => 'books',
+                                                    'name_id' => $book->id,
+                                                ])
+                                            </td>
+    
+    
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            @else
+                                <div class="alert alert-warning alert-dismissible">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <h5><i class="icon fas fa-exclamation-triangle"></i> {{ __('action.alert') }}!</h5>
+                                    {{ __('action.check_data_get') }}
+                                </div>
+                            @endif
+                        </table>
+                    </div>
+                 
                     <div class="mx-2">
                         {{ $data->appends(request()->query())->links() }}
                     </div>

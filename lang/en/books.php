@@ -16,4 +16,6 @@ return [
     'books_price' => "Price",
     'books_is_available' => "is Available",
     'books_image' => "Image",
+    'le' => "LE",
+    
 ];
