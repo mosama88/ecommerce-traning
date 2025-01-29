@@ -4,16 +4,20 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AdminLogin;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\WebSite\WebSiteController;
 
 Route::name('front.')->group(function () {
-Route::view('/','website.index')->name('index');
-Route::view('/books','website.books')->name('books');
-Route::view('/about','website.about')->name('about');
-Route::view('/wish-list','website.wishlist')->name('wishlist');
-Route::view('/cart','website.cart')->name('cart');
-Route::view('/single-book','website.singleBook')->name('singleBook');
-Route::view('/user/profile','website.profile')->name('profile');
+    Route::view('/', 'website.index')->name('index');
+    // Route::view('/books', 'website.books')->name('books');
+    Route::view('/about', 'website.about')->name('about');
+    Route::view('/wish-list', 'website.wishlist')->name('wishlist');
+    Route::view('/cart', 'website.cart')->name('cart');
+    Route::view('/single-book', 'website.singleBook')->name('singleBook');
+    Route::view('/user/profile', 'website.profile')->name('profile');
 
+
+
+    Route::get('books', [WebSiteController::class, 'getBooks'])->name('books');
 });
 
 Route::middleware('auth')->group(function () {

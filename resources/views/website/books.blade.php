@@ -35,7 +35,7 @@
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="d-flex gap-3 align-items-center">
                                                 <input type="checkbox" name="business" id="business" />
-                                                <label for="business">Business</label>
+                                                <label for="business">{{ $category->name }}</label>
                                             </div>
                                             <p>(1450)</p>
                                         </div>
@@ -92,290 +92,93 @@
                 <div class="col-12 col-lg-9">
                     <div class="swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide swiper-slide_category active">
+                            {{-- <div class="swiper-slide swiper-slide_category active">
                                 Business
-                            </div>
-                            <div class="swiper-slide swiper-slide_category">Self Help</div>
-                            <div class="swiper-slide swiper-slide_category">History</div>
-                            <div class="swiper-slide swiper-slide_category">Romance</div>
-                            <div class="swiper-slide swiper-slide_category">Fantasy</div>
-                            <div class="swiper-slide swiper-slide_category">Art</div>
-                            <div class="swiper-slide swiper-slide_category">Kids</div>
-                            <div class="swiper-slide swiper-slide_category">Music</div>
-                            <div class="swiper-slide swiper-slide_category">Cooking</div>
+                            </div> --}}
+                            @foreach ($categories as $category)
+                                <div class="swiper-slide swiper-slide_category">{{ Str::limit($category->name, 15) }}</div>
+                            @endforeach
                         </div>
                     </div>
-                    <div class="row books_book">
-                        <div class="col-lg-3">
-                            <div class="book_image">
-                                <img src="{{ asset('front') }}/images/book-8.png" alt="book image" class="w-100" />
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-9">
-                            <div class="book_detailes">
-                                <div class="d-flex align-items-start book_detailes__content">
-                                    <div>
-                                        <p class="book_detailes__title">Rich Dad And Poor Dad</p>
-                                        <p class="book_detailes__description">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Mauris et ultricies est. Aliquam in justo varius,
-                                            sagittis neque ut, malesuada leo. Aliquam in justo
-                                            varius, sagittis neque ut, malesuada leo.
-                                        </p>
-                                    </div>
-                                    <div class="discount">
-                                        <p class="discount_code">25% Discount code: Ne212</p>
-                                    </div>
+
+                    @foreach ($books as $book)
+                        <div class="row books_book">
+                            <div class="col-lg-3">
+                                <div class="book_image">
+                                    {{-- <img src="{{ $book->getFirstMediaUrl('image', 'preview') }}" alt="{{ $book->name }}"
+                                        class="w-100" /> --}}
+                                    @if ($book->getFirstMediaUrl('image', 'preview'))
+                                        <img src="{{ $book->getFirstMediaUrl('image', 'preview') }}"
+                                            alt="{{ $book->name }}"
+                                            style="width: 150px; height: 300px; object-fit: contain;">
+                                    @else
+                                        <img src="{{ asset('dashboard') }}/default_book.png" alt="{{ $book->name }}"
+                                            style="width: 150px; height: 300px; object-fit: contain;">
+                                    @endif
                                 </div>
-                                <div class="d-flex flex-wrap justify-content-between align-items-end gap-4">
-                                    <div>
-                                        <div class="book_stars">
-                                            <div class="d-flex gap-2 align-items-center">
-                                                <div>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                </div>
-                                                <p class="book_stars__review">(210 Review)</p>
-                                            </div>
-                                            <p class="my-3 book_stars__review-rate">
-                                                Rate: <span class="text-dark">4.5</span>
+                            </div>
+                            <div class="col-12 col-lg-9">
+                                <div class="book_detailes">
+                                    <div class="d-flex align-items-start book_detailes__content">
+                                        <div>
+                                            <p class="book_detailes__title">{{ Str::limit($book->name, 30) }}</p>
+                                            <p class="book_detailes__description">
+                                                {{ Str::limit($book->description, 100) }}
                                             </p>
                                         </div>
-                                        <div class="d-flex gap-5">
-                                            <div>
-                                                <p class="author">Author</p>
-                                                <p class="author_name">Robert T. Kiyosaki</p>
-                                            </div>
-                                            <div>
-                                                <p class="year">Year</p>
-                                                <p>1999</p>
-                                            </div>
+                                        <div class="discount">
+                                            <p class="discount_code">25% Discount code: Ne212</p>
                                         </div>
                                     </div>
-                                    <div class="flex-grow-1">
-                                        <div class="recommended_card__price">
-                                            <p class="text-end mb-4">$40.00</p>
-                                            <div class="d-flex flex-wrap gap-5 mt-auto justify-content-end">
-                                                <button class="main_btn cart-btn w-50  flex-grow-1">
-                                                    <span>Add To Cart</span>
-                                                    <i class="fa-solid fa-cart-shopping"></i>
-                                                </button>
-                                                <button class="primary_btn">
-                                                    <i class="fa-regular fa-heart"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row books_book">
-                        <div class="col-lg-3">
-                            <div class="book_image">
-                                <img src="{{ asset('front') }}/images/book-8.png" alt="book image" class="w-100" />
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-9">
-                            <div class="book_detailes">
-                                <div class="d-flex align-items-start book_detailes__content">
-                                    <div>
-                                        <p class="book_detailes__title">Rich Dad And Poor Dad</p>
-                                        <p class="book_detailes__description">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Mauris et ultricies est. Aliquam in justo varius,
-                                            sagittis neque ut, malesuada leo. Aliquam in justo
-                                            varius, sagittis neque ut, malesuada leo.
-                                        </p>
-                                    </div>
-                                    <div class="discount">
-                                        <p class="discount_code">25% Discount code: Ne212</p>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-wrap justify-content-between align-items-end gap-4">
-                                    <div>
-                                        <div class="book_stars">
-                                            <div class="d-flex gap-2 align-items-center">
-                                                <div>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                    <i class="fa-solid fa-star text-warning"></i>
+                                    <div class="d-flex flex-wrap justify-content-between align-items-end gap-4">
+                                        <div>
+                                            <div class="book_stars">
+                                                <div class="d-flex gap-2 align-items-center">
+                                                    <div>
+                                                        <i class="fa-solid fa-star text-warning"></i>
+                                                        <i class="fa-solid fa-star text-warning"></i>
+                                                        <i class="fa-solid fa-star text-warning"></i>
+                                                        <i class="fa-solid fa-star text-warning"></i>
+                                                        <i class="fa-solid fa-star text-warning"></i>
+                                                    </div>
+                                                    <p class="book_stars__review">(210 Review)</p>
                                                 </div>
-                                                <p class="book_stars__review">(210 Review)</p>
+                                                <p class="my-3 book_stars__review-rate">
+                                                    Rate: <span class="text-dark">4.5</span>
+                                                </p>
                                             </div>
-                                            <p class="my-3 book_stars__review-rate">
-                                                Rate: <span class="text-dark">4.5</span>
-                                            </p>
-                                        </div>
-                                        <div class="d-flex gap-5">
-                                            <div>
-                                                <p class="author">Author</p>
-                                                <p class="author_name">Robert T. Kiyosaki</p>
-                                            </div>
-                                            <div>
-                                                <p class="year">Year</p>
-                                                <p>1999</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <div class="recommended_card__price">
-                                            <p class="text-end mb-4">$40.00</p>
-                                            <div class="d-flex flex-wrap gap-3 mt-auto justify-content-end">
-                                                <button class="main_btn cart-btn w-50">
-                                                    <span>Add To Cart</span>
-                                                    <i class="fa-solid fa-cart-shopping"></i>
-                                                </button>
-                                                <button class="primary_btn">
-                                                    <i class="fa-regular fa-heart"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row books_book">
-                        <div class="col-lg-3">
-                            <div class="book_image">
-                                <img src="{{ asset('front') }}/images/book-8.png" alt="book image" class="w-100" />
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-9">
-                            <div class="book_detailes">
-                                <div class="d-flex align-items-start book_detailes__content">
-                                    <div>
-                                        <p class="book_detailes__title">Rich Dad And Poor Dad</p>
-                                        <p class="book_detailes__description">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Mauris et ultricies est. Aliquam in justo varius,
-                                            sagittis neque ut, malesuada leo. Aliquam in justo
-                                            varius, sagittis neque ut, malesuada leo.
-                                        </p>
-                                    </div>
-                                    <div class="discount">
-                                        <p class="discount_code">25% Discount code: Ne212</p>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-wrap justify-content-between align-items-end gap-4">
-                                    <div>
-                                        <div class="book_stars">
-                                            <div class="d-flex gap-2 align-items-center">
+                                            <div class="d-flex gap-5">
                                                 <div>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                    <i class="fa-solid fa-star text-warning"></i>
+                                                    <p class="author">{{ $book->author->name }}</p>
+                                                    <p class="author_name">Robert T. Kiyosaki</p>
                                                 </div>
-                                                <p class="book_stars__review">(210 Review)</p>
-                                            </div>
-                                            <p class="my-3 book_stars__review-rate">
-                                                Rate: <span class="text-dark">4.5</span>
-                                            </p>
-                                        </div>
-                                        <div class="d-flex gap-5">
-                                            <div>
-                                                <p class="author">Author</p>
-                                                <p class="author_name">Robert T. Kiyosaki</p>
-                                            </div>
-                                            <div>
-                                                <p class="year">Year</p>
-                                                <p>1999</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <div class="recommended_card__price">
-                                            <p class="text-end mb-4">$40.00</p>
-                                            <div class="d-flex flex-wrap gap-3 mt-auto justify-content-end">
-                                                <button class="main_btn cart-btn w-50">
-                                                    <span>Add To Cart</span>
-                                                    <i class="fa-solid fa-cart-shopping"></i>
-                                                </button>
-                                                <button class="primary_btn">
-                                                    <i class="fa-regular fa-heart"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row books_book">
-                        <div class="col-lg-3">
-                            <div class="book_image">
-                                <img src="{{ asset('front') }}/images/book-8.png" alt="book image" class="w-100" />
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-9">
-                            <div class="book_detailes">
-                                <div class="d-flex align-items-start book_detailes__content">
-                                    <div>
-                                        <p class="book_detailes__title">Rich Dad And Poor Dad</p>
-                                        <p class="book_detailes__description">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Mauris et ultricies est. Aliquam in justo varius,
-                                            sagittis neque ut, malesuada leo. Aliquam in justo
-                                            varius, sagittis neque ut, malesuada leo.
-                                        </p>
-                                    </div>
-                                    <div class="discount">
-                                        <p class="discount_code">25% Discount code: Ne212</p>
-                                    </div>
-                                </div>
-                                <div class="d-flex flex-wrap justify-content-between align-items-end gap-4">
-                                    <div>
-                                        <div class="book_stars">
-                                            <div class="d-flex gap-2 align-items-center">
                                                 <div>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                    <i class="fa-solid fa-star text-warning"></i>
-                                                    <i class="fa-solid fa-star text-warning"></i>
+                                                    <p class="year">Year</p>
+                                                    <p>{{ $book->publish_year }}</p>
                                                 </div>
-                                                <p class="book_stars__review">(210 Review)</p>
-                                            </div>
-                                            <p class="my-3 book_stars__review-rate">
-                                                Rate: <span class="text-dark">4.5</span>
-                                            </p>
-                                        </div>
-                                        <div class="d-flex gap-5">
-                                            <div>
-                                                <p class="author">Author</p>
-                                                <p class="author_name">Robert T. Kiyosaki</p>
-                                            </div>
-                                            <div>
-                                                <p class="year">Year</p>
-                                                <p>1999</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <div class="recommended_card__price">
-                                            <p class="text-end mb-4">$40.00</p>
-                                            <div class="d-flex flex-wrap gap-3 mt-auto justify-content-end">
-                                                <button class="main_btn cart-btn w-50">
-                                                    <span>Add To Cart</span>
-                                                    <i class="fa-solid fa-cart-shopping"></i>
-                                                </button>
-                                                <button class="primary_btn">
-                                                    <i class="fa-regular fa-heart"></i>
-                                                </button>
+                                        <div class="flex-grow-1">
+                                            <div class="recommended_card__price">
+                                                <p class="text-end mb-4"> {{ $book->price }} EGP </p>
+                                                <div class="d-flex flex-wrap gap-5 mt-auto justify-content-end">
+                                                    <button class="main_btn cart-btn w-50  flex-grow-1">
+                                                        <span>Add To Cart</span>
+                                                        <i class="fa-solid fa-cart-shopping"></i>
+                                                    </button>
+                                                    <button class="primary_btn">
+                                                        <i class="fa-regular fa-heart"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    @endforeach
+                    <div class="mx-2">
+                        {{ $books->appends(request()->query())->links() }}
                     </div>
                 </div>
             </div>
