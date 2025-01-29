@@ -35,4 +35,6 @@ return [
 'Orders' => 'الطلبات',
 'shippingareas'=>'شركات الشحن',
 'ShippingAreas'=>'شركات الشحن',
+'books'=>'الكتب',
+'Books'=>'الكتب',
 ];

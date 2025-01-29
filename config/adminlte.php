@@ -412,6 +412,14 @@ return [
             'active' => ['dashboard/shippingAreas*'],
         ],
 
+        [
+            'text' => 'Books',
+            'url' => 'dashboard/books',
+            'icon' => 'mx-1 fas fa-book',
+            'label_color' => 'success',
+            'active' => ['dashboard/books*'],
+        ],
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

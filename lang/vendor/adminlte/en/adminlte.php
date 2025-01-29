@@ -42,4 +42,6 @@ return [
     'Orders' => 'Orders',
     'shippingareas' => 'Shipping Area',
     'ShippingAreas' => 'Shipping Area',
+    'books' => 'Books',
+    'Books' => 'Books',
 ];
