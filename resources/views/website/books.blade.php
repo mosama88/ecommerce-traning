@@ -31,34 +31,15 @@
                                         </div>
                                         <p>(1450)</p>
                                     </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex gap-3 align-items-center">
-                                            <input type="checkbox" name="business" id="business" />
-                                            <label for="business">Business</label>
+                                    @foreach ($categories as $category)
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex gap-3 align-items-center">
+                                                <input type="checkbox" name="business" id="business" />
+                                                <label for="business">Business</label>
+                                            </div>
+                                            <p>(1450)</p>
                                         </div>
-                                        <p>(1450)</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex gap-3 align-items-center">
-                                            <input type="checkbox" name="kids" id="kids" />
-                                            <label for="kids">Kids</label>
-                                        </div>
-                                        <p>(1450)</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex gap-3 align-items-center">
-                                            <input type="checkbox" name="art" id="art" />
-                                            <label for="art">Art</label>
-                                        </div>
-                                        <p>(1450)</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="d-flex gap-3 align-items-center">
-                                            <input type="checkbox" name="history" id="history" />
-                                            <label for="history">History</label>
-                                        </div>
-                                        <p>(1450)</p>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
