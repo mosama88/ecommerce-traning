@@ -13,7 +13,7 @@
         <div class="container">
 
 
-            @livewire('website.book-filter')
+            @livewire('website.book-filter', ['categories' => $categories])
 
         </div>
     </section>

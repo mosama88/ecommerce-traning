@@ -11,7 +11,7 @@ class WebSiteController extends Controller
 {
     public function getBooks()
     {
-     
-        return view('website.books');
+        $categories = Category::has('books')->withCount('books')->get();
+        return view('website.books', compact( 'categories'));
     }
 }

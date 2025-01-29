@@ -21,7 +21,8 @@
                         @foreach ($categories as $category)
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="d-flex gap-3 align-items-center">
-                                    <input type="checkbox" name="business" id="business" />
+                                    <input type="checkbox" name="business" value="{{ $category->id }}"
+                                        wire:model.live="categories_id" id="business" />
                                     <label for="business">{{ $category->name }}</label>
                                 </div>
                                 <p>({{ $category->books_count }})</p>
