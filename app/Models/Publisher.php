@@ -9,5 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Publisher extends Model
 {
     /** @use HasFactory<\Database\Factories\PublisherFactory> */
-    use HasFactory;
+    use HasFactory, Filterable;
+    protected $table = 'publishers';
+    protected $fillable = ['name'];
 }

@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\AuthorController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DiscountController;
 use App\Http\Controllers\Dashboard\FlashSaleController;
+use App\Http\Controllers\Dashboard\PublisherController;
 use App\Http\Controllers\Dashboard\BulkDeleteController;
 use App\Http\Controllers\Dashboard\ExportExcelController;
 use App\Http\Controllers\Dashboard\ImportExcelController;
@@ -27,9 +28,12 @@ Route::middleware(['dashboard', 'auth:admin', 'verified'])->group(function () {
     // Author
     Route::resource('authors', AuthorController::class);
 
+    // Publisher
+    Route::resource('publishers', PublisherController::class);
+
     // Flash Sale
     Route::resource('flash_sales', FlashSaleController::class);
-    
+
     // Orders
     Route::resource('orders', OrderController::class);
 

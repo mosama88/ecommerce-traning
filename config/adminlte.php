@@ -384,6 +384,13 @@ return [
         ],
 
         [
+            'text' => 'Publisher',
+            'url' => 'dashboard/publishers',
+            'icon' => 'mx-1 fas fa-feather-alt',
+            'active' => ['dashboard/publishers*']
+        ],
+
+        [
             'text' => 'Flash Sale',
             'url' => 'dashboard/flash_sales',
             'icon' => 'mx-1 fas fa-tags',
