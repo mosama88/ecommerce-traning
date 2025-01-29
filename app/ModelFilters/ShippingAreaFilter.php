@@ -13,8 +13,13 @@ class ShippingAreaFilter extends ModelFilter
      * @var array
      */
     public $relations = [];
-    public function ShippingAreaName($value)
+    public function shippingName($value)
     {
         return $this->whereLike('name', '%' . $value . '%');
+    }
+
+    public function shippingFee($value)
+    {
+        return $this->whereLike('fee', '%' . $value . '%');
     }
 }
