@@ -386,7 +386,7 @@ return [
         [
             'text' => 'Publisher',
             'url' => 'dashboard/publishers',
-            'icon' => 'mx-1 fas fa-feather-alt',
+            'icon' => 'mx-1 fas fa-keyboard',
             'active' => ['dashboard/publishers*']
         ],
 
