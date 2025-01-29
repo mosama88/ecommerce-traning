@@ -11,8 +11,7 @@ class WebSiteController extends Controller
 {
     public function getBooks()
     {
-        $categories = Category::get();
-        $books = Book::orderByDesc('id')->paginate(10);
-        return view('website.books', compact('books', 'categories'));
+     
+        return view('website.books');
     }
 }

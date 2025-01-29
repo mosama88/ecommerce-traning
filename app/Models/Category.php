@@ -7,16 +7,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class Category extends Model 
+class Category extends Model
 {
-    use HasFactory,HasTranslations,Filterable;
+    use HasFactory, HasTranslations, Filterable;
 
-    protected $fillable=['name','discount_id'];
+    protected $fillable = ['name', 'discount_id'];
     public $translatable = ['name'];
 
-    protected $casts  = ['name'=>'array'];
+    protected $casts  = ['name' => 'array'];
 
-    public function discount(){
-        return $this->belongsTo(Discount::class,'discount_id');
+    public function discount()
+    {
+        return $this->belongsTo(Discount::class, 'discount_id');
+    }
+
+    public function books()
+    {
+        return $this->hasMany(Book::class);
     }
 }
