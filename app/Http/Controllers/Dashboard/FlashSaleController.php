@@ -78,4 +78,10 @@ class FlashSaleController extends Controller
             'message' => 'Flash Sale has been deleted successfully.'
         ]);
     }
+
+    function search(Request $request)
+    {
+        $discounts = FlashSale::select("name", 'id')->whereLike('name', "%$request->q%")->limit(5)->get();
+        return response()->json(['data' => ['discounts' => $discounts]]);
+    }
 }

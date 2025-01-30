@@ -147,15 +147,9 @@
 
                         <div class="row mt-2">
                             <div class="col-12">
-                                <x-adminlte-select2 fgroup-class="col-md-4" name="publisher_id" class="discount-select2">
-                                    <option value="" selected>-- {{ __('books.choose_publishers_name') }} --
-                                    </option>
-                                    @foreach ($other['publishers'] as $publisher)
-                                        <option @if (old('publisher_id', $publisher['publisher_id']) == $publisher->id) selected @endif
-                                            value="{{ $publisher->id }}">
-                                            {{ $publisher->name }}
-                                        </option>
-                                    @endforeach
+                                <x-adminlte-select2 fgroup-class="col-md-4" name="discountable_id"
+                                    class="discount-select2">
+                                    <option></option>
                                 </x-adminlte-select2>
                             </div>
 
@@ -185,6 +179,48 @@
                 // placeholder: '-- {{ __('category.selectd_discount') }} --',
 
             });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const discountRadio = document.querySelector('#discount_id');
+            const flashSaleRadio = document.querySelector('#flash_sale_id');
+            const discountDropDown = document.querySelector('.discount-select2');
+            const discountUrl = "{{ route('discount.search') }}";
+            const flashSaleUrl = "{{ route('flash_sale.search') }}";
+            const local = "{{ App::getLocale() }}";
+
+            discountRadio.addEventListener('change', () => showDiscountDropDown(discountUrl,
+                '-- Select Discount --'));
+            flashSaleRadio.addEventListener('change', () => showDiscountDropDown(flashSaleUrl,
+                '-- Select Flash Sale --'));
+
+            function showDiscountDropDown(url, placeholder) {
+                discountDropDown.style.display = 'block';
+                enableSelect2(url, placeholder);
+            }
+
+            function enableSelect2(url, placeholder) {
+                $('.discount-select2').select2({
+                    placeholder: placeholder,
+                    allowClear: true,
+                    ajax: {
+                        url: url,
+                        dataType: 'json',
+                        delay: 250,
+                        processResults: function(data) {
+                            return {
+                                results: data.data.discounts.map(discount => ({
+                                    id: discount.id,
+                                    text: url === discountUrl ?
+                                        `${discount.code} - ${discount.percentage}` :
+                                        discount.name[local]
+                                }))
+                            };
+                        }
+                    }
+                });
+            }
         });
     </script>
 @endpush

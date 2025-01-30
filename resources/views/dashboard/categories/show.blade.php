@@ -83,7 +83,7 @@
             $('.discount-select2').select2({
                 placeholder: '-- {{ __('category.selectd_discount') }} --',
                 ajax: {
-                    url: "{{ route('discount.search') }}",
+                    url: "{{ route('discount.search.category') }}",
                     dataType: 'json',
                     delay: 250, // Delay for better UX
                     data: function(params) {

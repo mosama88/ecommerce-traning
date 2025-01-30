@@ -84,9 +84,20 @@ class DiscountController extends Controller
     }
 
 
-    public function search(Request $request)
+    public function search_category(Request $request)
     {
         $discounts = Discount::where('code', 'LIKE', '%' . $request->q . '%')->orWhere('percentage', 'LIKE', '%' . $request->q . '%')->limit(5)->get();
         return response()->json(['data' => $discounts]);
+    }
+
+
+    public function search(Request $request)
+    {
+        $discounts = Discount::where('code', 'LIKE', '%' . $request->q . '%')
+            ->orWhere('percentage', 'LIKE', '%' . $request->q . '%')
+            ->limit(5)
+            ->get();
+
+        return response()->json(['data' => ['discounts' => $discounts]]);
     }
 }
