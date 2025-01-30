@@ -46,13 +46,15 @@ class Book extends Model implements HasMedia
     }
 
     //* 2.3
-
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-
+    public function discountable()
+    {
+        return $this->morphTo();
+    }
     public function registerMediaConversions(Media $media = null): void
     {
         $this

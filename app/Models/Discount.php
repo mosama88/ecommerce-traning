@@ -14,4 +14,9 @@ class Discount extends Model
 
     protected $table = 'discounts';
     protected $fillable = ['code', 'quantity', 'percentage', 'expiry_date'];
+
+    public function books()
+    {
+        return $this->morphMany(Book::class, 'discountable');
+    }
 }

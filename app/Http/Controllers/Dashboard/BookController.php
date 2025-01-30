@@ -37,7 +37,7 @@ class BookController extends Controller
      */
     public function store(BookRequest $request)
     {
-        $book = Book::create($request->validated());
+        $book = Book::create($request->all());
         if ($request->has('image')) {
             $book->addMediaFromRequest('image')
                 ->toMediaCollection('image');

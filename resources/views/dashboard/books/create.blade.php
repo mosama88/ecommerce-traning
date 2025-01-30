@@ -139,13 +139,13 @@
 
                             <div class="row mx-1 col-12">
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" id="discount_id" name="customRadio">
+                                    <input class="custom-control-input" type="radio" value="App\Models\Discount" id="discount_id" name="discountable_type">
                                     <label for="discount_id" class="custom-control-label">Discount</label>
                                 </div>
 
                                 <div class="custom-control custom-radio mx-2">
-                                    <input class="custom-control-input" type="radio" id="flash_sale_id"
-                                        name="customRadio">
+                                    <input class="custom-control-input" type="radio" value="App\Models\FlashSale" id="flash_sale_id"
+                                        name="discountable_type">
                                     <label for="flash_sale_id" class="custom-control-label">Flash Sale</label>
                                 </div>
                             </div>
