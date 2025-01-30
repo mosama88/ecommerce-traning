@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Book;
+use App\Models\Author;
+use App\Models\Category;
+use App\Models\Publisher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\BookRequest;
@@ -23,7 +26,10 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('dashboard.books.create');
+        $other['authors'] = Author::get();
+        $other['categories'] = Category::get();
+        $other['publishers'] = Publisher::get();
+        return view('dashboard.books.create', compact('other'));
     }
 
     /**

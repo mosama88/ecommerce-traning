@@ -20,6 +20,15 @@ class BookFilter extends Component
         return Category::has('books')->withCount('books')->get();
     }
 
+    protected $queryString = [
+        'categories_id' => ['sa' => 'Category'],
+    ];
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+    
     public function clear()
     {
         $this->reset('categories_id');
