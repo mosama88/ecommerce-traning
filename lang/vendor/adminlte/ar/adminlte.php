@@ -37,4 +37,5 @@ return [
 'ShippingAreas'=>'شركات الشحن',
 'books'=>'الكتب',
 'Books'=>'الكتب',
+    'upload_image'=>'أرفق الصورة',
 ];

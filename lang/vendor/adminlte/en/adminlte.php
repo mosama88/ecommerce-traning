@@ -44,4 +44,6 @@ return [
     'ShippingAreas' => 'Shipping Area',
     'books' => 'Books',
     'Books' => 'Books',
+    'upload_image' => 'Upload Image',
+
 ];

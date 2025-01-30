@@ -82,6 +82,11 @@
                                 fgroup-class="col-md-12" placeholder="{{ __('books.books_description_placeholder') }}....">
                                 {{ old('description[en]') }}
                             </x-adminlte-textarea>
+                            <div class="row col-12">
+                                {{-- books Image --}}
+                                <x-image-preview name='image' />
+                            </div>
+
 
 
                             <x-adminlte-select2 fgroup-class="col-md-4" name="author_id"
