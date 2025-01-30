@@ -120,22 +120,30 @@
                                     </option>
                                 @endforeach
                             </x-adminlte-select2>
-                        </div>
-                        <div class="row mx-1">
-                            <div class="custom-control custom-radio">
-                                <input class="custom-control-input" type="radio" id="discount_id" name="customRadio">
-                                <label for="discount_id" class="custom-control-label">Discount</label>
+                            <div class="row mx-1">
+
+                                {{-- books is_available --}}
+                                <div class="custom-control custom-checkbox mb-3 mx-2">
+                                    <input class="custom-control-input" type="checkbox" name="is_available"
+                                        id="is_available" value="option1">
+                                    <label for="is_available" class="custom-control-label">Is Available</label>
+                                </div>
                             </div>
 
-                            <div class="custom-control custom-radio mx-2">
-                                <input class="custom-control-input" type="radio" id="flash_sale_id" name="customRadio">
-                                <label for="flash_sale_id" class="custom-control-label">Flash Sale</label>
+                            <div class="row mx-1 col-12">
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input" type="radio" id="discount_id" name="customRadio">
+                                    <label for="discount_id" class="custom-control-label">Discount</label>
+                                </div>
+
+                                <div class="custom-control custom-radio mx-2">
+                                    <input class="custom-control-input" type="radio" id="flash_sale_id"
+                                        name="customRadio">
+                                    <label for="flash_sale_id" class="custom-control-label">Flash Sale</label>
+                                </div>
                             </div>
-
-
-
-
                         </div>
+
 
                         <div class="row mt-2">
                             <div class="col-12">
