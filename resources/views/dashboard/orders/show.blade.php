@@ -105,7 +105,7 @@
                         <div class="col-12 text-center">
 
 
-                            <a href="{{ route('dashboard.discounts.index') }}" class="btn  btn-info btn-flat"><i
+                            <a href="{{ route('dashboard.discounts.index') }}" class="btn  btn-secondary btn-flat"><i
                                     class="fas fa-backward mx-1"></i> {{ __('action.back') }} </a>
                         </div>
                     </div>

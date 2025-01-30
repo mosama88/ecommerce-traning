@@ -146,7 +146,7 @@
 
 
                                         <a href="{{ route('dashboard.flash_sales.index') }}"
-                                            class="btn  btn-info btn-flat"><i class="fas fa-backward mx-1"></i>
+                                            class="btn  btn-secondary btn-flat"><i class="fas fa-backward mx-1"></i>
                                             {{ __('action.back') }} </a>
                                     </div>
                                 </div>

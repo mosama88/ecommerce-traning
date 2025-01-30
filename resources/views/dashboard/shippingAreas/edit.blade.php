@@ -53,7 +53,7 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <x-adminlte-button type="submit" label="{{ __('action.save') }}" theme="primary"
+                                <x-adminlte-button type="submit" label="{{ __('action.update') }}" theme="info"
                                     icon="fas fa-save mx-1" />
                             </div>
                         </div>
