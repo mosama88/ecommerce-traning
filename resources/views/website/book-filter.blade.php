@@ -11,14 +11,23 @@
                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body d-flex flex-column gap-3">
+                        @if (empty($categories_id))
+                            <button disabled type="button" class="main_btn cart-btn  w-100 flex-grow-1"
+                                style="background-color: #707070;border:solid 1px gray; color:white">Reset
+                                Filter</button>
+                        @else
+                            <button type="button" class="main_btn cart-btn  w-100 flex-grow-1"
+                                wire:click.prevent="clear()" style="background-color: #b73d3d;color:white">Reset
+                                Filter</button>
+                        @endif
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex gap-3 align-items-center">
                                 <input type="checkbox" name="categories" id="categories" />
                                 <label for="categories">All Categories</label>
                             </div>
-                            <p>( {{ $categories->count() }} )</p>
+                            <p>( {{ $this->categories->count() }} )</p>
                         </div>
-                        @foreach ($categories as $category)
+                        @foreach ($this->categories as $category)
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="d-flex gap-3 align-items-center">
                                     <input type="checkbox" name="business" value="{{ $category->id }}"
@@ -83,7 +92,7 @@
                 {{-- <div class="swiper-slide swiper-slide_category active">
                     Business
                 </div> --}}
-                @foreach ($categories as $category)
+                @foreach ($this->categories as $category)
                     <div class="swiper-slide swiper-slide_category">{{ Str::limit($category->name, 15) }}</div>
                 @endforeach
             </div>
