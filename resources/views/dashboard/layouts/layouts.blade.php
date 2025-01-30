@@ -40,10 +40,10 @@
 @stop
 
 @push('js')
-    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="{{ asset('dashboard') }}/js/filepond/filepond.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
-    
+
     <script>
         @if (session('success'))
             Swal.fire({
