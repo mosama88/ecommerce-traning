@@ -22,7 +22,7 @@
 
     <div class="row">
         <div class="col-12 col-sm-12">
-            <div class="card card-primary">
+            <div class="card card-secondary">
                 <div class="card-header">
                     <h3 class="card-title"> {{ __('publishers.publishers_show') }}</h3>
                 </div>
