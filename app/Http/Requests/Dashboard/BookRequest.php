@@ -23,7 +23,7 @@ class BookRequest extends FormRequest
     {
         return [
             'name'          => 'required|string|max:255',
-            'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'         => 'nullable|max:2048',
             'description'   => 'required|string',
             'slug'          => 'required|string|max:255|unique:books,slug,' . $this->route('books'),
             'quantity'      => 'required|integer|min:1',

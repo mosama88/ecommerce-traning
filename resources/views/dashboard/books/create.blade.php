@@ -19,6 +19,13 @@
 @stop
 
 @section('content')
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger text-center">
+                {{ $error }}
+            </div>
+        @endforeach
+    @endif
 
     <div class="row">
         <div class="col-12 col-sm-12">
@@ -27,7 +34,7 @@
                     <h3 class="card-title"> {{ __('books.books_create') }}</h3>
                 </div>
 
-                <form action="{{ route('dashboard.books.store') }}" method="POST">
+                <form action="{{ route('dashboard.books.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="row">
@@ -125,7 +132,7 @@
                                 {{-- books is_available --}}
                                 <div class="custom-control custom-checkbox mb-3 mx-2">
                                     <input class="custom-control-input" type="checkbox" name="is_available"
-                                        id="is_available" value="option1">
+                                        id="is_available" value="1">
                                     <label for="is_available" class="custom-control-label">Is Available</label>
                                 </div>
                             </div>

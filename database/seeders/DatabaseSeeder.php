@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             ShippingAreaSeeder::class,
             PageSeeder::class,
             OrderSeeder::class,
-            BookSeeder::class,
+            // BookSeeder::class,
         ]);
     }
 }

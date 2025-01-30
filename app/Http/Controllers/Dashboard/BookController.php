@@ -37,7 +37,11 @@ class BookController extends Controller
      */
     public function store(BookRequest $request)
     {
-        Book::create($request->validated());
+        $book = Book::create($request->validated());
+        if ($request->has('image')) {
+            $book->addMediaFromRequest('image')
+                ->toMediaCollection('image');
+        }
         return redirect()->route('dashboard.books.index')->with('success', __('books.store_message'));
     }
 
@@ -46,7 +50,10 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        return view('dashboard.books.show', compact('book'));
+        $other['authors'] = Author::get();
+        $other['categories'] = Category::get();
+        $other['publishers'] = Publisher::get();
+        return view('dashboard.books.show', compact('book', 'other'));
     }
 
     /**
@@ -54,7 +61,10 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        return view('dashboard.books.edit', compact('book'));
+        $other['authors'] = Author::get();
+        $other['categories'] = Category::get();
+        $other['publishers'] = Publisher::get();
+        return view('dashboard.books.edit', compact('book', 'other'));
     }
 
     /**
