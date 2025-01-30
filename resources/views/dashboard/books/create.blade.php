@@ -78,9 +78,9 @@
                             </x-adminlte-input-date>
 
                             {{-- books description --}}
-                            <x-adminlte-textarea label="{{ __('books.books_description') }}" name="description[en]"
+                            <x-adminlte-textarea label="{{ __('books.books_description') }}" name="description"
                                 fgroup-class="col-md-12" placeholder="{{ __('books.books_description_placeholder') }}....">
-                                {{ old('description[en]') }}
+                                {{ old('description') }}
                             </x-adminlte-textarea>
                             <div class="row col-12">
                                 {{-- books Image --}}
@@ -88,7 +88,7 @@
                             </div>
 
 
-
+                            {{-- books author_id --}}
                             <x-adminlte-select2 fgroup-class="col-md-4" name="author_id"
                                 label="{{ __('books.authors_name') }}" class="discount-select2">
                                 <option value="" selected>-- {{ __('books.choose_authors_name') }} --</option>
@@ -99,7 +99,7 @@
                                 @endforeach
                             </x-adminlte-select2>
 
-
+                            {{-- books category_id --}}
                             <x-adminlte-select2 fgroup-class="col-md-4" name="category_id"
                                 label="{{ __('books.categories_name') }}" class="discount-select2">
                                 <option value="" selected>-- {{ __('books.choose_categories_name') }} --</option>
@@ -110,7 +110,7 @@
                                 @endforeach
                             </x-adminlte-select2>
 
-
+                            {{-- books publisher_id --}}
                             <x-adminlte-select2 fgroup-class="col-md-4" name="publisher_id"
                                 label="{{ __('books.publishers_name') }}" class="discount-select2">
                                 <option value="" selected>-- {{ __('books.choose_publishers_name') }} --</option>
@@ -120,7 +120,36 @@
                                     </option>
                                 @endforeach
                             </x-adminlte-select2>
+                        </div>
+                        <div class="row mx-1">
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" id="discount_id" name="customRadio">
+                                <label for="discount_id" class="custom-control-label">Discount</label>
+                            </div>
 
+                            <div class="custom-control custom-radio mx-2">
+                                <input class="custom-control-input" type="radio" id="flash_sale_id" name="customRadio">
+                                <label for="flash_sale_id" class="custom-control-label">Flash Sale</label>
+                            </div>
+
+
+
+
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <x-adminlte-select2 fgroup-class="col-md-4" name="publisher_id" class="discount-select2">
+                                    <option value="" selected>-- {{ __('books.choose_publishers_name') }} --
+                                    </option>
+                                    @foreach ($other['publishers'] as $publisher)
+                                        <option @if (old('publisher_id', $publisher['publisher_id']) == $publisher->id) selected @endif
+                                            value="{{ $publisher->id }}">
+                                            {{ $publisher->name }}
+                                        </option>
+                                    @endforeach
+                                </x-adminlte-select2>
+                            </div>
 
                         </div>
                     </div>
