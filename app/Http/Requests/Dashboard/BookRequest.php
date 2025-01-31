@@ -27,7 +27,7 @@ class BookRequest extends FormRequest
             'name'          => 'required|string|max:255',
             'image'         => 'nullable|max:2048',
             'description'   => 'required|string',
-            'slug' => ['required', 'string', 'max:255', Rule::unique(Book::class)->ignore(request()->book_id)],
+            'slug' => 'required', 'string', 'max:255',
             'quantity'      => 'required|integer|min:1',
             'rate'          => 'required|numeric|min:0|max:5',
             'publish_year'  => 'required|integer|min:1900|max:' . date('Y'),

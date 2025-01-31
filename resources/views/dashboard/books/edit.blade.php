@@ -38,9 +38,15 @@
                     enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-
-                    <input type="hidden" name="book_id" value="{{ $book->id }}">
-
+                    <div class="col-12 text-right">
+                        @if ($book->getFirstMediaUrl('image', 'preview'))
+                            <img src="{{ $book->getFirstMediaUrl('image', 'preview') }}" class="img-thumbnail mt-2"
+                                alt="{{ $book->name }}" style="width: 200px; height: 300px; object-fit: contain;">
+                        @else
+                            <img src="{{ asset('dashboard') }}/default_book.png" class="mt-2" alt="{{ $book->name }}"
+                                style="width: 400px; height: 300px; object-fit: contain;">
+                        @endif
+                    </div>
                     <div class="card-body">
                         <div class="row">
                             {{-- books name --}}
@@ -98,13 +104,7 @@
                                 {{-- books Image --}}
                                 <x-image-preview name='image' />
 
-                                @if ($book->getFirstMediaUrl('image', 'preview'))
-                                    <img src="{{ $book->getFirstMediaUrl('image', 'preview') }}" alt="Thumbnail"
-                                        style="width: 200px; height: 100px; object-fit: contain;">
-                                @else
-                                    <img src="{{ asset('dashboard') }}/default_book.png" alt="Thumbnail"
-                                        style="width: 200px; height: 100px; object-fit: contain;">
-                                @endif
+
                             </div>
 
 
@@ -145,7 +145,9 @@
                                 {{-- books is_available --}}
                                 <div class="custom-control custom-checkbox mb-3 mx-2">
                                     <input class="custom-control-input" type="checkbox" name="is_available"
-                                        id="is_available" value="{{ $book->is_available }}">
+                                        id="is_available" value="1"
+                                        {{ old('is_availble', $book->is_available == 1 ? 'checked' : '') }}>
+
                                     <label for="is_available" class="custom-control-label">Is Available</label>
                                 </div>
                             </div>
@@ -181,7 +183,7 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-12 text-center">
-                                <x-adminlte-button type="submit" label="{{ __('action.save') }}" theme="primary"
+                                <x-adminlte-button type="submit" label="{{ __('action.update') }}" theme="info"
                                     icon="fas fa-save mx-1" />
                             </div>
                         </div>

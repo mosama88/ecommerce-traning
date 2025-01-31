@@ -77,6 +77,14 @@ class BookController extends Controller
     public function update(BookRequest $request, Book $book)
     {
         $book->update($request->validated());
+        if ($request->hasFile('image')) {
+            // Remove old image if exists
+            $book->clearMediaCollection('image');
+
+            // Upload new image
+            $book->addMediaFromRequest('image')
+                ->toMediaCollection('image');
+        }
         return redirect()->route('dashboard.books.index')->with('success', __('books.update_message'));
     }
 

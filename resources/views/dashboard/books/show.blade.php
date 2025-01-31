@@ -36,6 +36,15 @@
 
 
                 <div class="card-body">
+                    <div class="col-12 text-right">
+                        @if ($book->getFirstMediaUrl('image', 'preview'))
+                            <img src="{{ $book->getFirstMediaUrl('image', 'preview') }}" class="img-thumbnail mt-2"
+                                alt="{{ $book->name }}" style="width: 200px; height: 300px; object-fit: contain;">
+                        @else
+                            <img src="{{ asset('dashboard') }}/default_book.png" class="mt-2" alt="{{ $book->name }}"
+                                style="width: 400px; height: 300px; object-fit: contain;">
+                        @endif
+                    </div>
                     <div class="row">
                         {{-- books name --}}
                         <x-adminlte-input disabled name="name" value="{{ old('name', $book->name) }}"
@@ -84,18 +93,6 @@
                             fgroup-class="col-md-12" placeholder="{{ __('books.books_description_placeholder') }}....">
                             {{ old('description', $book->description) }}
                         </x-adminlte-textarea>
-                        <div class="row col-12">
-                            {{-- books Image --}}
-
-                            @if ($book->getFirstMediaUrl('image', 'preview'))
-                                <img src="{{ $book->getFirstMediaUrl('image', 'preview') }}" alt="Thumbnail"
-                                    style="width: 200px; height: 100px; object-fit: contain;">
-                            @else
-                                <img src="{{ asset('dashboard') }}/default_book.png" alt="Thumbnail"
-                                    style="width: 200px; height: 100px; object-fit: contain;">
-                            @endif
-                        </div>
-
 
                         {{-- books author_id --}}
                         <x-adminlte-select2 disabled fgroup-class="col-md-4" name="author_id"
