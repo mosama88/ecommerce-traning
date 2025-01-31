@@ -17,8 +17,9 @@ class BookController extends Controller
      */
     public function index()
     {
+        $books = Book::count();
         $data = Book::filter(request()->all())->orderByDesc('id')->paginate(10);
-        return view('dashboard.books.index', compact('data'));
+        return view('dashboard.books.index', compact('data', 'books'));
     }
 
     /**
