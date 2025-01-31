@@ -38,6 +38,9 @@
                     enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+
+                    <input type="hidden" name="book_id" value="{{ $book->id }}">
+
                     <div class="card-body">
                         <div class="row">
                             {{-- books name --}}
@@ -149,13 +152,14 @@
 
                             <div class="row mx-1 col-12">
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" value="App\Models\Discount" type="radio" id="discount_id" name="discountable_type">
+                                    <input class="custom-control-input" value="App\Models\Discount" type="radio"
+                                        id="discount_id" name="discountable_type">
                                     <label for="discount_id" class="custom-control-label">Discount</label>
                                 </div>
 
                                 <div class="custom-control custom-radio mx-2">
-                                    <input class="custom-control-input" value="App\Models\FlashSale" type="radio" id="flash_sale_id"
-                                        name="discountable_type">
+                                    <input class="custom-control-input" value="App\Models\FlashSale" type="radio"
+                                        id="flash_sale_id" name="discountable_type">
                                     <label for="flash_sale_id" class="custom-control-label">Flash Sale</label>
                                 </div>
                             </div>

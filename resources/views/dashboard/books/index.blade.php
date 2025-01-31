@@ -41,6 +41,7 @@
                             </tr>
                         </thead>
                     </table>
+
                     @include('dashboard.books.partials.filter')
                     <!-- /.card-header -->
                     <div class="card-body p-0">
@@ -103,6 +104,7 @@
                                                 <td>{{ $book->is_available }}</td>
                                                 <td>{{ $book->created_at }}</td>
                                                 <td>{{ $book->updated_at }}</td>
+                                                {{-- <td>{{ $book->getActiveDiscountValue() }}</td> --}}
                                                 <td>
                                                     @include('dashboard.partials.actions', [
                                                         'name' => 'books',
@@ -138,3 +140,13 @@
 
 
 @stop
+@push('js')
+    <script>
+        $(document).ready(function() {
+            $('.discount-select2').select2({
+                // placeholder: '-- {{ __('category.selectd_discount') }} --',
+
+            });
+        });
+    </script>
+@endpush

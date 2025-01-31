@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Dashboard;
 
+use App\Models\Book;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class BookRequest extends FormRequest
@@ -25,7 +27,7 @@ class BookRequest extends FormRequest
             'name'          => 'required|string|max:255',
             'image'         => 'nullable|max:2048',
             'description'   => 'required|string',
-            'slug'          => 'required|string|max:255|unique:books,slug,' . $this->route('books'),
+            'slug' => ['required', 'string', 'max:255', Rule::unique(Book::class)->ignore(request()->book_id)],
             'quantity'      => 'required|integer|min:1',
             'rate'          => 'required|numeric|min:0|max:5',
             'publish_year'  => 'required|integer|min:1900|max:' . date('Y'),

@@ -18,8 +18,11 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::count();
+        $other['authors'] = Author::get();
+        $other['categories'] = Category::get();
+        $other['publishers'] = Publisher::get();
         $data = Book::filter(request()->all())->orderByDesc('id')->paginate(10);
-        return view('dashboard.books.index', compact('data', 'books'));
+        return view('dashboard.books.index', compact('data', 'books', 'other'));
     }
 
     /**
