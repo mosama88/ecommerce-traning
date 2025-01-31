@@ -155,13 +155,15 @@
                             <div class="row mx-1 col-12">
                                 <div class="custom-control custom-radio">
                                     <input class="custom-control-input" value="App\Models\Discount" type="radio"
-                                        id="discount_id" name="discountable_type">
+                                        id="discount_id" name="discountable_type"
+                                        {{ old('discountable_type', $book->discountable_type) == 'App\Models\Discount' ? 'checked' : '' }}>
                                     <label for="discount_id" class="custom-control-label">Discount</label>
                                 </div>
 
                                 <div class="custom-control custom-radio mx-2">
                                     <input class="custom-control-input" value="App\Models\FlashSale" type="radio"
-                                        id="flash_sale_id" name="discountable_type">
+                                        id="flash_sale_id" name="discountable_type"
+                                        {{ old('discountable_type', $book->discountable_type) == 'App\Models\FlashSale' ? 'checked' : '' }}>
                                     <label for="flash_sale_id" class="custom-control-label">Flash Sale</label>
                                 </div>
                             </div>
@@ -172,10 +174,13 @@
                             <div class="col-12">
                                 <x-adminlte-select2 fgroup-class="col-md-4" name="discountable_id"
                                     class="discount-select2">
-                                    <option></option>
+                                    @if ($book->discountable_id)
+                                        <option value="{{ $book->discountable_id }}" selected>
+                                            {{ $book->discountable->name ?? 'Selected Discount' }}
+                                        </option>
+                                    @endif
                                 </x-adminlte-select2>
                             </div>
-
                         </div>
                     </div>
                     <!-- /.card-body -->

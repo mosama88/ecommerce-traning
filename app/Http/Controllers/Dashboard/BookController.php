@@ -76,7 +76,7 @@ class BookController extends Controller
      */
     public function update(BookRequest $request, Book $book)
     {
-        $book->update($request->validated());
+        $book->update($request->all());
         if ($request->hasFile('image')) {
             // Remove old image if exists
             $book->clearMediaCollection('image');

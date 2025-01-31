@@ -104,7 +104,6 @@
                                                 <td>{{ $book->is_available }}</td>
                                                 <td>{{ $book->created_at }}</td>
                                                 <td>{{ $book->updated_at }}</td>
-                                                {{-- <td>{{ $book->getActiveDiscountValue() }}</td> --}}
                                                 <td>
                                                     @include('dashboard.partials.actions', [
                                                         'name' => 'books',
@@ -144,9 +143,8 @@
     <script>
         $(document).ready(function() {
             $('.discount-select2').select2({
-                // placeholder: '-- {{ __('category.selectd_discount') }} --',
-
             });
         });
     </script>
 @endpush
+{{-- {{ $book->getActiveDiscountValue() }} --}}

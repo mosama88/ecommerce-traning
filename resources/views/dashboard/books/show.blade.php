@@ -32,6 +32,9 @@
             <div class="card card-secondary">
                 <div class="card-header">
                     <h3 class="card-title"> {{ __('books.books_create') }}</h3>
+                    <a href="{{ route('dashboard.books.edit', $book->id) }}" class="btn btn-info float-right"><i
+                            class="fas fa-edit mx-1"></i>
+                        {{ __('action.update') }} </a>
                 </div>
 
 
@@ -131,19 +134,24 @@
                             {{-- books is_available --}}
                             <div class="custom-control custom-checkbox mb-3 mx-2">
                                 <input disabled class="custom-control-input" type="checkbox" name="is_available"
-                                    id="is_available" value="{{ $book->is_available }}">
+                                    id="is_available" value="{{ $book->is_available }}"
+                                    {{ old('is_availble', $book->is_available == 1 ? 'checked' : '') }}>
                                 <label for="is_available" class="custom-control-label">Is Available</label>
                             </div>
                         </div>
 
                         <div class="row mx-1 col-12">
                             <div class="custom-control custom-radio">
-                                <input class="custom-control-input" type="radio" id="discount_id" name="customRadio">
+                                <input disabled class="custom-control-input" value="App\Models\Discount" type="radio"
+                                    id="discount_id" name="discountable_type"
+                                    {{ old('discountable_type', $book->discountable_type) == 'App\Models\Discount' ? 'checked' : '' }}>
                                 <label for="discount_id" class="custom-control-label">Discount</label>
                             </div>
 
                             <div class="custom-control custom-radio mx-2">
-                                <input class="custom-control-input" type="radio" id="flash_sale_id" name="customRadio">
+                                <input disabled class="custom-control-input" value="App\Models\FlashSale" type="radio"
+                                    id="flash_sale_id" name="discountable_type"
+                                    {{ old('discountable_type', $book->discountable_type) == 'App\Models\FlashSale' ? 'checked' : '' }}>
                                 <label for="flash_sale_id" class="custom-control-label">Flash Sale</label>
                             </div>
                         </div>
@@ -153,10 +161,13 @@
                     <div class="row mt-2">
                         <div class="col-12">
                             <x-adminlte-select2 fgroup-class="col-md-4" name="discountable_id" class="discount-select2">
-                                <option></option>
+                                @if ($book->discountable_id)
+                                    <option value="{{ $book->discountable_id }}" selected>
+                                        {{ $book->discountable->name ?? 'Selected Discount' }}
+                                    </option>
+                                @endif
                             </x-adminlte-select2>
                         </div>
-
                     </div>
                 </div>
                 <!-- /.card-body -->

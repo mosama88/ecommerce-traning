@@ -72,18 +72,21 @@ class Book extends Model implements HasMedia
         $discount = $this->discountable;
         $discount_expired = false;
         $current_date = Carbon::now();
+        $discount_value = 0;
         // dd($current_date->diffInDays($discount->expiry_date));
         if ($discount) {
             if ($discount instanceof Discount) {
                 if ($discount->quantity <= 0 || $current_date->diffInDays($discount->expiry_date) <= 0) $discount_expired = true;
             } else {
                 $expiry_date = Carbon::createFromFormat("Y-m-d H:i:s", "$discount->date $discount->start_time")->addHours($discount->time);
-                if (!$discount->active || $current_date->diffInDays($expiry_date) <= 0) $discount_expired = true;
+                if (!$discount->is_active || $current_date->diffInDays($expiry_date) <= 0) $discount_expired = true;
             }
         }
-        if(!$discount || $discount_expired ){
+        if (!$discount || $discount_expired) {
             $discount = $this->category->discount;
-            
-        } 
+            if ($discount) {
+                if ($discount->quantity <= 0 || $current_date->diffInDays($discount->expiry_date) <= 0) return 0;
+            }
+        }
     }
 }
