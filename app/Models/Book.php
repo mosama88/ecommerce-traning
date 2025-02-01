@@ -67,13 +67,12 @@ class Book extends Model implements HasMedia
     }
 
 
-    public function getActiveDiscountValue()
+    function getActiveDiscountValue()
     {
         $discount = $this->discountable;
         $discount_expired = false;
         $current_date = Carbon::now();
         $discount_value = 0;
-        // dd($current_date->diffInDays($discount->expiry_date));
         if ($discount) {
             if ($discount instanceof Discount) {
                 if ($discount->quantity <= 0 || $current_date->diffInDays($discount->expiry_date) <= 0) $discount_expired = true;
@@ -82,6 +81,7 @@ class Book extends Model implements HasMedia
                 if (!$discount->is_active || $current_date->diffInDays($expiry_date) <= 0) $discount_expired = true;
             }
         }
+
         if (!$discount || $discount_expired) {
             $discount = $this->category->discount;
             if ($discount) {

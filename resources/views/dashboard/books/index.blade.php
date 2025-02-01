@@ -110,7 +110,7 @@
                                                         'name_id' => $book->id,
                                                     ])
                                                 </td>
-
+ {{ $book->getActiveDiscountValue() }}
 
                                             </tr>
                                         @endforeach
@@ -137,13 +137,12 @@
         </div>
     </div>
 
-
+   
 @stop
 @push('js')
     <script>
         $(document).ready(function() {
-            $('.discount-select2').select2({
-            });
+            $('.discount-select2').select2({});
         });
     </script>
 @endpush
