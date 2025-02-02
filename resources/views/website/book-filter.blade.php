@@ -1,10 +1,16 @@
 <div class="row">
+
+    @if (session('success') != null)
+        <div class="alert alert-primary" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="col-12 col-lg-3">
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                        aria-expanded="true" aria-controls="collapseOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         Categories
                     </button>
                 </h2>
@@ -168,10 +174,26 @@
                                 <div class="recommended_card__price">
                                     <p class="text-end mb-4"> {{ $book->price }} EGP </p>
                                     <div class="d-flex flex-wrap gap-5 mt-auto justify-content-end">
-                                        <button class="main_btn cart-btn w-50  flex-grow-1">
-                                            <span>Add To Cart</span>
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                        </button>
+                                        @if ($book->quantity)
+                                            @if (session()->get('cart')[$book->id] ?? null)
+                                                <button class="main_btn_added cart-btn w-50 flex-grow-1">
+                                                    <span>Added in Cart</span>
+                                                    <i class="fa-solid fa-cart-shopping"></i>
+                                                </button>
+                                            @else
+                                                <form action="{{ route('front.cart.add', $book->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <button class="main_btn cart-btn w-100  flex-grow-1">
+                                                        <span>Add To Cart</span>
+                                                        <i class="fa-solid fa-cart-shopping"></i>
+                                                    </button>
+                                                </form>
+                                            @endif
+                                        @else
+                                            <p class="text-danger">Not Available</p>
+                                        @endif
+
                                         <button class="primary_btn">
                                             <i class="fa-regular fa-heart"></i>
                                         </button>

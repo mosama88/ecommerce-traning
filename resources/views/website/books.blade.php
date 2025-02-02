@@ -2,7 +2,27 @@
 @section('books-active', 'active')
 @section('title', 'Home')
 @section('css')
+    <style>
+        .main_btn_added {
+            background-color: white;
+            /* Set background to white */
+            border: 1px solid #ccc;
+            /* Optional: Add a border if needed */
+            color: #333;
+            /* Set text color */
+            cursor: pointer;
+            /* Optional: Change cursor to pointer on hover */
+        }
 
+        .main_btn_added:hover {
+            background-color: white !important;
+            /* Ensure no hover effect */
+            color: #333;
+            /* Keep text color same during hover */
+            border: 1px solid #ccc;
+            /* Ensure border stays the same on hover */
+        }
+    </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('front') }}/css/reset.css" />
     <link rel="stylesheet" href="{{ asset('front') }}/css/layout.css" />
