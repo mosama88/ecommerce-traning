@@ -127,8 +127,11 @@
                             @endphp
                             @if ($discount)
                                 <div class="discount">
-                                    <p class="discount_code">{{ $discount->percentage }} Discount code:
-                                        {{ $discount->code }}</p>
+                                    <p class="discount_code">{{ round($discount->percentage) }} %
+                                        @if ($discount->code)
+                                            Discount code: {{ $discount->code }}
+                                        @endif
+                                    </p>
                                 </div>
                             @endif
 
