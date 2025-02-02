@@ -66,6 +66,7 @@
                                         <th>{{ __('books.books_publish_year') }}</th>
                                         <th>{{ __('books.books_price') }}</th>
                                         <th>{{ __('books.books_is_available') }}</th>
+                                        <th>{{ __('books.books_has_discount') }}</th>
                                         <th>{{ __('action.created_at') }}</th>
                                         <th>{{ __('action.updated_at') }}</th>
                                         <th>{{ __('action.actions') }}</th>
@@ -102,6 +103,13 @@
                                                 <td>{{ $book->publish_year }}</td>
                                                 <td>{{ $book->price }} {{ __('books.le') }}</td>
                                                 <td>{{ $book->is_available }}</td>
+                                                <td>
+                                                    @if ($book->getValidDiscount())
+                                                        {{ $book->discountable->percentage }}
+                                                    @else
+                                                        hav'nt Discount
+                                                    @endif
+                                                </td>
                                                 <td>{{ $book->created_at }}</td>
                                                 <td>{{ $book->updated_at }}</td>
                                                 <td>
@@ -110,7 +118,6 @@
                                                         'name_id' => $book->id,
                                                     ])
                                                 </td>
- {{ $book->getActiveDiscountValue() }}
 
                                             </tr>
                                         @endforeach
@@ -137,7 +144,7 @@
         </div>
     </div>
 
-   
+
 @stop
 @push('js')
     <script>

@@ -122,9 +122,16 @@
                                     {{ Str::limit($book->description, 100) }}
                                 </p>
                             </div>
-                            <div class="discount">
-                                <p class="discount_code">25% Discount code: Ne212</p>
-                            </div>
+                            @php
+                                $discount = $book->getValidDiscount();
+                            @endphp
+                            @if ($discount)
+                                <div class="discount">
+                                    <p class="discount_code">{{ $discount->percentage }} Discount code:
+                                        {{ $discount->code }}</p>
+                                </div>
+                            @endif
+
                         </div>
                         <div class="d-flex flex-wrap justify-content-between align-items-end gap-4">
                             <div>

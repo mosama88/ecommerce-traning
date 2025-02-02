@@ -31,4 +31,5 @@ return [
     'choose_publishers_name' => 'Choose Publisher Name',
     'categories_name' => 'Category Name',
     'choose_categories_name' => 'Choose Category Name',
+    'books_has_discount' => 'Has Discount',
 ];

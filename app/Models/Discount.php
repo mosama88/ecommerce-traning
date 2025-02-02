@@ -15,8 +15,27 @@ class Discount extends Model
     protected $table = 'discounts';
     protected $fillable = ['code', 'quantity', 'percentage', 'expiry_date'];
 
+    protected $casts = ['expiry_date' => 'date'];
+
+
     public function books()
     {
         return $this->morphMany(Book::class, 'discountable');
     }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('Y-m-d'); // Adjust the format as needed
+    }
+    public function getUpdatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('Y-m-d'); // Adjust the format as needed
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
+
+  
 }

@@ -31,4 +31,5 @@ return [
     'choose_publishers_name' => 'أختر أسم الناشر',
     'categories_name' => 'أسم الفئة',
     'choose_categories_name' => 'أختر أسم الفئة',
+    'books_has_discount' => 'له خصم',
 ];
