@@ -8,8 +8,6 @@
 @stop
 @section('content')
 
-
-
     <section class="main_bg py-5">
         <div class="container">
             <p class="text-center main_text fw-bold py-4">Welcome Back!</p>
@@ -17,16 +15,17 @@
                 <div class="col-12 col-lg-6">
 
                     <form method="POST" action="{{ route('login') }}" class="login-form">
+                        @csrf
                         <div class="d-flex flex-column gap-2">
                             <label for="email">Email</label>
-                            <div class="input_container">
-                                <input type="text" placeholder="example@gmail.com" />
+                            <div name="email" class="input_container">
+                                <input type="text" name="email" placeholder="example@gmail.com" />
                             </div>
                         </div>
                         <div class="d-flex flex-column gap-2 my-3">
                             <label for="email">Password</label>
                             <div class="d-flex align-items-center input_container">
-                                <input type="text" placeholder="Enter password" />
+                                <input name="password" type="password" placeholder="Enter password" />
                                 <i class="fa-regular fa-eye"></i>
                             </div>
                         </div>
@@ -52,8 +51,8 @@
         </div>
     </section>
 @stop
-@section('js')
 
+@section('js')
     <script src="path-to-the-script/splide-extension-auto-scroll.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
     <script src="{{ asset('front') }}/js/home.js"></script>
