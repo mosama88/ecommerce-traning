@@ -10,7 +10,7 @@
             /* Optional: Add a border if needed */
             color: #333;
             /* Set text color */
-            cursor: pointer;
+            cursor: default;
             /* Optional: Change cursor to pointer on hover */
         }
 

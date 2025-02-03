@@ -19,9 +19,9 @@ Route::name('front.')->group(function () {
 
     Route::get('books', [WebSiteController::class, 'getBooks'])->name('books');
     Route::prefix('cart')->name('cart.')->group(function () {
-
         Route::get('/', [CartController::class, 'index'])->name('index');
         Route::post('/items/{book_id}', [CartController::class, 'addItem'])->name('add');
+        Route::delete('/removeItem/{book_id}', [CartController::class, 'removeItem'])->name('removeItem');
     });
 });
 
