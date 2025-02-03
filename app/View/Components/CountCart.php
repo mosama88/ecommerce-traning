@@ -18,8 +18,7 @@ class CountCart extends Component
         if (Auth::check()) {
             $this->book_count = AddToCart::where('user_id', Auth::id())->count();
         } else {
-            $cart = Session::get('cart');
-            // dd($cart);
+            $cart = Session::get('cart', []);
             $this->book_count = count($cart);
         }
     }

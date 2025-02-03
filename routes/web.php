@@ -29,7 +29,7 @@ Route::name('front.')->group(function () {
 
 Route::middleware('guest')->group(
     function () {
-        Route::get('signup', [RegisteredUserController::class, 'create'])
+        Route::get('register', [RegisteredUserController::class, 'create'])
             ->name('register');
 
         Route::post('register', [RegisteredUserController::class, 'store']);
@@ -50,7 +50,11 @@ Route::middleware('auth')->group(function () {
 Route::post('logout', [AdminLogin::class, 'destroy'])
     ->name('logout');
 
+Route::middleware('auth')->group(function () {
 
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logout');
+});
 
 
         

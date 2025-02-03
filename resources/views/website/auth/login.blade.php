@@ -15,7 +15,8 @@
             <p class="text-center main_text fw-bold py-4">Welcome Back!</p>
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-6">
-                    <form method="POST" class="login-form">
+
+                    <form method="POST" action="{{ route('login') }}" class="login-form">
                         <div class="d-flex flex-column gap-2">
                             <label for="email">Email</label>
                             <div class="input_container">

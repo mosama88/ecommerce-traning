@@ -20,17 +20,13 @@
                     <a class="nav-link @yield('about-active')" href="{{ route('front.about') }}">About us</a>
                 </li>
             </ul>
-            @php
 
-
-          
-            @endphp
             <div class="profile d-flex gap-4 align-items-center">
                 <a href="{{ route('front.wishlist') }}" class="wishlist-link">
                     <span>1</span>
                     <i class="fa-regular fa-heart fs-3"></i></a>
-                
-<x-count-cart />
+
+                <x-count-cart />
 
                 @guest
                     <div class="d-flex gap-3">
@@ -62,7 +58,10 @@
                                 <a class="dropdown-item" href="orders.html">Order History</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">Log Out</a>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button class="dropdown-item" href="#">Log Out</button>
+                                </form>
                             </li>
                         </ul>
                     </div>

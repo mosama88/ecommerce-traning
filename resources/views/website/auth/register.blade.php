@@ -14,45 +14,46 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-6">
-                    <form method="POST" class="login-form">
+                    <form method="POST" action="{{ route('register') }}" class="login-form">
+                        @csrf
                         <div class="d-flex gap-2 user-name">
                             <div class="d-flex flex-column gap-2">
-                                <label for="email">First Name</label>
+                                <label for="first_name">First Name</label>
                                 <div class="input_container">
-                                    <input type="text" placeholder="John" />
+                                    <input name="first_name" type="text" placeholder="John" />
                                 </div>
                             </div>
 
                             <div class="d-flex flex-column gap-2">
                                 <label for="email">Last Name</label>
                                 <div class="input_container">
-                                    <input type="text" placeholder="Smith" />
+                                    <input name="last_name" type="text" placeholder="Smith" />
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex flex-column gap-2 my-3">
                             <label for="email">Email</label>
                             <div class="input_container">
-                                <input type="text" placeholder="example@gmail.com" />
+                                <input name="email" type="text" placeholder="example@gmail.com" />
                             </div>
                         </div>
                         <div class="d-flex flex-column gap-2 my-3">
                             <label for="email">Password</label>
                             <div class="d-flex align-items-center input_container">
-                                <input type="text" placeholder="Enter password" />
+                                <input name="password" type="password" placeholder="Enter password" />
                                 <i class="fa-regular fa-eye"></i>
                             </div>
                         </div>
                         <div class="d-flex flex-column gap-2 my-3">
                             <label for="email">Confirm password</label>
                             <div class="d-flex align-items-center input_container">
-                                <input type="text" placeholder="Enter password" />
+                                <input name="password_confirmation" type="password" placeholder="Enter password" />
                                 <i class="fa-regular fa-eye"></i>
                             </div>
                         </div>
                         <div class="d-flex gap-1 align-items-center mt-3">
                             <div class="d-flex gap-2">
-                                <input type="checkbox" name="eememberme" id="rememberMe" />
+                                <input name="first_name" type="checkbox" name="eememberme" id="rememberMe" />
                                 <label for="rememberMe">Agree with</label>
                             </div>
                             <p class="main_text">Terms & Conditions</p>
