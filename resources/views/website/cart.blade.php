@@ -58,24 +58,11 @@
                                 </div>
                             </div>
                             @php
-                                $qty = session()->get('cart')[$book->id];
+                                $qty = $cart[$book->id];
                             @endphp
-                            <div class="col-lg-2 col-md-4 col-sm-4 d-flex align-items-center">
-                                <div class="d-flex gap-3 align-items-center mt-3">
-                                    <div class="books_count d-flex gap-3 align-items-center">
-                                        <span>-</span>
-                                        <p>{{ $qty }}</p>
-                                        <span>+</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-4 col-sm-4 d-flex align-items-center">
-                                <p class="fw-bold fs-5 mt-3">${{ $book->price }}</p>
-                            </div>
+                            @livewire('website.decrement-increment', ['book' => $book, 'quantity' => $qty])
 
-                            <div class="sell-price col-lg-2 col-md-4 col-sm-4 d-flex align-items-center">
-                                <p class="fw-bold fs-5 mt-3">${{ $book->price * $qty }}</p>
-                            </div>
+
                             <div class="col-lg-1 col-md-4 col-sm-4 d-flex align-items-center">
                                 <form action="{{ route('front.cart.removeItem', $book->id) }}" method="POST">
                                     @csrf

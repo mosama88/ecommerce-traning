@@ -14,13 +14,20 @@ class CartController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $cart = AddToCart::where('user_id')->get();
+            $cart = AddToCart::where('user_id', Auth::id())->get();
+            $bookIds = $cart->pluck('book_id')->toArray();
+            $cart = $cart->mapWithKeys(fn($item) => [
+                $item->book_id => $item->quantity
+            ])->toArray();
         } else {
             $cart = Session::get('cart', []);
+            $bookIds = array_keys($cart);
+            $cart = collect($cart);
         }
-        $books = Book::whereIn('id', array_keys($cart))->get();
-        $books_sum = Book::whereIn('id', array_keys($cart))->sum('price');
-        return view('website.cart', compact('books', 'books_sum'));
+        $books = Book::whereIn('id', $bookIds)->get();
+        $books_sum = $books->sum(fn($book) => $book->price * ($cart[$book->id] ?? 0));
+
+        return view('website.cart', compact('books', 'cart', 'books_sum'));
     }
 
 
@@ -55,4 +62,23 @@ class CartController extends Controller
 
         return redirect()->back()->with('success', 'Book Deleted From Cart Successfully');
     }
+
+
+    // public function removeItem($book_id)
+    // {
+    //     if (Auth::check()) {
+    //         // Delete item from database if user is logged in
+    //         AddToCart::where('user_id', Auth::id())->where('book_id', $book_id)->delete();
+    //     } else {
+    //         // Handle cart in session if user is not logged in
+    //         $cart = Session::get('cart', []);
+
+    //         if (isset($cart[$book_id])) {
+    //             unset($cart[$book_id]); // Remove item from session cart
+    //             Session::put('cart', $cart); // Update session
+    //         }
+    //     }
+
+    //     return redirect()->back()->with('success', 'Book Deleted From Cart Successfully');
+    // }
 }
