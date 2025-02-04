@@ -45,9 +45,9 @@
                             </div>
                             <div class="flex-column align-items-start">
                                 <p class="fs-6 fw-bold text-light text-start">
-                                    Ahmed Fawzy
+                                    {{ auth()->user()->fullName() }}
                                 </p>
-                                <p class="text-secondary">fawzy@gmail.com</p>
+                                <p class="text-secondary"> {{ auth()->user()->email }}</p>
                             </div>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
