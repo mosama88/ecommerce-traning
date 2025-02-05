@@ -16,14 +16,26 @@
                     Enter your email to reset your password
                 </p>
             </div>
+            @if (session('success') != null)
+                <div class="alert alert-success text-center">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-6">
-                    <form method="POST" class="login-form">
+                    <form method="POST" action="{{ route('password.email') }}" class="login-form">
+                        @csrf
                         <div class="d-flex flex-column gap-2">
                             <label for="email">Email</label>
                             <div class="input_container">
                                 <input name="email" type="text" placeholder="example@gmail.com" />
                             </div>
+                            @error('email')
+                                <div class="alert alert-danger mt-1">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div>
                             <button type="submit" class="main_btn w-100 mt-3">
