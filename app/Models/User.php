@@ -23,8 +23,6 @@ class User extends Authenticatable
         'last_name',
         'email',
         'password',
-        'otp_code',
-        'expire_code',
     ];
 
     /**
@@ -55,11 +53,4 @@ class User extends Authenticatable
         return ucwords($this->first_name . ' ' . $this->last_name);
     }
 
-    public function generateCodeOTP()
-    {
-        $this->timestamps = false;
-        $this->otp_code = rand(1000, 9999);
-        $this->expire_code = now()->addMinute(3);
-        $this->save();
-    }
 }

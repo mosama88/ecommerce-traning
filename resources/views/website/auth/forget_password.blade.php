@@ -21,10 +21,16 @@
                     {{ session('success') }}
                 </div>
             @endif
-
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger text-center">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-6">
-                    <form method="POST" action="{{ route('password.email') }}" class="login-form">
+                    <form method="POST" action="{{ route('forgetPassword.sendOtp') }}" class="login-form">
                         @csrf
                         <div class="d-flex flex-column gap-2">
                             <label for="email">Email</label>

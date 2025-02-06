@@ -6,7 +6,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebSite\CartController;
 use App\Http\Controllers\WebSite\WebSiteController;
 use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Auth\ForgetPasswordController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -41,17 +43,17 @@ Route::middleware('guest')->group(
 
         Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-        Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
-            ->name('password.request');
+        Route::prefix('forget-password')->controller(ForgetPasswordController::class)->name('forgetPassword.')->group(function () {
+            Route::get('enter/email', 'showEnterEmail')->name('showEnterEmail');
+            Route::post('send/otp', 'sendOtp')->name('sendOtp');
+            Route::get('{email}/enter/code', 'showEnterOtp')->name('showEnterOtp');
+            Route::post('check/otp', 'checkOtp')->name('checkOtp');
+        });
 
-        Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
-            ->name('password.email');
-
-        Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
-            ->name('password.reset');
-
-        Route::post('reset-password', [NewPasswordController::class, 'store'])
-            ->name('password.store');
+        Route::controller(ResetPasswordController::class)->prefix('reset/password')->group(function () {
+            Route::get('/{email}/{code}', 'showResetPassword')->name('showResetPassword');
+            Route::post('', 'resetPassword')->name('resetPassword');
+        });
     }
 );
 
@@ -60,6 +62,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 
 Route::post('logout', [AdminLogin::class, 'destroy'])
     ->name('logout');
