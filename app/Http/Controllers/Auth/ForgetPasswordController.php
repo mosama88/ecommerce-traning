@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use Ichtrojan\Otp\Otp;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Notifications\OtpNotification;
 use App\Http\Requests\Auth\CheckOtpRequest;
+use App\Http\Requests\Auth\ResetPasswordRequest;
 use App\Http\Requests\Auth\ForgetPasswordRequest;
-use Ichtrojan\Otp\Otp;
 
 class ForgetPasswordController extends Controller
 {
@@ -55,6 +56,33 @@ class ForgetPasswordController extends Controller
             'otp_verified_code' => $code,
         ]);
 
-        return redirect()->route('showResetPassword', ['email' => $request->email, 'code' => $code]);
+        return redirect()->route('forgetPassword.showResetPassword', ['email' => $request->email, 'code' => $code]);
+    }
+
+
+
+    public function showResetPassword($email, $code)
+    {
+        return view('website.auth.reset_password', compact('email', 'code'));
+    }
+
+
+    public function resetPassword(ResetPasswordRequest $request)
+    {
+        if (!$this->isOtpValid($request->email, $request->code)) {
+            return redirect()->back()->withErrors(['error' => 'Try again.']);
+        }
+
+        $user = User::where('email', $request->email)->firstOrFail();
+        $user->update(['password' => $request->password]);
+
+        session()->forget(['otp_verified_email', 'otp_verified_code']);
+
+        return redirect()->route('login')->with('success', 'Password reset successfully.');
+    }
+
+    private function isOtpValid($email, $code): bool
+    {
+        return session('otp_verified_email') === $email && session('otp_verified_code') === $code;
     }
 }

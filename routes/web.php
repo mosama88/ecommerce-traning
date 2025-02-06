@@ -48,9 +48,6 @@ Route::middleware('guest')->group(
             Route::post('send/otp', 'sendOtp')->name('sendOtp');
             Route::get('{email}/enter/code', 'showEnterOtp')->name('showEnterOtp');
             Route::post('check/otp', 'checkOtp')->name('checkOtp');
-        });
-
-        Route::controller(ResetPasswordController::class)->prefix('reset/password')->group(function () {
             Route::get('/{email}/{code}', 'showResetPassword')->name('showResetPassword');
             Route::post('', 'resetPassword')->name('resetPassword');
         });
