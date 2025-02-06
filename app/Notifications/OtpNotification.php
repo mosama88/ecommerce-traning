@@ -4,7 +4,7 @@ namespace App\Notifications;
 
 use App\Mail\SendOtpMail;
 use Hamcrest\Type\IsNumeric;
-use Ichtrojan\Otp\Models\Otp;
+use Ichtrojan\Otp\Otp;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -16,40 +16,31 @@ class OtpNotification extends Notification
 
     /**
      * Create a new notification instance.
+     *
+     * @return void
      */
-    public function __construct()
-    {
-        //
-    }
+    public function __construct() {}
 
     /**
      * Get the notification's delivery channels.
      *
-     * @return array<int, string>
+     * @param  mixed  $notifiable
+     * @return array
      */
-    public function via(object $notifiable): array
+    public function via($notifiable)
     {
         return ['mail'];
     }
 
     /**
      * Get the mail representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
         $otp = (new Otp)->generate($notifiable->email, 'numeric', 4, 10);
         return (new SendOtpMail($otp->token))->to($notifiable->email);
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @return array<string, mixed>
-     */
-    public function toArray(object $notifiable): array
-    {
-        return [
-            //
-        ];
     }
 }
