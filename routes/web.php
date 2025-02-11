@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebSite\CartController;
 use App\Http\Controllers\WebSite\WebSiteController;
 use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\WebSite\WishListController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
@@ -17,17 +18,28 @@ Route::name('front.')->group(function () {
     Route::get('/', [WebSiteController::class, 'index'])->name('index');
 
     Route::view('/about', 'website.about')->name('about');
-    Route::view('/wish-list', 'website.wishlist')->name('wishlist');
+    // Route::view('/wish-list', 'website.wishlist')->name('wishlist');
     Route::view('/single-book', 'website.singleBook')->name('singleBook');
     Route::view('/user/profile', 'website.profile')->name('profile');
 
 
-
+    // Books
     Route::get('books', [WebSiteController::class, 'getBooks'])->name('books');
-    Route::prefix('cart')->name('cart.')->group(function () {
-        Route::get('/', [CartController::class, 'index'])->name('index');
-        Route::post('/items/{book_id}', [CartController::class, 'addItem'])->name('add');
-        Route::delete('/removeItem/{book_id}', [CartController::class, 'removeItem'])->name('removeItem');
+
+    // Cart
+    Route::prefix('cart')->name('cart.')->controller(CartController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/items/{book_id}', 'addItem')->name('add');
+        Route::delete('/removeItem/{book_id}', 'removeItem')->name('removeItem');
+    });
+
+
+
+    // wish-list
+
+    Route::prefix('wish-list')->name('wishList.')->controller(WishListController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+
     });
 });
 

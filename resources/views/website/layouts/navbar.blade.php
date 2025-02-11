@@ -22,7 +22,7 @@
             </ul>
 
             <div class="profile d-flex gap-4 align-items-center">
-                <a href="{{ route('front.wishlist') }}" class="wishlist-link">
+                <a href="{{ route('front.wishList.index') }}" class="wishlist-link">
                     <span>1</span>
                     <i class="fa-regular fa-heart fs-3"></i></a>
 

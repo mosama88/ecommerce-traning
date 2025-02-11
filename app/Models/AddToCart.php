@@ -12,4 +12,16 @@ class AddToCart extends Model
 
     protected $table = 'add_to_carts';
     protected $fillable = ['book_id', 'user_id', 'quantity'];
+
+
+    public function books()
+    {
+        return $this->hasMany(Book::class, 'book_id');
+    }
+
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'user_id');
+    }
 }
