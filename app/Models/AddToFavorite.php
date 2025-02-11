@@ -2,15 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Scopes\AddToFavoriteScope;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+#[ScopedBy([AddToFavoriteScope::class])]
 
 class AddToFavorite extends Model
 {
     /** @use HasFactory<\Database\Factories\AddToFavoriteFactory> */
     use HasFactory;
 
-    protected $table = 'add_to_favorites';
+    protected $table = 'book_interactions';
     protected $fillable = ['book_id', 'user_id'];
 
 

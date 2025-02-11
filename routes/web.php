@@ -1,17 +1,14 @@
 <?php
 
+use App\Enum\InteractionsTypesEnum;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AdminLogin;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebSite\CartController;
 use App\Http\Controllers\WebSite\WebSiteController;
-use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\WebSite\WishListController;
-use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::name('front.')->group(function () {
@@ -85,3 +82,6 @@ Route::middleware('auth')->group(function () {
 
         
 // require __DIR__ . '/auth.php';
+Route::get('/enum', function(){
+    dd((InteractionsTypesEnum::Favorite)); 
+});

@@ -2,16 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Enum\InteractionsTypesEnum;
+use App\Models\Scopes\AddToCartScope;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
+
+
+#[ScopedBy([AddToCartScope::class])]
 
 class AddToCart extends Model
 {
     /** @use HasFactory<\Database\Factories\AddToCartFactory> */
     use HasFactory;
 
-    protected $table = 'add_to_carts';
-    protected $fillable = ['book_id', 'user_id', 'quantity'];
+    protected $table = 'book_interactions';
+    protected $fillable = ['book_id', 'user_id', 'quantity', 'interaction_type'];
+    protected $casts = ['interaction_type' => InteractionsTypesEnum::class];
+
 
 
     public function books()
