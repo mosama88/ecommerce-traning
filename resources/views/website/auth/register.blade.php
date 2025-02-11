@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-6">
-                    <form method="POST" action="{{ route('register') }}" class="login-form">
+                    <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="d-flex gap-2 user-name">
                             <div class="d-flex flex-column gap-2">
