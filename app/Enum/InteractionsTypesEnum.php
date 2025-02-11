@@ -2,9 +2,9 @@
 
 namespace App\Enum;
 
-enum InteractionsTypesEnum: int
+enum InteractionsTypesEnum: string
 {
-    case Rate = 0;
-    case Cart = 1;
-    case Favorite = 2;
+    case Rate = '0';
+    case Cart = '1';
+    case Favorite = '2';
 }

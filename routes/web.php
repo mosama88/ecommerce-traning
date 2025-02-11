@@ -85,5 +85,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/enum', function () {
     // dd((InteractionsTypesEnum::Favorite)); 
 
-    AddToCart::create(['book_id' => 1, 'user_id' => 2, 'quantity' => 5]);
+    AddToCart::create(['book_id' => 1, 'user_id' => 2, 'quantity' => 5, 'interaction_type' => InteractionsTypesEnum::Cart]);
+    AddToCart::create(['book_id' => 1, 'user_id' => 2, 'quantity' => 5, 'interaction_type' => InteractionsTypesEnum::Favorite]);
 });

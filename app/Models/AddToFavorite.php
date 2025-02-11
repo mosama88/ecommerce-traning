@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\InteractionsTypesEnum;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Scopes\AddToFavoriteScope;
 use Illuminate\Database\Eloquent\Attributes\ScopedBy;
@@ -16,6 +17,7 @@ class AddToFavorite extends Model
 
     protected $table = 'book_interactions';
     protected $fillable = ['book_id', 'user_id'];
+    protected $casts = ['interaction_type' => InteractionsTypesEnum::class];
 
 
     public function books()
