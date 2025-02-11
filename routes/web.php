@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\AddToCart;
 use App\Enum\InteractionsTypesEnum;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AdminLogin;
@@ -36,7 +37,6 @@ Route::name('front.')->group(function () {
 
     Route::prefix('wish-list')->name('wishList.')->controller(WishListController::class)->group(function () {
         Route::get('/', 'index')->name('index');
-
     });
 });
 
@@ -80,8 +80,10 @@ Route::middleware('auth')->group(function () {
 });
 
 
-        
+
 // require __DIR__ . '/auth.php';
-Route::get('/enum', function(){
-    dd((InteractionsTypesEnum::Favorite)); 
+Route::get('/enum', function () {
+    // dd((InteractionsTypesEnum::Favorite)); 
+
+    AddToCart::create(['book_id' => 1, 'user_id' => 2, 'quantity' => 5]);
 });
