@@ -11,6 +11,7 @@ use App\Http\Controllers\WebSite\WishListController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Models\AddToFavorite;
 
 Route::name('front.')->group(function () {
     Route::get('/', [WebSiteController::class, 'index'])->name('index');
@@ -81,10 +82,23 @@ Route::middleware('auth')->group(function () {
 
 
 
-// require __DIR__ . '/auth.php';
-Route::get('/enum', function () {
-    // dd((InteractionsTypesEnum::Favorite)); 
 
-    AddToCart::create(['book_id' => 1, 'user_id' => 2, 'quantity' => 5, 'interaction_type' => InteractionsTypesEnum::Cart]);
-    AddToCart::create(['book_id' => 1, 'user_id' => 2, 'quantity' => 5, 'interaction_type' => InteractionsTypesEnum::Favorite]);
-});
+
+
+
+
+
+
+//dd Test
+
+// Route::get('/enum', function () {
+//     // dd((InteractionsTypesEnum::Favorite)); 
+
+//     // AddToCart::create(['book_id' => 1, 'user_id' => 2, 'quantity' => 5]);
+//     // AddToFavorite::create([
+//     //     'book_id' => 1,
+//     //     'user_id' => 2,
+//     //     'quantity' => 5,
+//     //     'interaction_type' => InteractionsTypesEnum::Favorite
+//     // ]);
+// });

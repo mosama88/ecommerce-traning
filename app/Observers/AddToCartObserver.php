@@ -3,15 +3,16 @@
 namespace App\Observers;
 
 use App\Models\AddToCart;
+use App\Enum\InteractionsTypesEnum;
 
 class AddToCartObserver
 {
     /**
      * Handle the AddToCart "created" event.
      */
-    public function creating(AddToCart $addToCart): void
+    public function creating(AddToCart $addToCart)
     {
-        dd($addToCart);
+        $addToCart->interaction_type = InteractionsTypesEnum::Cart;
     }
 
     /**
