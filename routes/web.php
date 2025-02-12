@@ -94,11 +94,11 @@ Route::middleware('auth')->group(function () {
 // Route::get('/enum', function () {
 //     // dd((InteractionsTypesEnum::Favorite)); 
 
-//     // AddToCart::create(['book_id' => 1, 'user_id' => 2, 'quantity' => 5]);
-//     // AddToFavorite::create([
-//     //     'book_id' => 1,
-//     //     'user_id' => 2,
-//     //     'quantity' => 5,
-//     //     'interaction_type' => InteractionsTypesEnum::Favorite
-//     // ]);
+//     AddToCart::create(['book_id' => 1, 'user_id' => 14, 'quantity' => 5]);
+//     AddToFavorite::create([
+//         'book_id' => 1,
+//         'user_id' => 14,
+//         'quantity' => 5,
+//         'interaction_type' => InteractionsTypesEnum::Favorite
+//     ]);
 // });
