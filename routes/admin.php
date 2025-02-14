@@ -66,8 +66,6 @@ Route::middleware(['dashboard', 'auth:admin', 'verified'])->group(function () {
     Route::get('/export/excel', ExportExcelController::class)->name('export.excel');
 });
 
-
-
 Route::middleware('guest:admin')->group(function () {
     Route::get('login', [AdminLogin::class, 'create'])->name('login');
     Route::post('login', [AdminLogin::class, 'store']);
