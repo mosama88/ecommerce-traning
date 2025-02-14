@@ -8,6 +8,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\Dashboard\BookController;
 use App\Http\Controllers\Dashboard\OrderController;
 use App\Http\Controllers\Dashboard\AuthorController;
+use App\Http\Controllers\Dashboard\ReportController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DiscountController;
 use App\Http\Controllers\Dashboard\FlashSaleController;
@@ -45,6 +46,14 @@ Route::middleware(['dashboard', 'auth:admin', 'verified'])->group(function () {
     //Books
     Route::resource('books', BookController::class);
 
+
+    Route::prefix('reports')->name('report.')->group(function () {
+        Route::prefix('sales')->name('sales.')->group(function () {
+            Route::get('/books', [ReportController::class, 'books'])->name('books');
+            Route::get('/revenue', [ReportController::class, 'revenue'])->name('revenue');
+            Route::get('/trends', [ReportController::class, 'trends'])->name('trends');
+        });
+    });
 
     //Language
     Route::get('change-language/{lang}', [LanguageController::class, 'changeLanguage'])->name('change.language');
