@@ -2,9 +2,17 @@
 
 namespace App\Models;
 
+use App\Enum\OrderStatusEnum;
+use App\Enum\PaymentTypeEnum;
 use EloquentFilter\Filterable;
+use App\Enum\PaymentStatusEnum;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+// #[ScopedBy([OrderStatusEnum::class])]
+// #[ScopedBy([PaymentStatusEnum::class])]
+// #[ScopedBy([PaymentTypeEnum::class])]
 
 class Order extends Model
 {
