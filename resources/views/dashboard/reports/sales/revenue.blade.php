@@ -29,7 +29,7 @@
                     </select>
                 </div>
                 <div class="card-body">
-                    <canvas id="revenueChart"></canvas>
+                    <canvas style="display: block;width: 942px;height: 350px;" id="revenueChart"></canvas>
                 </div>
             </div>
             <!-- /.card -->
