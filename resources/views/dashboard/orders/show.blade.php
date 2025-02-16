@@ -95,7 +95,7 @@
 
                         {{-- User  --}}
                         <x-adminlte-input disabled name="user_id" label="{{ __('order.user_id') }}"
-                            value="{{ old('user_id', $order->user->name) }}" type="text" placeholder="ex: 10.10"
+                            value="{{ old('user_id', $order->user->fullName()) }}" type="text" placeholder="ex: 10.10"
                             oninput="this.value=this.value.replace(/[^0-9.]/g,'');" fgroup-class="col-md-6" />
                     </div>
                 </div>

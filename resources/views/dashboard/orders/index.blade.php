@@ -76,7 +76,7 @@
                                             <td> {{ $order->books_total }}</td>
                                             <td> {{ $order->status }}</td>
                                             <td> {{ Str::limit($order->address, 20) }}</td>
-                                            <td> {{ $order->user->name }}</td>
+                                            <td> {{ $order->user->fullName() }}</td>
                                             <td> {{ $order->created_at }}</td>
                                             <td> {{ $order->updated_at }}</td>
                                             <td>

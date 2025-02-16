@@ -140,7 +140,7 @@
                                     @foreach ($getData['users'] as $user)
                                         <option @if (old('user_id', $order['user_id']) == $user->id) selected="selected" @endif
                                             value="{{ $user->id }}">
-                                            {{ $user->name }}</option>
+                                            {{ $user->fullName() }}</option>
                                     @endforeach
                                 @else
                                     <div class="alert alert-secondary" role="alert">

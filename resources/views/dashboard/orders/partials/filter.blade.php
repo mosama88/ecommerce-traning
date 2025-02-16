@@ -74,7 +74,7 @@
                                 <option @if (request('order_user') == $user->id) selected="selected" @endif
                                     value="{{ $user->id }}">
 
-                                    {{ $user->name }}</option>
+                                    {{ $user->fullName() }}</option>
                             @endforeach
                         @else
                             <div class="alert alert-secondary" role="alert">
