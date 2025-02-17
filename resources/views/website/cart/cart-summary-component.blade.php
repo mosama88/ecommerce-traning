@@ -25,7 +25,8 @@
                 <div class="total p-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <p class="text-secondary fs-5">Subtotal</p>
-                        <p class="fs-4 fw-bold">$80</p>
+                        <span class="fs-4 fw-bold" wire:model.live="calculateTotal">${{ $books_sum }}</span>
+
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-3">
                         <p class="text-secondary fs-5">Shipping</p>
@@ -37,7 +38,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center border-top py-3">
                         <p class="text-secondary fs-5">Total</p>
-                        <p class="fs-3 fw-bold main_text">${{ $total }}</p>
+                        <p class="fs-3 fw-bold main_text">${{$total}}</p>
                     </div>
                 </div>
                 <button class="main_btn w-100">Check out</button>
