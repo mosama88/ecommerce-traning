@@ -2,16 +2,26 @@
 
 namespace App\Livewire\WebSite\Cart;
 
-use App\Models\ShippingArea;
+use App\Models\Book;
 use Livewire\Component;
+use App\Models\ShippingArea;
+use App\Models\BookInteraction;
 
 class CartSummaryComponent extends Component
 {
+    public $books;
+    public $cart;
     public $shipping_areas;
     public $total;
+
+
+    function mount()
+    {
+        $this->shipping_areas = ShippingArea::select('id', 'fee', 'name')->get();
+        $this->total = 0;
+    }
     public function render()
     {
-        $shipping_areas = ShippingArea::select("*")->orderByDesc('id')->get();
-        return view('website.cart.cart-summary-component', compact('shipping_areas'));
+        return view('website.cart.cart-summary-component');
     }
 }
