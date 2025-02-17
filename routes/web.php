@@ -1,17 +1,18 @@
 <?php
 
 use App\Models\AddToCart;
+use App\Models\AddToFavorite;
 use App\Enum\InteractionsTypesEnum;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AdminLogin;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebSite\CartController;
+use App\Http\Controllers\Website\PaymentController;
 use App\Http\Controllers\WebSite\WebSiteController;
 use App\Http\Controllers\WebSite\WishListController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Models\AddToFavorite;
 
 Route::name('front.')->group(function () {
     Route::get('/', [WebSiteController::class, 'index'])->name('index');
@@ -32,7 +33,9 @@ Route::name('front.')->group(function () {
         Route::delete('/removeItem/{book_id}', 'removeItem')->name('removeItem');
     });
 
-
+    // Payment
+    Route::get('/pay', [PaymentController::class, 'pay']);
+    Route::get('/callback', [PaymentController::class, 'callback']);
 
     // wish-list
 
